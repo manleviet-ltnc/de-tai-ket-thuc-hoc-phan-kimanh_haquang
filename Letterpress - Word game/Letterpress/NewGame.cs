@@ -34,6 +34,16 @@ namespace Letterpress
             Application.Run(new Main());
         }
 
+        private void Control_MouseHover(object sender, EventArgs e)
+        {
+            pnlNewGame.BackColor = Color.LightSkyBlue;
+        }
+
+        private void Control_MouseLeave(object sender, EventArgs e)
+        {
+            pnlNewGame.BackColor = Color.White;
+        }
+
         private void btnStats_Click(object sender, EventArgs e)
         {
             Stats sts = new Stats();

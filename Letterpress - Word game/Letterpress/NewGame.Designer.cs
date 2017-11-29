@@ -55,6 +55,9 @@
             this.pbxNewGame.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbxNewGame.TabIndex = 2;
             this.pbxNewGame.TabStop = false;
+            this.pbxNewGame.Click += new System.EventHandler(this.Control_Click);
+            this.pbxNewGame.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
+            this.pbxNewGame.MouseHover += new System.EventHandler(this.Control_MouseHover);
             // 
             // button1
             // 
@@ -66,6 +69,8 @@
             this.button1.Text = "New game";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.Control_Click);
+            this.button1.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
+            this.button1.MouseHover += new System.EventHandler(this.Control_MouseHover);
             // 
             // groupBox1
             // 
@@ -85,6 +90,9 @@
             this.pnlNewGame.Name = "pnlNewGame";
             this.pnlNewGame.Size = new System.Drawing.Size(290, 90);
             this.pnlNewGame.TabIndex = 0;
+            this.pnlNewGame.Click += new System.EventHandler(this.Control_Click);
+            this.pnlNewGame.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
+            this.pnlNewGame.MouseHover += new System.EventHandler(this.Control_MouseHover);
             // 
             // btnStats
             // 
