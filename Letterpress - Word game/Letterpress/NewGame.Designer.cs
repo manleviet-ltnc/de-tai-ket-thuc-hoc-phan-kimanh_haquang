@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewGame));
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.pbxNewGame = new System.Windows.Forms.PictureBox();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnNewGame = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnlNewGame = new System.Windows.Forms.Panel();
             this.btnStats = new System.Windows.Forms.Button();
@@ -59,18 +59,18 @@
             this.pbxNewGame.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
             this.pbxNewGame.MouseHover += new System.EventHandler(this.Control_MouseHover);
             // 
-            // button1
+            // btnNewGame
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(96, 27);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(116, 38);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "New game";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.Control_Click);
-            this.button1.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
-            this.button1.MouseHover += new System.EventHandler(this.Control_MouseHover);
+            this.btnNewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnNewGame.Location = new System.Drawing.Point(96, 27);
+            this.btnNewGame.Name = "btnNewGame";
+            this.btnNewGame.Size = new System.Drawing.Size(116, 38);
+            this.btnNewGame.TabIndex = 0;
+            this.btnNewGame.Text = "New game";
+            this.btnNewGame.UseVisualStyleBackColor = true;
+            this.btnNewGame.Click += new System.EventHandler(this.Control_Click);
+            this.btnNewGame.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
+            this.btnNewGame.MouseHover += new System.EventHandler(this.Control_MouseHover);
             // 
             // groupBox1
             // 
@@ -84,7 +84,7 @@
             // 
             // pnlNewGame
             // 
-            this.pnlNewGame.Controls.Add(this.button1);
+            this.pnlNewGame.Controls.Add(this.btnNewGame);
             this.pnlNewGame.Controls.Add(this.pbxNewGame);
             this.pnlNewGame.Location = new System.Drawing.Point(0, 36);
             this.pnlNewGame.Name = "pnlNewGame";
@@ -130,7 +130,7 @@
         #endregion
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.PictureBox pbxNewGame;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnNewGame;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel pnlNewGame;
         private System.Windows.Forms.Button btnStats;
