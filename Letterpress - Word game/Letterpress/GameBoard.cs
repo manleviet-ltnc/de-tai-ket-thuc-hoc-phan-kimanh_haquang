@@ -14,17 +14,73 @@ namespace Letterpress
 {
     public partial class Main : Form
     {
+        ProcessFile pf = new ProcessFile();
+        Button[,] button = new Button[5, 5];
+        List<string> wordsListUsed = new List<string>();
+
+        private void Center()
+        {
+            lblBluePoint.Left = (pnlBluePoint.Width - lblBluePoint.Width) / 2;
+            lblBluePoint.Top = (pnlBluePoint.Height - lblBluePoint.Height) / 2;
+
+            lblRedPoint.Left = (pnlRedPoint.Width - lblRedPoint.Width) / 2;
+            lblRedPoint.Top = (pnlRedPoint.Height - lblRedPoint.Height) / 2;
+        }
+
+        private void buttonList()
+        {
+            button[0, 0] = btn00;
+            button[0, 1] = btn01;
+            button[0, 2] = btn02;
+            button[0, 3] = btn03;
+            button[0, 4] = btn04;
+            button[1, 0] = btn10;
+            button[1, 1] = btn11;
+            button[1, 2] = btn12;
+            button[1, 3] = btn13;
+            button[1, 4] = btn14;
+            button[2, 0] = btn20;
+            button[2, 1] = btn21;
+            button[2, 2] = btn22;
+            button[2, 3] = btn23;
+            button[2, 4] = btn24;
+            button[3, 0] = btn30;
+            button[3, 1] = btn31;
+            button[3, 2] = btn32;
+            button[3, 3] = btn33;
+            button[3, 4] = btn34;
+            button[4, 0] = btn40;
+            button[4, 1] = btn41;
+            button[4, 2] = btn42;
+            button[4, 3] = btn43;
+            button[4, 4] = btn44;
+        }
+
+        private void ReadLiteral()
+        {
+            pf.ReadData();
+            pf.RandomLiteral();
+            int index = pf.wordsList.Length - 1;
+            for (int i = 0; i < 5; i++)
+                for (int j = 0; j < 5; j++)
+                {
+                    button[i, j].Text = pf.wordsList[index];
+                    index--;
+                }
+        }
+
         public Main()
         {
             InitializeComponent();
 
-            PlayWords();
+            SelectLiteral();
             pbxRedIndex.Hide();
 
-            
+            buttonList();
+            ReadLiteral();
         }
 
-        private void PlayWords()
+        private void SelectLiteral()
         {
             btnClear.Hide();
             btnBackspace.Hide();
@@ -51,99 +107,225 @@ namespace Letterpress
             opt.Show();
         }
 
-        Button[] blue = new Button[25];
-        Button[] red = new Button[25];
-        int count1 =-1;
-        int count2 = -1;
-        int point = 0;
-        bool redTurn = false;
+        Button btn;
+        int index = -1;
+        int[] row = new int[25];
+        int[] column = new int[25];
         private void btnWord_Click(object sender, EventArgs e)
         {
-            Button btn = (Button)sender;
+            Center();
+            btn = (Button)sender;
             txtWords.Text += btn.Text;
+
+            for (int i = 0; i < 5; i++)
+                for (int j = 0; j < 5; j++)
+                    if (btn == button[i, j])
+                    {
+                        index++;
+                        row[index] = i;
+                        column[index] = j;
+
+                        AddPoint(sender, btn);
+                        break;
+                    }
             btn.Hide();
-
-            if (redTurn == false)
-            {
-                if (count1 > 23)
-                    count1 = 0;
-                else
-                {
-                    if (btn.BackColor != Color.LightSkyBlue)
-                        count1++;
-                }
-
-                blue[count1] = btn;
-
-                if (lblBluePoint.Text == "0")
-                    lblBluePoint.Text = "1";
-                else
-                {
-                    if (btn.BackColor != Color.LightSkyBlue)
-                        point = count1 + 1;
-                    lblBluePoint.Text = point + "";
-                }
-            }
-            else
-            {
-                if (count2 > 23)
-                    count2 = 0;
-                else
-                {
-                    if (btn.BackColor != Color.Red)
-                        count2++;
-                }
-
-                red[count2] = btn;
-
-                if (lblRedPoint.Text == "0")
-                    lblRedPoint.Text = "1";
-                else
-                {
-                    if (btn.BackColor != Color.Red)
-                        point = count2 + 1;
-                    lblRedPoint.Text = point + "";
-                }
-            }
 
             btnClear.Show();
             btnBackspace.Show();
             btnOK.Show();
         }
 
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            PlayWords();
-            txtWords.Clear();
-            ShowButton();
-        }
-
-        private void ShowButton()
+        bool redTurn = false;
+        int bluePoint;
+        int redPoint;
+        int point;
+        int blueCount = 0;
+        int redCount = 0;
+        private void AddPoint(object sender, Button btn)
         {
             if (redTurn == false)
             {
-                foreach (Button blueButton in blue)
+                if (btn.BackColor == Color.LightSkyBlue)
                 {
-                    if (blueButton is null)
-                        break;
-                    blueButton.Show();
+                    bluePoint--;
+                    blueCount++;
+                }
+
+                if (btn.BackColor != Color.LightSkyBlue)
+                {
+                    if (btn.BackColor == Color.Red)
+                    {
+                        redPoint--;
+                        redCount++;
+
+                        lblRedPoint.Text = "" + redPoint;
+                    }
+
+                    if (lblBluePoint.Text == "")
+                        lblBluePoint.Text = "1";
+                    else
+                    {
+                        point = bluePoint + txtWords.Text.Length;
+                        lblBluePoint.Text = "" + point;
+                    }
                 }
             }
             else
             {
-                foreach (Button redButton in red)
+                if (btn.BackColor == Color.Red)
                 {
-                    if (redButton is null)
-                        break;
-                    redButton.Show();
+                    redPoint--;
+                    redCount++;
+                }
+
+                if (btn.BackColor != Color.Red)
+                {
+                    if (btn.BackColor == Color.LightSkyBlue)
+                    {
+                        bluePoint--;
+                        blueCount++;
+
+                        lblBluePoint.Text = "" + bluePoint;
+                    }
+
+                    if (lblRedPoint.Text == "")
+                        lblRedPoint.Text = "1";
+                    else
+                    {
+                        point = redPoint + txtWords.Text.Length;
+                        lblRedPoint.Text = "" + point;
+                    }
                 }
             }
         }
 
+        private void SubtractPoint(Button[,] button)
+        {
+            if (redTurn == false)
+            {
+                if (btn.BackColor != Color.LightSkyBlue)
+                {
+                    if (btn.BackColor == Color.Red)
+                    {
+                        redPoint++;
+                        int red = 0;
+
+                        red = int.Parse(lblRedPoint.Text);
+                        lblRedPoint.Text = "" + (red + 1);
+                    }
+
+                    point = bluePoint + txtWords.Text.Length;
+                    lblBluePoint.Text = "" + point;
+                }
+            }
+            else
+            {
+                if (btn.BackColor != Color.Red)
+                {
+                    if (btn.BackColor == Color.LightSkyBlue)
+                    {
+                        bluePoint++;
+                        int blue = 0;
+
+                        blue = int.Parse(lblBluePoint.Text);
+                        lblBluePoint.Text = "" + (blue + 1);
+                    }
+
+                    point = redPoint + txtWords.Text.Length;
+                    lblRedPoint.Text = "" + point;
+                }
+            }
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            SelectLiteral();
+            txtWords.Clear();
+            ShowButton();
+
+            while (index >= 0)
+            {
+                button[row[index], column[index]].Show();
+                index--;
+            }
+
+            if (redTurn == false)
+            {
+                if (btn.BackColor != Color.LightSkyBlue || redCount > 0)
+                {
+                    if (btn.BackColor == Color.Red || redCount > 0)
+                    {
+                        lblRedPoint.Text = "" + (redPoint + redCount);
+                        redPoint = int.Parse(lblRedPoint.Text);
+
+                        redCount = 0;
+                    }
+                }
+
+                lblBluePoint.Text = "" + (bluePoint + blueCount);
+
+                if (blueCount > 0)
+                {
+                    bluePoint += blueCount;
+                    blueCount = 0;
+                }
+            }
+            else
+            {
+                if (btn.BackColor != Color.Red || blueCount > 0)
+                {
+                    if (btn.BackColor == Color.LightSkyBlue || blueCount > 0)
+                    {
+                        lblBluePoint.Text = "" + (bluePoint + blueCount);
+                        bluePoint = int.Parse(lblBluePoint.Text);
+
+                        blueCount = 0;
+                    }
+                }
+
+                lblRedPoint.Text = "" + (redPoint + redCount);
+
+                if (redCount > 0)
+                {
+                    redPoint = redCount;
+                    redCount = 0;
+                }
+            }
+        }
+
+        private void ShowButton()
+        {
+            for (int i = 0; i < index + 1; i++)
+                button[row[i], column[i]].Show();
+        }
+
+        int j = 0;
         private void btnOK_Click(object sender, EventArgs e)
         {
-            btnClear_Click(sender, e);
-            if (pbxBlueIndex.Visible == true)
+            for (int i = 0; i < pf.words.Length; i++)
+                if (txtWords.Text == pf.words[i])
+                {
+                    if (j != 0)
+                    {
+                        foreach (string str in wordsListUsed)
+                            if (pf.words[i] == str)
+                            {
+                                MessageBox.Show(pf.words[i].ToUpper() + " has already been played",
+                                                "Already Used");
+                                return;
+                            }
+                    }
+                    wordsListUsed.Add(pf.words[i]);
+                    j++;
+                    break;
+                }
+                else if (pf.words[i] == pf.words[pf.words.Length - 1])
+                    return;
+
+            SelectLiteral();
+            txtWords.Clear();
+            ShowButton();
+            if (redTurn == false)
             {
                 pbxBlueIndex.Hide();
                 pbxRedIndex.Show();
@@ -154,26 +336,34 @@ namespace Letterpress
                 pbxBlueIndex.Show();
             }
 
-            if (redTurn == false)
+            ShowButton();
+            for (int i = 0; i < index + 1; i++)
             {
-                foreach (Button blueButton in blue)
+                if (redTurn == false)
                 {
-                    if (blueButton is null)
-                        break;
-                    blueButton.BackColor = Color.LightSkyBlue;
+                    button[row[i], column[i]].BackColor = Color.LightSkyBlue;
+                    if (i == index)
+                    {
+                        redTurn = true;
+                        bluePoint = point;
+
+                        redCount = 0;
+                    }
                 }
-                redTurn = true;
-            }
-            else
-            {
-                foreach (Button redButton in red)
+                else
                 {
-                    if (redButton is null)
-                        break;
-                    redButton.BackColor = Color.Red;
+                    button[row[i], column[i]].BackColor = Color.Red;
+                    if (i == index)
+                    {
+                        redTurn = false;
+                        redPoint = point;
+
+                        blueCount = 0;
+                    }
                 }
-                redTurn = false;
             }
+
+            index = -1;
         }
 
         private void btnBackspace_Click(object sender, EventArgs e)
@@ -181,12 +371,14 @@ namespace Letterpress
             if (txtWords.Text != "")
             {
                 txtWords.Text = txtWords.Text.Remove(txtWords.Text.Length - 1);
+                button[row[index], column[index]].Show();
+                index--;
 
-                
+                SubtractPoint(button);
             }
 
             if (txtWords.Text == "")
-                PlayWords();
+                SelectLiteral();
         }
     }
 }

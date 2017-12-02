@@ -22,3 +22,4 @@ E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\L
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\LetterpressControl\obj\Debug\LetterpressControl.NewBoard.resources
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\LetterpressControl\obj\Debug\LetterpressControl.ResignGame.resources
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\LetterpressControl\obj\Debug\LetterpressControl.Stats.resources
+E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\LetterpressControl\obj\Debug\LetterpressControl.GameOver.resources
