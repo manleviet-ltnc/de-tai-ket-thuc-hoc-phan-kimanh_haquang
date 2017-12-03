@@ -21,10 +21,7 @@ namespace Letterpress
         private void Center()
         {
             lblBluePoint.Left = (pnlBluePoint.Width - lblBluePoint.Width) / 2;
-            lblBluePoint.Top = (pnlBluePoint.Height - lblBluePoint.Height) / 2;
-
             lblRedPoint.Left = (pnlRedPoint.Width - lblRedPoint.Width) / 2;
-            lblRedPoint.Top = (pnlRedPoint.Height - lblRedPoint.Height) / 2;
         }
 
         private void buttonList()
@@ -113,7 +110,6 @@ namespace Letterpress
         int[] column = new int[25];
         private void btnWord_Click(object sender, EventArgs e)
         {
-            Center();
             btn = (Button)sender;
             txtWords.Text += btn.Text;
 
@@ -159,6 +155,7 @@ namespace Letterpress
                         redCount++;
 
                         lblRedPoint.Text = "" + redPoint;
+                        Center();
                     }
 
                     if (lblBluePoint.Text == "")
@@ -167,6 +164,7 @@ namespace Letterpress
                     {
                         point = bluePoint + txtWords.Text.Length;
                         lblBluePoint.Text = "" + point;
+                        Center();
                     }
                 }
             }
@@ -186,6 +184,7 @@ namespace Letterpress
                         blueCount++;
 
                         lblBluePoint.Text = "" + bluePoint;
+                        Center();
                     }
 
                     if (lblRedPoint.Text == "")
@@ -194,6 +193,7 @@ namespace Letterpress
                     {
                         point = redPoint + txtWords.Text.Length;
                         lblRedPoint.Text = "" + point;
+                        Center();
                     }
                 }
             }
@@ -212,10 +212,12 @@ namespace Letterpress
 
                         red = int.Parse(lblRedPoint.Text);
                         lblRedPoint.Text = "" + (red + 1);
+                        Center();
                     }
 
                     point = bluePoint + txtWords.Text.Length;
                     lblBluePoint.Text = "" + point;
+                    Center();
                 }
             }
             else
@@ -229,10 +231,12 @@ namespace Letterpress
 
                         blue = int.Parse(lblBluePoint.Text);
                         lblBluePoint.Text = "" + (blue + 1);
+                        Center();
                     }
 
                     point = redPoint + txtWords.Text.Length;
                     lblRedPoint.Text = "" + point;
+                    Center();
                 }
             }
         }
@@ -256,6 +260,7 @@ namespace Letterpress
                     if (btn.BackColor == Color.Red || redCount > 0)
                     {
                         lblRedPoint.Text = "" + (redPoint + redCount);
+                        Center();
                         redPoint = int.Parse(lblRedPoint.Text);
 
                         redCount = 0;
@@ -263,10 +268,11 @@ namespace Letterpress
                 }
 
                 lblBluePoint.Text = "" + (bluePoint + blueCount);
+                Center();
 
                 if (blueCount > 0)
                 {
-                    bluePoint += blueCount;
+                    bluePoint = int.Parse(lblBluePoint.Text);
                     blueCount = 0;
                 }
             }
@@ -277,6 +283,7 @@ namespace Letterpress
                     if (btn.BackColor == Color.LightSkyBlue || blueCount > 0)
                     {
                         lblBluePoint.Text = "" + (bluePoint + blueCount);
+                        Center();
                         bluePoint = int.Parse(lblBluePoint.Text);
 
                         blueCount = 0;
@@ -284,10 +291,11 @@ namespace Letterpress
                 }
 
                 lblRedPoint.Text = "" + (redPoint + redCount);
+                Center();
 
                 if (redCount > 0)
                 {
-                    redPoint = redCount;
+                    redPoint = int.Parse(lblRedPoint.Text);
                     redCount = 0;
                 }
             }
@@ -323,7 +331,7 @@ namespace Letterpress
                     return;
 
             SelectLiteral();
-            txtWords.Clear();
+            
             ShowButton();
             if (redTurn == false)
             {
@@ -336,8 +344,7 @@ namespace Letterpress
                 pbxBlueIndex.Show();
             }
 
-            ShowButton();
-            for (int i = 0; i < index + 1; i++)
+            for (int i = 0; i <= index; i++)
             {
                 if (redTurn == false)
                 {
@@ -345,8 +352,9 @@ namespace Letterpress
                     if (i == index)
                     {
                         redTurn = true;
-                        bluePoint = point;
+                        bluePoint = int.Parse(lblBluePoint.Text);
 
+                        blueCount = 0;
                         redCount = 0;
                     }
                 }
@@ -356,14 +364,28 @@ namespace Letterpress
                     if (i == index)
                     {
                         redTurn = false;
-                        redPoint = point;
+                        redPoint = int.Parse(lblRedPoint.Text);
 
                         blueCount = 0;
+                        redCount = 0;
                     }
                 }
             }
 
+            txtWords.Clear();
             index = -1;
+
+            int count = 25;
+            foreach (Button b in button)
+            {
+                if (b.BackColor != Color.Gainsboro)
+                    count--;
+                if (count == 0)
+                {
+                    GameOver go = new GameOver();
+                    go.Show();
+                }
+            }
         }
 
         private void btnBackspace_Click(object sender, EventArgs e)
