@@ -33,7 +33,7 @@
             this.btnRematch = new System.Windows.Forms.Button();
             this.btnPlayedWords = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
-            this.txtPlayedWords = new System.Windows.Forms.Label();
+            this.lblPlayedWords = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnClose
@@ -56,6 +56,7 @@
             this.btnRemoveGame.TabIndex = 23;
             this.btnRemoveGame.Text = "Remove Game";
             this.btnRemoveGame.UseVisualStyleBackColor = true;
+            this.btnRemoveGame.Click += new System.EventHandler(this.btnRemoveGame_Click);
             // 
             // btnRematch
             // 
@@ -66,6 +67,7 @@
             this.btnRematch.TabIndex = 22;
             this.btnRematch.Text = "Rematch";
             this.btnRematch.UseVisualStyleBackColor = true;
+            this.btnRematch.Click += new System.EventHandler(this.btnRematch_Click);
             // 
             // btnPlayedWords
             // 
@@ -76,6 +78,7 @@
             this.btnPlayedWords.TabIndex = 21;
             this.btnPlayedWords.Text = "Played Words";
             this.btnPlayedWords.UseVisualStyleBackColor = true;
+            this.btnPlayedWords.Click += new System.EventHandler(this.btnPlayedWords_Click);
             // 
             // label1
             // 
@@ -87,17 +90,17 @@
             this.label1.TabIndex = 20;
             this.label1.Text = "Game over";
             // 
-            // txtPlayedWords
+            // lblPlayedWords
             // 
-            this.txtPlayedWords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            this.lblPlayedWords.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtPlayedWords.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtPlayedWords.Location = new System.Drawing.Point(12, 41);
-            this.txtPlayedWords.Name = "txtPlayedWords";
-            this.txtPlayedWords.Size = new System.Drawing.Size(230, 30);
-            this.txtPlayedWords.TabIndex = 25;
-            this.txtPlayedWords.Text = "Player  wins ";
-            this.txtPlayedWords.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            this.lblPlayedWords.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblPlayedWords.Location = new System.Drawing.Point(12, 41);
+            this.lblPlayedWords.Name = "lblPlayedWords";
+            this.lblPlayedWords.Size = new System.Drawing.Size(230, 30);
+            this.lblPlayedWords.TabIndex = 25;
+            this.lblPlayedWords.Text = "Player  wins ";
+            this.lblPlayedWords.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
             // GameOver
             // 
@@ -106,13 +109,14 @@
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(255, 297);
             this.ControlBox = false;
-            this.Controls.Add(this.txtPlayedWords);
+            this.Controls.Add(this.lblPlayedWords);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRemoveGame);
             this.Controls.Add(this.btnRematch);
             this.Controls.Add(this.btnPlayedWords);
             this.Controls.Add(this.label1);
             this.Name = "GameOver";
+            this.Load += new System.EventHandler(this.GameOver_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -125,6 +129,6 @@
         private System.Windows.Forms.Button btnRematch;
         private System.Windows.Forms.Button btnPlayedWords;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Label txtPlayedWords;
+        private System.Windows.Forms.Label lblPlayedWords;
     }
 }

@@ -21,5 +21,10 @@ namespace LetterpressControl
         {
             Close();
         }
+
+        private void btnResign_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

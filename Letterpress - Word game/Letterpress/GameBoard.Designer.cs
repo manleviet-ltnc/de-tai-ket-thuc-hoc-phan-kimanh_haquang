@@ -450,11 +450,11 @@
             this.txtWords.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtWords.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtWords.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWords.Location = new System.Drawing.Point(0, 145);
+            this.txtWords.Location = new System.Drawing.Point(0, 147);
             this.txtWords.Multiline = true;
             this.txtWords.Name = "txtWords";
             this.txtWords.ReadOnly = true;
-            this.txtWords.Size = new System.Drawing.Size(290, 62);
+            this.txtWords.Size = new System.Drawing.Size(290, 60);
             this.txtWords.TabIndex = 33;
             this.txtWords.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 

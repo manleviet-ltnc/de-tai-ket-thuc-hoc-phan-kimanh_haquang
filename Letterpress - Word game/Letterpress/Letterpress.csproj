@@ -60,7 +60,6 @@
     <Compile Include="NewGame.Designer.cs">
       <DependentUpon>NewGame.cs</DependentUpon>
     </Compile>
-    <Compile Include="ProcessFile.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="GameBoard.resx">
@@ -98,6 +97,10 @@
     <ProjectReference Include="..\LetterpressControl\LetterpressControl.csproj">
       <Project>{558bd4d2-631d-4425-a7e2-b83bfddb0f66}</Project>
       <Name>LetterpressControl</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LetterpressManager\LetterpressManager.csproj">
+      <Project>{b278798b-ef7e-4e5d-b511-1706e39d3ab2}</Project>
+      <Name>LetterpressManager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

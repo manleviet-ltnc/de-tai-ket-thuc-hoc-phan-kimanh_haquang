@@ -42,6 +42,7 @@
             this.btnResign.TabIndex = 5;
             this.btnResign.Text = "Resign";
             this.btnResign.UseVisualStyleBackColor = true;
+            this.btnResign.Click += new System.EventHandler(this.btnResign_Click);
             // 
             // btnNo
             // 

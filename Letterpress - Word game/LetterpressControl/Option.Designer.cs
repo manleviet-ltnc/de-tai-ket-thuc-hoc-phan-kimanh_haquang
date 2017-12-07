@@ -57,6 +57,7 @@
             this.btnPassTurn.TabIndex = 18;
             this.btnPassTurn.Text = "Pass Turn";
             this.btnPassTurn.UseVisualStyleBackColor = true;
+            this.btnPassTurn.Click += new System.EventHandler(this.btnPassTurn_Click);
             // 
             // btnResignGame
             // 

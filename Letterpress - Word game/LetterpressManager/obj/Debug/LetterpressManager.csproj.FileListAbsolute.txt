@@ -1,0 +1,6 @@
+E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\LetterpressManager\bin\Debug\LetterpressManager.dll
+E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\LetterpressManager\bin\Debug\LetterpressManager.pdb
+E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\LetterpressManager\obj\Debug\LetterpressManager.csprojResolveAssemblyReference.cache
+E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\LetterpressManager\obj\Debug\LetterpressManager.csproj.CoreCompileInputs.cache
+E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\LetterpressManager\obj\Debug\LetterpressManager.dll
+E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\LetterpressManager\obj\Debug\LetterpressManager.pdb
