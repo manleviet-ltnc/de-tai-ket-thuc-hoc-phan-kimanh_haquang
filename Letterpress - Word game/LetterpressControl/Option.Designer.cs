@@ -30,7 +30,6 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Option));
             this.btnClose = new System.Windows.Forms.Button();
-            this.btnPassTurn = new System.Windows.Forms.Button();
             this.btnResignGame = new System.Windows.Forms.Button();
             this.btnPlayedWords = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
@@ -40,24 +39,13 @@
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(12, 254);
+            this.btnClose.Location = new System.Drawing.Point(12, 201);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(240, 36);
             this.btnClose.TabIndex = 19;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
-            // 
-            // btnPassTurn
-            // 
-            this.btnPassTurn.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPassTurn.Location = new System.Drawing.Point(12, 201);
-            this.btnPassTurn.Name = "btnPassTurn";
-            this.btnPassTurn.Size = new System.Drawing.Size(240, 36);
-            this.btnPassTurn.TabIndex = 18;
-            this.btnPassTurn.Text = "Pass Turn";
-            this.btnPassTurn.UseVisualStyleBackColor = true;
-            this.btnPassTurn.Click += new System.EventHandler(this.btnPassTurn_Click);
             // 
             // btnResignGame
             // 
@@ -107,10 +95,9 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(265, 302);
+            this.ClientSize = new System.Drawing.Size(265, 250);
             this.ControlBox = false;
             this.Controls.Add(this.btnClose);
-            this.Controls.Add(this.btnPassTurn);
             this.Controls.Add(this.btnResignGame);
             this.Controls.Add(this.btnNewBoard);
             this.Controls.Add(this.btnPlayedWords);
@@ -118,9 +105,10 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(271, 308);
-            this.MinimumSize = new System.Drawing.Size(271, 308);
+            this.MaximumSize = new System.Drawing.Size(271, 256);
+            this.MinimumSize = new System.Drawing.Size(271, 256);
             this.Name = "Option";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,7 +116,6 @@
 
         #endregion
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button btnPassTurn;
         private System.Windows.Forms.Button btnResignGame;
         private System.Windows.Forms.Button btnPlayedWords;
         private System.Windows.Forms.Label label1;

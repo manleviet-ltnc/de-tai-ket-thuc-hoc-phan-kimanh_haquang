@@ -17,9 +17,12 @@ namespace LetterpressControl
             InitializeComponent();
         }
 
+        public List<string> WordsListUsed = new List<string>();
+
         private void btnPlayedWords_Click(object sender, EventArgs e)
         {
             PlayedWords pw = new PlayedWords();
+            pw.WordsListUsed = WordsListUsed;
             pw.Show();
         }
 
@@ -33,11 +36,6 @@ namespace LetterpressControl
         {
             ResignGame rg = new ResignGame();
             rg.Show();
-        }
-
-        private void btnPassTurn_Click(object sender, EventArgs e)
-        {
-
         }
 
         private void btnClose_Click(object sender, EventArgs e)

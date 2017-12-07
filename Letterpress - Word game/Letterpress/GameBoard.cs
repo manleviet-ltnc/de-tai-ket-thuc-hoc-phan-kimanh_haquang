@@ -92,8 +92,9 @@ namespace Letterpress
         private void SelectLiteral()
         {
             btnClear.Hide();
-            btnBackspace.Hide();
+            btnDelete.Hide();
             btnOK.Hide();
+            btnPass.Show();
         }
 
         
@@ -113,6 +114,7 @@ namespace Letterpress
         private void btnOption_Click(object sender, EventArgs e)
         {
             Option opt = new Option();
+            opt.WordsListUsed = storage.wordsListUsed;
             opt.Show();
         }
         
@@ -122,8 +124,9 @@ namespace Letterpress
             txtWords.Text += btn.Text;
 
             btn.Hide();
+            btnPass.Hide();
             btnClear.Show();
-            btnBackspace.Show();
+            btnDelete.Show();
             btnOK.Show();
 
             for (int i = 0; i < 5; i++)
@@ -157,10 +160,7 @@ namespace Letterpress
                     if (lblBluePoint.Text == "")
                         lblBluePoint.Text = "1";
                     else
-                    {
-                        //point = bluePoint - blueCount + txtWords.Text.Length;
                         lblBluePoint.Text = "" + (bluePoint - blueCount + txtWords.Text.Length);
-                    }
                 }
             }
             else
@@ -178,10 +178,7 @@ namespace Letterpress
                     if (lblRedPoint.Text == "")
                         lblRedPoint.Text = "1";
                     else
-                    {
-                        //point = redPoint - redCount + txtWords.Text.Length;
                         lblRedPoint.Text = "" + (redPoint - redCount + txtWords.Text.Length);
-                    }
                 }
             }
         }
@@ -198,7 +195,6 @@ namespace Letterpress
                         lblRedPoint.Text = "" + (redPoint - redCount);
                     }
 
-                    //point = bluePoint - blueCount + txtWords.Text.Length;
                     lblBluePoint.Text = "" + (bluePoint - blueCount + txtWords.Text.Length);
                 }
                 else
@@ -214,7 +210,6 @@ namespace Letterpress
                         lblBluePoint.Text = "" + (bluePoint - blueCount);
                     }
 
-                    //point = redPoint - redCount + txtWords.Text.Length;
                     lblRedPoint.Text = "" + (redPoint - redCount + txtWords.Text.Length);
                 }
                 else
@@ -272,7 +267,22 @@ namespace Letterpress
                 button[row[i], column[i]].Show();
         }
 
-        
+        private void ChangeTurn(Storage storage)
+        {
+            if (storage.RedTurn == false)
+            {
+                storage.RedTurn = true;
+                pbxBlueIndex.Hide();
+                pbxRedIndex.Show();
+            }
+            else
+            {
+                storage.RedTurn = false;
+                pbxRedIndex.Hide();
+                pbxBlueIndex.Show();
+            }
+        }
+
         private void btnOK_Click(object sender, EventArgs e)
         {
             int j = 0;
@@ -303,28 +313,12 @@ namespace Letterpress
             for (int i = 0; i <= index; i++)
             {
                 if (storage.RedTurn == false)
-                {
                     button[row[i], column[i]].BackColor = Color.LightSkyBlue;
-                    if (i == index)
-                    {
-                        storage.RedTurn = true;
-                        pbxBlueIndex.Hide();
-                        pbxRedIndex.Show();
-                        //bluePoint = int.Parse(lblBluePoint.Text);
-                    }
-                }
                 else
-                {
                     button[row[i], column[i]].BackColor = Color.Red;
-                    if (i == index)
-                    {
-                        storage.RedTurn = false;
-                        pbxRedIndex.Hide();
-                        pbxBlueIndex.Show();
-                        //redPoint = int.Parse(lblRedPoint.Text);
-                    }
-                }
             }
+
+            ChangeTurn(storage);
 
             bluePoint = int.Parse(lblBluePoint.Text);
             redPoint = int.Parse(lblRedPoint.Text);
@@ -348,6 +342,9 @@ namespace Letterpress
                 if (count == 0)
                 {
                     GameOver go = new GameOver();
+                    go.Blue = bluePoint;
+                    go.Red = redPoint;
+                    go.WordsListUsed = storage.wordsListUsed;
                     go.Show();
                 }
             }
@@ -367,6 +364,21 @@ namespace Letterpress
                 SelectLiteral();
 
             Center();
+        }
+
+        private void btnPass_Click(object sender, EventArgs e)
+        {
+            storage.RedTurn = !storage.RedTurn;
+            if (storage.RedTurn)
+            {
+                pbxBlueIndex.Hide();
+                pbxRedIndex.Show();
+            }
+            else
+            {
+                pbxRedIndex.Hide();
+                pbxBlueIndex.Show();
+            }
         }
     }
 }

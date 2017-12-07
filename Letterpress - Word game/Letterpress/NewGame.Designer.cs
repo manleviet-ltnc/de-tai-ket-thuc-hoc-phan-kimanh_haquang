@@ -33,11 +33,13 @@
             this.imageList = new System.Windows.Forms.ImageList(this.components);
             this.pbxNewGame = new System.Windows.Forms.PictureBox();
             this.btnNewGame = new System.Windows.Forms.Button();
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.pnlNewGame = new System.Windows.Forms.Panel();
             this.btnStats = new System.Windows.Forms.Button();
+            this.grpContinue = new System.Windows.Forms.GroupBox();
+            this.lstContinue = new System.Windows.Forms.ListBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbxNewGame)).BeginInit();
             this.pnlNewGame.SuspendLayout();
+            this.grpContinue.SuspendLayout();
             this.SuspendLayout();
             // 
             // imageList
@@ -72,16 +74,6 @@
             this.btnNewGame.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
             this.btnNewGame.MouseHover += new System.EventHandler(this.Control_MouseHover);
             // 
-            // groupBox1
-            // 
-            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox1.Location = new System.Drawing.Point(10, 147);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(270, 356);
-            this.groupBox1.TabIndex = 4;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Continue";
-            // 
             // pnlNewGame
             // 
             this.pnlNewGame.Controls.Add(this.btnNewGame);
@@ -105,24 +97,47 @@
             this.btnStats.UseVisualStyleBackColor = true;
             this.btnStats.Click += new System.EventHandler(this.btnStats_Click);
             // 
+            // grpContinue
+            // 
+            this.grpContinue.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.grpContinue.Controls.Add(this.lstContinue);
+            this.grpContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grpContinue.Location = new System.Drawing.Point(5, 136);
+            this.grpContinue.Name = "grpContinue";
+            this.grpContinue.Size = new System.Drawing.Size(280, 263);
+            this.grpContinue.TabIndex = 4;
+            this.grpContinue.TabStop = false;
+            this.grpContinue.Text = "Continue";
+            // 
+            // lstContinue
+            // 
+            this.lstContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lstContinue.FormattingEnabled = true;
+            this.lstContinue.ItemHeight = 20;
+            this.lstContinue.Location = new System.Drawing.Point(7, 29);
+            this.lstContinue.Name = "lstContinue";
+            this.lstContinue.Size = new System.Drawing.Size(267, 224);
+            this.lstContinue.TabIndex = 0;
+            // 
             // NewGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(290, 511);
+            this.ClientSize = new System.Drawing.Size(290, 404);
             this.Controls.Add(this.btnStats);
             this.Controls.Add(this.pnlNewGame);
-            this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.grpContinue);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(306, 550);
-            this.MinimumSize = new System.Drawing.Size(306, 550);
+            this.MaximumSize = new System.Drawing.Size(306, 443);
+            this.MinimumSize = new System.Drawing.Size(306, 443);
             this.Name = "NewGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Letterpress";
             ((System.ComponentModel.ISupportInitialize)(this.pbxNewGame)).EndInit();
             this.pnlNewGame.ResumeLayout(false);
+            this.grpContinue.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -131,8 +146,9 @@
         private System.Windows.Forms.ImageList imageList;
         private System.Windows.Forms.PictureBox pbxNewGame;
         private System.Windows.Forms.Button btnNewGame;
-        private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Panel pnlNewGame;
         private System.Windows.Forms.Button btnStats;
+        private System.Windows.Forms.GroupBox grpContinue;
+        private System.Windows.Forms.ListBox lstContinue;
     }
 }

@@ -67,9 +67,10 @@
             this.txtWords = new System.Windows.Forms.TextBox();
             this.lblBluePoint = new System.Windows.Forms.Label();
             this.lblRedPoint = new System.Windows.Forms.Label();
-            this.btnBackspace = new System.Windows.Forms.Button();
+            this.btnDelete = new System.Windows.Forms.Button();
             this.pnlBluePoint = new System.Windows.Forms.Panel();
             this.pnlRedPoint = new System.Windows.Forms.Panel();
+            this.btnPass = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRedIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIndex)).BeginInit();
@@ -480,16 +481,16 @@
             this.lblRedPoint.Text = "0";
             this.lblRedPoint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // btnBackspace
+            // btnDelete
             // 
-            this.btnBackspace.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnBackspace.Location = new System.Drawing.Point(102, -1);
-            this.btnBackspace.Name = "btnBackspace";
-            this.btnBackspace.Size = new System.Drawing.Size(86, 25);
-            this.btnBackspace.TabIndex = 36;
-            this.btnBackspace.Text = "Backspace";
-            this.btnBackspace.UseVisualStyleBackColor = true;
-            this.btnBackspace.Click += new System.EventHandler(this.btnBackspace_Click);
+            this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnDelete.Location = new System.Drawing.Point(115, -1);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(60, 25);
+            this.btnDelete.TabIndex = 36;
+            this.btnDelete.Text = "Delete";
+            this.btnDelete.UseVisualStyleBackColor = true;
+            this.btnDelete.Click += new System.EventHandler(this.btnBackspace_Click);
             // 
             // pnlBluePoint
             // 
@@ -507,15 +508,27 @@
             this.pnlRedPoint.Size = new System.Drawing.Size(60, 24);
             this.pnlRedPoint.TabIndex = 38;
             // 
+            // btnPass
+            // 
+            this.btnPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnPass.Location = new System.Drawing.Point(115, -1);
+            this.btnPass.Name = "btnPass";
+            this.btnPass.Size = new System.Drawing.Size(60, 25);
+            this.btnPass.TabIndex = 39;
+            this.btnPass.Text = "Pass";
+            this.btnPass.UseVisualStyleBackColor = true;
+            this.btnPass.Click += new System.EventHandler(this.btnPass_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.ClientSize = new System.Drawing.Size(290, 511);
+            this.Controls.Add(this.btnPass);
             this.Controls.Add(this.pnlRedPoint);
             this.Controls.Add(this.pnlBluePoint);
-            this.Controls.Add(this.btnBackspace);
+            this.Controls.Add(this.btnDelete);
             this.Controls.Add(this.txtWords);
             this.Controls.Add(this.btnClear);
             this.Controls.Add(this.btnOK);
@@ -609,9 +622,10 @@
         private System.Windows.Forms.TextBox txtWords;
         private System.Windows.Forms.Label lblBluePoint;
         private System.Windows.Forms.Label lblRedPoint;
-        private System.Windows.Forms.Button btnBackspace;
+        private System.Windows.Forms.Button btnDelete;
         private System.Windows.Forms.Panel pnlBluePoint;
         private System.Windows.Forms.Panel pnlRedPoint;
+        private System.Windows.Forms.Button btnPass;
     }
 }
 
