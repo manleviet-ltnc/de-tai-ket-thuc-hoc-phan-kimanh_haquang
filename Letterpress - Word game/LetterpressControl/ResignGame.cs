@@ -24,7 +24,7 @@ namespace LetterpressControl
 
         private void btnResign_Click(object sender, EventArgs e)
         {
-
+            
         }
     }
 }

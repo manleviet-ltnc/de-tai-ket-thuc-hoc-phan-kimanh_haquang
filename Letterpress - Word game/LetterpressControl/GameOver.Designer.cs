@@ -115,7 +115,10 @@
             this.Controls.Add(this.btnRematch);
             this.Controls.Add(this.btnPlayedWords);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(271, 313);
+            this.MinimumSize = new System.Drawing.Size(271, 313);
             this.Name = "GameOver";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.GameOver_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

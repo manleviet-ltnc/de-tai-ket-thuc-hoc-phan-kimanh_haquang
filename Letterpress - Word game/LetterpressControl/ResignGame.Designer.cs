@@ -78,6 +78,7 @@
             this.Controls.Add(this.btnNo);
             this.Controls.Add(this.label1);
             this.Name = "ResignGame";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.ResumeLayout(false);
 
         }

@@ -31,15 +31,16 @@
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(NewGame));
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.pbxNewGame = new System.Windows.Forms.PictureBox();
             this.btnNewGame = new System.Windows.Forms.Button();
-            this.pnlNewGame = new System.Windows.Forms.Panel();
-            this.btnStats = new System.Windows.Forms.Button();
-            this.grpContinue = new System.Windows.Forms.GroupBox();
-            this.lstContinue = new System.Windows.Forms.ListBox();
-            ((System.ComponentModel.ISupportInitialize)(this.pbxNewGame)).BeginInit();
-            this.pnlNewGame.SuspendLayout();
-            this.grpContinue.SuspendLayout();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOptionStats = new System.Windows.Forms.ToolStripMenuItem();
+            this.btnContinue = new System.Windows.Forms.Button();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.menuStrip1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
             // 
             // imageList
@@ -48,107 +49,122 @@
             this.imageList.TransparentColor = System.Drawing.Color.Transparent;
             this.imageList.Images.SetKeyName(0, "More-icon.jpg");
             // 
-            // pbxNewGame
-            // 
-            this.pbxNewGame.Image = ((System.Drawing.Image)(resources.GetObject("pbxNewGame.Image")));
-            this.pbxNewGame.Location = new System.Drawing.Point(0, 0);
-            this.pbxNewGame.Name = "pbxNewGame";
-            this.pbxNewGame.Size = new System.Drawing.Size(90, 90);
-            this.pbxNewGame.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbxNewGame.TabIndex = 2;
-            this.pbxNewGame.TabStop = false;
-            this.pbxNewGame.Click += new System.EventHandler(this.Control_Click);
-            this.pbxNewGame.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
-            this.pbxNewGame.MouseHover += new System.EventHandler(this.Control_MouseHover);
-            // 
             // btnNewGame
             // 
+            this.btnNewGame.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.btnNewGame.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnNewGame.Location = new System.Drawing.Point(96, 27);
+            this.btnNewGame.Location = new System.Drawing.Point(33, 413);
             this.btnNewGame.Name = "btnNewGame";
-            this.btnNewGame.Size = new System.Drawing.Size(116, 38);
+            this.btnNewGame.Size = new System.Drawing.Size(198, 38);
             this.btnNewGame.TabIndex = 0;
             this.btnNewGame.Text = "New game";
             this.btnNewGame.UseVisualStyleBackColor = true;
             this.btnNewGame.Click += new System.EventHandler(this.Control_Click);
-            this.btnNewGame.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
-            this.btnNewGame.MouseHover += new System.EventHandler(this.Control_MouseHover);
             // 
-            // pnlNewGame
+            // menuStrip1
             // 
-            this.pnlNewGame.Controls.Add(this.btnNewGame);
-            this.pnlNewGame.Controls.Add(this.pbxNewGame);
-            this.pnlNewGame.Location = new System.Drawing.Point(0, 36);
-            this.pnlNewGame.Name = "pnlNewGame";
-            this.pnlNewGame.Size = new System.Drawing.Size(290, 90);
-            this.pnlNewGame.TabIndex = 0;
-            this.pnlNewGame.Click += new System.EventHandler(this.Control_Click);
-            this.pnlNewGame.MouseLeave += new System.EventHandler(this.Control_MouseLeave);
-            this.pnlNewGame.MouseHover += new System.EventHandler(this.Control_MouseHover);
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFile,
+            this.mnuOption});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(265, 24);
+            this.menuStrip1.TabIndex = 41;
+            this.menuStrip1.Text = "menuStrip";
             // 
-            // btnStats
+            // mnuFile
             // 
-            this.btnStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnStats.Location = new System.Drawing.Point(-1, -1);
-            this.btnStats.Name = "btnStats";
-            this.btnStats.Size = new System.Drawing.Size(50, 24);
-            this.btnStats.TabIndex = 5;
-            this.btnStats.Text = "Stats";
-            this.btnStats.UseVisualStyleBackColor = true;
-            this.btnStats.Click += new System.EventHandler(this.btnStats_Click);
+            this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFileExit});
+            this.mnuFile.Name = "mnuFile";
+            this.mnuFile.Size = new System.Drawing.Size(37, 20);
+            this.mnuFile.Text = "&File";
             // 
-            // grpContinue
+            // mnuFileExit
             // 
-            this.grpContinue.Anchor = System.Windows.Forms.AnchorStyles.None;
-            this.grpContinue.Controls.Add(this.lstContinue);
-            this.grpContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grpContinue.Location = new System.Drawing.Point(5, 136);
-            this.grpContinue.Name = "grpContinue";
-            this.grpContinue.Size = new System.Drawing.Size(280, 263);
-            this.grpContinue.TabIndex = 4;
-            this.grpContinue.TabStop = false;
-            this.grpContinue.Text = "Continue";
+            this.mnuFileExit.Image = ((System.Drawing.Image)(resources.GetObject("mnuFileExit.Image")));
+            this.mnuFileExit.Name = "mnuFileExit";
+            this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuFileExit.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileExit.Text = "Exit";
+            this.mnuFileExit.Click += new System.EventHandler(this.mnuFileExit_Click);
             // 
-            // lstContinue
+            // mnuOption
             // 
-            this.lstContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lstContinue.FormattingEnabled = true;
-            this.lstContinue.ItemHeight = 20;
-            this.lstContinue.Location = new System.Drawing.Point(7, 29);
-            this.lstContinue.Name = "lstContinue";
-            this.lstContinue.Size = new System.Drawing.Size(267, 224);
-            this.lstContinue.TabIndex = 0;
+            this.mnuOption.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuOptionStats});
+            this.mnuOption.Name = "mnuOption";
+            this.mnuOption.Size = new System.Drawing.Size(56, 20);
+            this.mnuOption.Text = "&Option";
+            // 
+            // mnuOptionStats
+            // 
+            this.mnuOptionStats.Name = "mnuOptionStats";
+            this.mnuOptionStats.Size = new System.Drawing.Size(152, 22);
+            this.mnuOptionStats.Text = "Stats";
+            this.mnuOptionStats.Click += new System.EventHandler(this.mnuOptionStats_Click);
+            // 
+            // btnContinue
+            // 
+            this.btnContinue.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnContinue.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnContinue.Location = new System.Drawing.Point(33, 460);
+            this.btnContinue.Name = "btnContinue";
+            this.btnContinue.Size = new System.Drawing.Size(198, 38);
+            this.btnContinue.TabIndex = 42;
+            this.btnContinue.Text = "Continue";
+            this.btnContinue.UseVisualStyleBackColor = true;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(0, 27);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(265, 375);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 43;
+            this.pictureBox1.TabStop = false;
             // 
             // NewGame
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(290, 404);
-            this.Controls.Add(this.btnStats);
-            this.Controls.Add(this.pnlNewGame);
-            this.Controls.Add(this.grpContinue);
+            this.ClientSize = new System.Drawing.Size(265, 509);
+            this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.btnContinue);
+            this.Controls.Add(this.btnNewGame);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(306, 443);
-            this.MinimumSize = new System.Drawing.Size(306, 443);
+            this.MaximumSize = new System.Drawing.Size(306, 580);
+            this.MinimumSize = new System.Drawing.Size(281, 548);
             this.Name = "NewGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Letterpress";
-            ((System.ComponentModel.ISupportInitialize)(this.pbxNewGame)).EndInit();
-            this.pnlNewGame.ResumeLayout(false);
-            this.grpContinue.ResumeLayout(false);
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
         private System.Windows.Forms.ImageList imageList;
-        private System.Windows.Forms.PictureBox pbxNewGame;
         private System.Windows.Forms.Button btnNewGame;
-        private System.Windows.Forms.Panel pnlNewGame;
-        private System.Windows.Forms.Button btnStats;
-        private System.Windows.Forms.GroupBox grpContinue;
-        private System.Windows.Forms.ListBox lstContinue;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mnuFile;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileExit;
+        private System.Windows.Forms.ToolStripMenuItem mnuOption;
+        private System.Windows.Forms.ToolStripMenuItem mnuOptionStats;
+        private System.Windows.Forms.Button btnContinue;
+        private System.Windows.Forms.PictureBox pictureBox1;
     }
 }

@@ -59,7 +59,6 @@
             this.pbxRedIcon = new System.Windows.Forms.PictureBox();
             this.btnBack = new System.Windows.Forms.Button();
             this.imageList = new System.Windows.Forms.ImageList(this.components);
-            this.btnOption = new System.Windows.Forms.Button();
             this.pbxBlueIndex = new System.Windows.Forms.PictureBox();
             this.pbxRedIndex = new System.Windows.Forms.PictureBox();
             this.btnOK = new System.Windows.Forms.Button();
@@ -71,19 +70,30 @@
             this.pnlBluePoint = new System.Windows.Forms.Panel();
             this.pnlRedPoint = new System.Windows.Forms.Panel();
             this.btnPass = new System.Windows.Forms.Button();
+            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOption = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOptionPlayedWords = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuOptionResignGame = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuOptionStats = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRedIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIndex)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRedIndex)).BeginInit();
             this.pnlBluePoint.SuspendLayout();
             this.pnlRedPoint.SuspendLayout();
+            this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn40
             // 
             this.btn40.BackColor = System.Drawing.Color.Gainsboro;
             this.btn40.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn40.Location = new System.Drawing.Point(-1, 452);
+            this.btn40.Location = new System.Drawing.Point(-1, 482);
             this.btn40.Name = "btn40";
             this.btn40.Size = new System.Drawing.Size(60, 60);
             this.btn40.TabIndex = 20;
@@ -94,7 +104,7 @@
             // 
             this.btn41.BackColor = System.Drawing.Color.Gainsboro;
             this.btn41.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn41.Location = new System.Drawing.Point(57, 452);
+            this.btn41.Location = new System.Drawing.Point(57, 482);
             this.btn41.Name = "btn41";
             this.btn41.Size = new System.Drawing.Size(60, 60);
             this.btn41.TabIndex = 21;
@@ -105,7 +115,7 @@
             // 
             this.btn42.BackColor = System.Drawing.Color.Gainsboro;
             this.btn42.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn42.Location = new System.Drawing.Point(115, 452);
+            this.btn42.Location = new System.Drawing.Point(115, 482);
             this.btn42.Name = "btn42";
             this.btn42.Size = new System.Drawing.Size(60, 60);
             this.btn42.TabIndex = 22;
@@ -116,7 +126,7 @@
             // 
             this.btn43.BackColor = System.Drawing.Color.Gainsboro;
             this.btn43.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn43.Location = new System.Drawing.Point(173, 452);
+            this.btn43.Location = new System.Drawing.Point(173, 482);
             this.btn43.Name = "btn43";
             this.btn43.Size = new System.Drawing.Size(60, 60);
             this.btn43.TabIndex = 23;
@@ -127,7 +137,7 @@
             // 
             this.btn44.BackColor = System.Drawing.Color.Gainsboro;
             this.btn44.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn44.Location = new System.Drawing.Point(231, 452);
+            this.btn44.Location = new System.Drawing.Point(231, 482);
             this.btn44.Name = "btn44";
             this.btn44.Size = new System.Drawing.Size(60, 60);
             this.btn44.TabIndex = 24;
@@ -138,7 +148,7 @@
             // 
             this.btn34.BackColor = System.Drawing.Color.Gainsboro;
             this.btn34.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn34.Location = new System.Drawing.Point(231, 394);
+            this.btn34.Location = new System.Drawing.Point(231, 424);
             this.btn34.Name = "btn34";
             this.btn34.Size = new System.Drawing.Size(60, 60);
             this.btn34.TabIndex = 19;
@@ -149,7 +159,7 @@
             // 
             this.btn33.BackColor = System.Drawing.Color.Gainsboro;
             this.btn33.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn33.Location = new System.Drawing.Point(173, 394);
+            this.btn33.Location = new System.Drawing.Point(173, 424);
             this.btn33.Name = "btn33";
             this.btn33.Size = new System.Drawing.Size(60, 60);
             this.btn33.TabIndex = 18;
@@ -160,7 +170,7 @@
             // 
             this.btn32.BackColor = System.Drawing.Color.Gainsboro;
             this.btn32.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn32.Location = new System.Drawing.Point(115, 394);
+            this.btn32.Location = new System.Drawing.Point(115, 424);
             this.btn32.Name = "btn32";
             this.btn32.Size = new System.Drawing.Size(60, 60);
             this.btn32.TabIndex = 17;
@@ -171,7 +181,7 @@
             // 
             this.btn31.BackColor = System.Drawing.Color.Gainsboro;
             this.btn31.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn31.Location = new System.Drawing.Point(57, 394);
+            this.btn31.Location = new System.Drawing.Point(57, 424);
             this.btn31.Name = "btn31";
             this.btn31.Size = new System.Drawing.Size(60, 60);
             this.btn31.TabIndex = 16;
@@ -182,7 +192,7 @@
             // 
             this.btn30.BackColor = System.Drawing.Color.Gainsboro;
             this.btn30.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn30.Location = new System.Drawing.Point(-1, 394);
+            this.btn30.Location = new System.Drawing.Point(-1, 424);
             this.btn30.Name = "btn30";
             this.btn30.Size = new System.Drawing.Size(60, 60);
             this.btn30.TabIndex = 15;
@@ -193,7 +203,7 @@
             // 
             this.btn24.BackColor = System.Drawing.Color.Gainsboro;
             this.btn24.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn24.Location = new System.Drawing.Point(231, 336);
+            this.btn24.Location = new System.Drawing.Point(231, 366);
             this.btn24.Name = "btn24";
             this.btn24.Size = new System.Drawing.Size(60, 60);
             this.btn24.TabIndex = 14;
@@ -204,7 +214,7 @@
             // 
             this.btn23.BackColor = System.Drawing.Color.Gainsboro;
             this.btn23.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn23.Location = new System.Drawing.Point(173, 336);
+            this.btn23.Location = new System.Drawing.Point(173, 366);
             this.btn23.Name = "btn23";
             this.btn23.Size = new System.Drawing.Size(60, 60);
             this.btn23.TabIndex = 13;
@@ -215,7 +225,7 @@
             // 
             this.btn22.BackColor = System.Drawing.Color.Gainsboro;
             this.btn22.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn22.Location = new System.Drawing.Point(115, 336);
+            this.btn22.Location = new System.Drawing.Point(115, 366);
             this.btn22.Name = "btn22";
             this.btn22.Size = new System.Drawing.Size(60, 60);
             this.btn22.TabIndex = 12;
@@ -226,7 +236,7 @@
             // 
             this.btn21.BackColor = System.Drawing.Color.Gainsboro;
             this.btn21.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn21.Location = new System.Drawing.Point(57, 336);
+            this.btn21.Location = new System.Drawing.Point(57, 366);
             this.btn21.Name = "btn21";
             this.btn21.Size = new System.Drawing.Size(60, 60);
             this.btn21.TabIndex = 11;
@@ -237,7 +247,7 @@
             // 
             this.btn20.BackColor = System.Drawing.Color.Gainsboro;
             this.btn20.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn20.Location = new System.Drawing.Point(-1, 336);
+            this.btn20.Location = new System.Drawing.Point(-1, 366);
             this.btn20.Name = "btn20";
             this.btn20.Size = new System.Drawing.Size(60, 60);
             this.btn20.TabIndex = 10;
@@ -248,7 +258,7 @@
             // 
             this.btn14.BackColor = System.Drawing.Color.Gainsboro;
             this.btn14.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn14.Location = new System.Drawing.Point(231, 278);
+            this.btn14.Location = new System.Drawing.Point(231, 308);
             this.btn14.Name = "btn14";
             this.btn14.Size = new System.Drawing.Size(60, 60);
             this.btn14.TabIndex = 9;
@@ -259,7 +269,7 @@
             // 
             this.btn13.BackColor = System.Drawing.Color.Gainsboro;
             this.btn13.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn13.Location = new System.Drawing.Point(173, 278);
+            this.btn13.Location = new System.Drawing.Point(173, 308);
             this.btn13.Name = "btn13";
             this.btn13.Size = new System.Drawing.Size(60, 60);
             this.btn13.TabIndex = 8;
@@ -270,7 +280,7 @@
             // 
             this.btn12.BackColor = System.Drawing.Color.Gainsboro;
             this.btn12.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn12.Location = new System.Drawing.Point(115, 278);
+            this.btn12.Location = new System.Drawing.Point(115, 308);
             this.btn12.Name = "btn12";
             this.btn12.Size = new System.Drawing.Size(60, 60);
             this.btn12.TabIndex = 7;
@@ -281,7 +291,7 @@
             // 
             this.btn11.BackColor = System.Drawing.Color.Gainsboro;
             this.btn11.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn11.Location = new System.Drawing.Point(57, 278);
+            this.btn11.Location = new System.Drawing.Point(57, 308);
             this.btn11.Name = "btn11";
             this.btn11.Size = new System.Drawing.Size(60, 60);
             this.btn11.TabIndex = 6;
@@ -292,7 +302,7 @@
             // 
             this.btn10.BackColor = System.Drawing.Color.Gainsboro;
             this.btn10.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn10.Location = new System.Drawing.Point(-1, 278);
+            this.btn10.Location = new System.Drawing.Point(-1, 308);
             this.btn10.Name = "btn10";
             this.btn10.Size = new System.Drawing.Size(60, 60);
             this.btn10.TabIndex = 5;
@@ -303,7 +313,7 @@
             // 
             this.btn04.BackColor = System.Drawing.Color.Gainsboro;
             this.btn04.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn04.Location = new System.Drawing.Point(231, 220);
+            this.btn04.Location = new System.Drawing.Point(231, 250);
             this.btn04.Name = "btn04";
             this.btn04.Size = new System.Drawing.Size(60, 60);
             this.btn04.TabIndex = 4;
@@ -314,7 +324,7 @@
             // 
             this.btn03.BackColor = System.Drawing.Color.Gainsboro;
             this.btn03.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn03.Location = new System.Drawing.Point(173, 220);
+            this.btn03.Location = new System.Drawing.Point(173, 250);
             this.btn03.Name = "btn03";
             this.btn03.Size = new System.Drawing.Size(60, 60);
             this.btn03.TabIndex = 3;
@@ -325,7 +335,7 @@
             // 
             this.btn02.BackColor = System.Drawing.Color.Gainsboro;
             this.btn02.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn02.Location = new System.Drawing.Point(115, 220);
+            this.btn02.Location = new System.Drawing.Point(115, 250);
             this.btn02.Name = "btn02";
             this.btn02.Size = new System.Drawing.Size(60, 60);
             this.btn02.TabIndex = 2;
@@ -336,7 +346,7 @@
             // 
             this.btn01.BackColor = System.Drawing.Color.Gainsboro;
             this.btn01.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn01.Location = new System.Drawing.Point(57, 220);
+            this.btn01.Location = new System.Drawing.Point(57, 250);
             this.btn01.Name = "btn01";
             this.btn01.Size = new System.Drawing.Size(60, 60);
             this.btn01.TabIndex = 1;
@@ -347,7 +357,7 @@
             // 
             this.btn00.BackColor = System.Drawing.Color.Gainsboro;
             this.btn00.Font = new System.Drawing.Font("Microsoft Sans Serif", 33.5F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn00.Location = new System.Drawing.Point(-1, 220);
+            this.btn00.Location = new System.Drawing.Point(-1, 250);
             this.btn00.Name = "btn00";
             this.btn00.Size = new System.Drawing.Size(60, 60);
             this.btn00.TabIndex = 0;
@@ -357,7 +367,7 @@
             // pbxBlueIcon
             // 
             this.pbxBlueIcon.Image = ((System.Drawing.Image)(resources.GetObject("pbxBlueIcon.Image")));
-            this.pbxBlueIcon.Location = new System.Drawing.Point(66, 27);
+            this.pbxBlueIcon.Location = new System.Drawing.Point(66, 57);
             this.pbxBlueIcon.Name = "pbxBlueIcon";
             this.pbxBlueIcon.Size = new System.Drawing.Size(60, 60);
             this.pbxBlueIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -367,7 +377,7 @@
             // pbxRedIcon
             // 
             this.pbxRedIcon.Image = ((System.Drawing.Image)(resources.GetObject("pbxRedIcon.Image")));
-            this.pbxRedIcon.Location = new System.Drawing.Point(164, 27);
+            this.pbxRedIcon.Location = new System.Drawing.Point(164, 57);
             this.pbxRedIcon.Name = "pbxRedIcon";
             this.pbxRedIcon.Size = new System.Drawing.Size(60, 60);
             this.pbxRedIcon.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -378,7 +388,7 @@
             // 
             this.btnBack.ImageKey = "Back";
             this.btnBack.ImageList = this.imageList;
-            this.btnBack.Location = new System.Drawing.Point(-1, -1);
+            this.btnBack.Location = new System.Drawing.Point(-1, 29);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(29, 25);
             this.btnBack.TabIndex = 25;
@@ -392,21 +402,10 @@
             this.imageList.Images.SetKeyName(0, "Back");
             this.imageList.Images.SetKeyName(1, "Option");
             // 
-            // btnOption
-            // 
-            this.btnOption.ImageKey = "Option";
-            this.btnOption.ImageList = this.imageList;
-            this.btnOption.Location = new System.Drawing.Point(262, -1);
-            this.btnOption.Name = "btnOption";
-            this.btnOption.Size = new System.Drawing.Size(29, 25);
-            this.btnOption.TabIndex = 26;
-            this.btnOption.UseVisualStyleBackColor = true;
-            this.btnOption.Click += new System.EventHandler(this.btnOption_Click);
-            // 
             // pbxBlueIndex
             // 
             this.pbxBlueIndex.Image = ((System.Drawing.Image)(resources.GetObject("pbxBlueIndex.Image")));
-            this.pbxBlueIndex.Location = new System.Drawing.Point(83, 113);
+            this.pbxBlueIndex.Location = new System.Drawing.Point(83, 143);
             this.pbxBlueIndex.Name = "pbxBlueIndex";
             this.pbxBlueIndex.Size = new System.Drawing.Size(26, 26);
             this.pbxBlueIndex.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -416,7 +415,7 @@
             // pbxRedIndex
             // 
             this.pbxRedIndex.Image = ((System.Drawing.Image)(resources.GetObject("pbxRedIndex.Image")));
-            this.pbxRedIndex.Location = new System.Drawing.Point(182, 113);
+            this.pbxRedIndex.Location = new System.Drawing.Point(182, 143);
             this.pbxRedIndex.Name = "pbxRedIndex";
             this.pbxRedIndex.Size = new System.Drawing.Size(26, 26);
             this.pbxRedIndex.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
@@ -427,7 +426,7 @@
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnOK.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOK.Location = new System.Drawing.Point(231, -1);
+            this.btnOK.Location = new System.Drawing.Point(231, 29);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(60, 25);
             this.btnOK.TabIndex = 31;
@@ -438,7 +437,7 @@
             // btnClear
             // 
             this.btnClear.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClear.Location = new System.Drawing.Point(-1, -1);
+            this.btnClear.Location = new System.Drawing.Point(-1, 29);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(60, 25);
             this.btnClear.TabIndex = 32;
@@ -451,7 +450,7 @@
             this.txtWords.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtWords.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.txtWords.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txtWords.Location = new System.Drawing.Point(0, 147);
+            this.txtWords.Location = new System.Drawing.Point(0, 177);
             this.txtWords.Multiline = true;
             this.txtWords.Name = "txtWords";
             this.txtWords.ReadOnly = true;
@@ -484,7 +483,7 @@
             // btnDelete
             // 
             this.btnDelete.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnDelete.Location = new System.Drawing.Point(115, -1);
+            this.btnDelete.Location = new System.Drawing.Point(115, 29);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(60, 25);
             this.btnDelete.TabIndex = 36;
@@ -495,7 +494,7 @@
             // pnlBluePoint
             // 
             this.pnlBluePoint.Controls.Add(this.lblBluePoint);
-            this.pnlBluePoint.Location = new System.Drawing.Point(66, 88);
+            this.pnlBluePoint.Location = new System.Drawing.Point(66, 118);
             this.pnlBluePoint.Name = "pnlBluePoint";
             this.pnlBluePoint.Size = new System.Drawing.Size(60, 24);
             this.pnlBluePoint.TabIndex = 37;
@@ -503,7 +502,7 @@
             // pnlRedPoint
             // 
             this.pnlRedPoint.Controls.Add(this.lblRedPoint);
-            this.pnlRedPoint.Location = new System.Drawing.Point(164, 88);
+            this.pnlRedPoint.Location = new System.Drawing.Point(164, 118);
             this.pnlRedPoint.Name = "pnlRedPoint";
             this.pnlRedPoint.Size = new System.Drawing.Size(60, 24);
             this.pnlRedPoint.TabIndex = 38;
@@ -511,7 +510,7 @@
             // btnPass
             // 
             this.btnPass.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnPass.Location = new System.Drawing.Point(115, -1);
+            this.btnPass.Location = new System.Drawing.Point(231, 29);
             this.btnPass.Name = "btnPass";
             this.btnPass.Size = new System.Drawing.Size(60, 25);
             this.btnPass.TabIndex = 39;
@@ -519,12 +518,93 @@
             this.btnPass.UseVisualStyleBackColor = true;
             this.btnPass.Click += new System.EventHandler(this.btnPass_Click);
             // 
+            // menuStrip1
+            // 
+            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFile,
+            this.mnuOption});
+            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.Name = "menuStrip1";
+            this.menuStrip1.Size = new System.Drawing.Size(290, 24);
+            this.menuStrip1.TabIndex = 40;
+            this.menuStrip1.Text = "menuStrip";
+            // 
+            // mnuFile
+            // 
+            this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuFileSave,
+            this.toolStripSeparator2,
+            this.mnuFileExit});
+            this.mnuFile.Name = "mnuFile";
+            this.mnuFile.Size = new System.Drawing.Size(37, 20);
+            this.mnuFile.Text = "&File";
+            // 
+            // mnuFileSave
+            // 
+            this.mnuFileSave.Image = ((System.Drawing.Image)(resources.GetObject("mnuFileSave.Image")));
+            this.mnuFileSave.Name = "mnuFileSave";
+            this.mnuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.mnuFileSave.Size = new System.Drawing.Size(138, 22);
+            this.mnuFileSave.Text = "Save";
+            this.mnuFileSave.Click += new System.EventHandler(this.mnuFileSave_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(135, 6);
+            // 
+            // mnuFileExit
+            // 
+            this.mnuFileExit.Image = ((System.Drawing.Image)(resources.GetObject("mnuFileExit.Image")));
+            this.mnuFileExit.Name = "mnuFileExit";
+            this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuFileExit.Size = new System.Drawing.Size(138, 22);
+            this.mnuFileExit.Text = "Exit";
+            // 
+            // mnuOption
+            // 
+            this.mnuOption.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuOptionPlayedWords,
+            this.mnuOptionResignGame,
+            this.toolStripSeparator1,
+            this.mnuOptionStats});
+            this.mnuOption.Name = "mnuOption";
+            this.mnuOption.Size = new System.Drawing.Size(56, 20);
+            this.mnuOption.Text = "&Option";
+            // 
+            // mnuOptionPlayedWords
+            // 
+            this.mnuOptionPlayedWords.Name = "mnuOptionPlayedWords";
+            this.mnuOptionPlayedWords.Size = new System.Drawing.Size(152, 22);
+            this.mnuOptionPlayedWords.Text = "Played Words";
+            this.mnuOptionPlayedWords.Click += new System.EventHandler(this.mnuOptionPlayedWords_Click);
+            // 
+            // mnuOptionResignGame
+            // 
+            this.mnuOptionResignGame.Name = "mnuOptionResignGame";
+            this.mnuOptionResignGame.Size = new System.Drawing.Size(152, 22);
+            this.mnuOptionResignGame.Text = "Resign Game";
+            this.mnuOptionResignGame.Click += new System.EventHandler(this.mnuOptionResignGame_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            // 
+            // mnuOptionStats
+            // 
+            this.mnuOptionStats.Name = "mnuOptionStats";
+            this.mnuOptionStats.Size = new System.Drawing.Size(152, 22);
+            this.mnuOptionStats.Text = "Stats";
+            this.mnuOptionStats.Click += new System.EventHandler(this.mnuOptionStats_Click);
+            // 
             // Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(290, 511);
+            this.ClientSize = new System.Drawing.Size(290, 541);
             this.Controls.Add(this.btnPass);
             this.Controls.Add(this.pnlRedPoint);
             this.Controls.Add(this.pnlBluePoint);
@@ -534,7 +614,6 @@
             this.Controls.Add(this.btnOK);
             this.Controls.Add(this.pbxRedIndex);
             this.Controls.Add(this.pbxBlueIndex);
-            this.Controls.Add(this.btnOption);
             this.Controls.Add(this.btnBack);
             this.Controls.Add(this.pbxRedIcon);
             this.Controls.Add(this.pbxBlueIcon);
@@ -563,13 +642,16 @@
             this.Controls.Add(this.btn42);
             this.Controls.Add(this.btn41);
             this.Controls.Add(this.btn40);
+            this.Controls.Add(this.menuStrip1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MainMenuStrip = this.menuStrip1;
             this.MaximizeBox = false;
-            this.MaximumSize = new System.Drawing.Size(306, 550);
-            this.MinimumSize = new System.Drawing.Size(306, 550);
+            this.MaximumSize = new System.Drawing.Size(306, 580);
+            this.MinimumSize = new System.Drawing.Size(306, 580);
             this.Name = "Main";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Letterpress";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRedIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIndex)).EndInit();
@@ -578,6 +660,8 @@
             this.pnlBluePoint.PerformLayout();
             this.pnlRedPoint.ResumeLayout(false);
             this.pnlRedPoint.PerformLayout();
+            this.menuStrip1.ResumeLayout(false);
+            this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -614,7 +698,6 @@
         private System.Windows.Forms.PictureBox pbxRedIcon;
         private System.Windows.Forms.Button btnBack;
         private System.Windows.Forms.ImageList imageList;
-        private System.Windows.Forms.Button btnOption;
         private System.Windows.Forms.PictureBox pbxBlueIndex;
         private System.Windows.Forms.PictureBox pbxRedIndex;
         private System.Windows.Forms.Button btnOK;
@@ -626,6 +709,16 @@
         private System.Windows.Forms.Panel pnlBluePoint;
         private System.Windows.Forms.Panel pnlRedPoint;
         private System.Windows.Forms.Button btnPass;
+        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.ToolStripMenuItem mnuFile;
+        private System.Windows.Forms.ToolStripMenuItem mnuOption;
+        private System.Windows.Forms.ToolStripMenuItem mnuOptionPlayedWords;
+        private System.Windows.Forms.ToolStripMenuItem mnuOptionResignGame;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem mnuOptionStats;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileSave;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileExit;
     }
 }
 

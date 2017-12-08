@@ -51,18 +51,6 @@
     <Compile Include="GameOver.Designer.cs">
       <DependentUpon>GameOver.cs</DependentUpon>
     </Compile>
-    <Compile Include="NewBoard.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="NewBoard.Designer.cs">
-      <DependentUpon>NewBoard.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Option.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="Option.Designer.cs">
-      <DependentUpon>Option.cs</DependentUpon>
-    </Compile>
     <Compile Include="PlayedWords.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,12 +73,6 @@
     </Compile>
     <EmbeddedResource Include="GameOver.resx">
       <DependentUpon>GameOver.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="NewBoard.resx">
-      <DependentUpon>NewBoard.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Option.resx">
-      <DependentUpon>Option.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PlayedWords.resx">
       <DependentUpon>PlayedWords.cs</DependentUpon>

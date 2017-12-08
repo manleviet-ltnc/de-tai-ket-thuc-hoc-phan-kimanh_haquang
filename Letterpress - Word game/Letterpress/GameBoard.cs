@@ -24,8 +24,6 @@ namespace Letterpress
         int index = -1;
         int[] row = new int[25];   // Mảng các chỉ số dòng button được chọn
         int[] column = new int[25];   // Mảng các chỉ số cột button được chọn
-        int bluePoint;   // Điểm của người chơi xanh
-        int redPoint;   // Điểm của người chơi đỏ
         int blueCount = 0;   // Điểm bị trừ của người chơi xanh
         int redCount = 0;   // Điểm bị trừ của người chơi đỏ
         int count = 0;
@@ -84,7 +82,6 @@ namespace Letterpress
 
             SelectLiteral();
             pbxRedIndex.Hide();
-
             buttonList();
             ReadLiteral();
         }
@@ -97,29 +94,36 @@ namespace Letterpress
             btnPass.Show();
         }
 
-        
         private void btnBack_Click(object sender, EventArgs e)
         {
-            Close();
-            thread = new Thread(ReturnNewGame);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+            DialogResult result = MessageBox.Show("Are you want to save this game?", "",
+                                                  MessageBoxButtons.YesNoCancel,
+                                                  MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+
+                Close();
+                thread = new Thread(OpenNewGame);
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+            }
+            else if (result == DialogResult.No)
+            {
+                Close();
+                thread = new Thread(OpenNewGame);
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+            }
         }
 
-        private void ReturnNewGame(object o)
+        private void OpenNewGame(object o)
         {
             Application.Run(new NewGame());
-        }
-
-        private void btnOption_Click(object sender, EventArgs e)
-        {
-            Option opt = new Option();
-            opt.WordsListUsed = storage.wordsListUsed;
-            opt.Show();
         }
         
         private void btnWord_Click(object sender, EventArgs e)
         {
+            storage.HasChanged = true;
             btn = (Button)sender;
             txtWords.Text += btn.Text;
 
@@ -154,13 +158,13 @@ namespace Letterpress
                     if (btn.BackColor == Color.Red)
                     {
                         redCount++;
-                        lblRedPoint.Text = "" + (redPoint - redCount);
+                        lblRedPoint.Text = "" + (storage.RedPoint - redCount);
                     }
 
                     if (lblBluePoint.Text == "")
                         lblBluePoint.Text = "1";
                     else
-                        lblBluePoint.Text = "" + (bluePoint - blueCount + txtWords.Text.Length);
+                        lblBluePoint.Text = "" + (storage.BluePoint - blueCount + txtWords.Text.Length);
                 }
             }
             else
@@ -172,13 +176,13 @@ namespace Letterpress
                     if (btn.BackColor == Color.LightSkyBlue)
                     {
                         blueCount++;
-                        lblBluePoint.Text = "" + (bluePoint - blueCount);
+                        lblBluePoint.Text = "" + (storage.BluePoint - blueCount);
                     }
 
                     if (lblRedPoint.Text == "")
                         lblRedPoint.Text = "1";
                     else
-                        lblRedPoint.Text = "" + (redPoint - redCount + txtWords.Text.Length);
+                        lblRedPoint.Text = "" + (storage.RedPoint - redCount + txtWords.Text.Length);
                 }
             }
         }
@@ -192,10 +196,10 @@ namespace Letterpress
                     if (btn[row[index], column[index]].BackColor == Color.Red)
                     {
                         redCount--;
-                        lblRedPoint.Text = "" + (redPoint - redCount);
+                        lblRedPoint.Text = "" + (storage.RedPoint - redCount);
                     }
 
-                    lblBluePoint.Text = "" + (bluePoint - blueCount + txtWords.Text.Length);
+                    lblBluePoint.Text = "" + (storage.BluePoint - blueCount + txtWords.Text.Length);
                 }
                 else
                     blueCount--;
@@ -207,10 +211,10 @@ namespace Letterpress
                     if (btn[row[index], column[index]].BackColor == Color.LightSkyBlue)
                     {
                         blueCount--;
-                        lblBluePoint.Text = "" + (bluePoint - blueCount);
+                        lblBluePoint.Text = "" + (storage.BluePoint - blueCount);
                     }
 
-                    lblRedPoint.Text = "" + (redPoint - redCount + txtWords.Text.Length);
+                    lblRedPoint.Text = "" + (storage.RedPoint - redCount + txtWords.Text.Length);
                 }
                 else
                     redCount--;
@@ -219,6 +223,7 @@ namespace Letterpress
 
         private void btnClear_Click(object sender, EventArgs e)
         {
+            storage.HasChanged = true;
             SelectLiteral();
             txtWords.Clear();
             ShowButton();
@@ -235,12 +240,12 @@ namespace Letterpress
                 {
                     if (redCount > 0)
                     {
-                        lblRedPoint.Text = "" + redPoint;
+                        lblRedPoint.Text = "" + storage.RedPoint;
                         redCount = 0;
                     }
                 }
 
-                lblBluePoint.Text = "" + bluePoint;
+                lblBluePoint.Text = "" + storage.BluePoint;
                 blueCount = 0;
             }
             else
@@ -249,12 +254,12 @@ namespace Letterpress
                 {
                     if (blueCount > 0)
                     {
-                        lblBluePoint.Text = "" + bluePoint;
+                        lblBluePoint.Text = "" + storage.BluePoint;
                         blueCount = 0;                      
                     }
                 }
 
-                lblRedPoint.Text = "" + redPoint;
+                lblRedPoint.Text = "" + storage.RedPoint;
                 redCount = 0;
             }
 
@@ -320,8 +325,8 @@ namespace Letterpress
 
             ChangeTurn(storage);
 
-            bluePoint = int.Parse(lblBluePoint.Text);
-            redPoint = int.Parse(lblRedPoint.Text);
+            storage.BluePoint = int.Parse(lblBluePoint.Text);
+            storage.RedPoint = int.Parse(lblRedPoint.Text);
 
             txtWords.Clear();
             blueCount = 0;
@@ -342,8 +347,8 @@ namespace Letterpress
                 if (count == 0)
                 {
                     GameOver go = new GameOver();
-                    go.Blue = bluePoint;
-                    go.Red = redPoint;
+                    go.Blue = storage.BluePoint;
+                    go.Red = storage.RedPoint;
                     go.WordsListUsed = storage.wordsListUsed;
                     go.Show();
                 }
@@ -352,6 +357,7 @@ namespace Letterpress
 
         private void btnBackspace_Click(object sender, EventArgs e)
         {
+            storage.HasChanged = true;
             if (txtWords.Text != "")
             {
                 txtWords.Text = txtWords.Text.Remove(txtWords.Text.Length - 1);
@@ -368,16 +374,64 @@ namespace Letterpress
 
         private void btnPass_Click(object sender, EventArgs e)
         {
-            storage.RedTurn = !storage.RedTurn;
-            if (storage.RedTurn)
+            DialogResult result = MessageBox.Show("Are you sure you want to pass your turn?",
+                                                  "", MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
             {
-                pbxBlueIndex.Hide();
-                pbxRedIndex.Show();
+                storage.RedTurn = !storage.RedTurn;
+                if (storage.RedTurn)
+                {
+                    pbxBlueIndex.Hide();
+                    pbxRedIndex.Show();
+                }
+                else
+                {
+                    pbxRedIndex.Hide();
+                    pbxBlueIndex.Show();
+                }
             }
-            else
+        }
+
+        private void mnuFileSave_Click(object sender, EventArgs e)
+        {
+            storage.HasChanged = false;
+
+        }
+
+        private void mnuOptionPlayedWords_Click(object sender, EventArgs e)
+        {
+            PlayedWords pw = new PlayedWords();
+            pw.WordsListUsed = storage.wordsListUsed;
+            pw.Show();
+        }
+
+        private void mnuOptionResignGame_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void mnuOptionStats_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            if (storage.HasChanged)
             {
-                pbxRedIndex.Hide();
-                pbxBlueIndex.Show();
+                DialogResult result = MessageBox.Show("Are you want to save this game?", "",
+                                                  MessageBoxButtons.YesNoCancel,
+                                                  MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                {
+
+                    Close();
+                }
+                else if (result == DialogResult.No)
+                {
+                    Close();
+                }
             }
         }
     }
