@@ -45,12 +45,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="GameOver.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="GameOver.Designer.cs">
-      <DependentUpon>GameOver.cs</DependentUpon>
-    </Compile>
     <Compile Include="PlayedWords.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -59,21 +53,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ResignGame.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ResignGame.Designer.cs">
-      <DependentUpon>ResignGame.cs</DependentUpon>
-    </Compile>
     <Compile Include="Stats.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Stats.designer.cs">
       <DependentUpon>Stats.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="GameOver.resx">
-      <DependentUpon>GameOver.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="PlayedWords.resx">
       <DependentUpon>PlayedWords.cs</DependentUpon>
     </EmbeddedResource>
@@ -86,9 +71,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="ResignGame.resx">
-      <DependentUpon>ResignGame.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Stats.resx">
       <DependentUpon>Stats.cs</DependentUpon>
     </EmbeddedResource>

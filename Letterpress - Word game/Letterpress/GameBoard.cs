@@ -10,10 +10,11 @@ using System.Windows.Forms;
 using System.Threading;
 using LetterpressControl;
 using LetterpressManager;
+using Letterpress.Properties;
 
 namespace Letterpress
 {
-    public partial class Main : Form
+    public partial class GameBoard : Form
     {
         Thread thread;
         ProcessFile pf = new ProcessFile();
@@ -76,7 +77,7 @@ namespace Letterpress
                 }
         }
 
-        public Main()
+        public GameBoard()
         {
             InitializeComponent();
 
@@ -96,31 +97,17 @@ namespace Letterpress
 
         private void btnBack_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you want to save this game?", "",
-                                                  MessageBoxButtons.YesNoCancel,
-                                                  MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
-            {
-
-                Close();
-                thread = new Thread(OpenNewGame);
-                thread.SetApartmentState(ApartmentState.STA);
-                thread.Start();
-            }
-            else if (result == DialogResult.No)
-            {
-                Close();
-                thread = new Thread(OpenNewGame);
-                thread.SetApartmentState(ApartmentState.STA);
-                thread.Start();
-            }
+            Close();
+            thread = new Thread(OpenNewGame);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
 
         private void OpenNewGame(object o)
         {
             Application.Run(new NewGame());
         }
-        
+
         private void btnWord_Click(object sender, EventArgs e)
         {
             storage.HasChanged = true;
@@ -146,7 +133,7 @@ namespace Letterpress
                         return;
                     }
         }
-        
+
         private void AddPoint(Button btn)
         {
             if (storage.RedTurn == false)
@@ -255,7 +242,7 @@ namespace Letterpress
                     if (blueCount > 0)
                     {
                         lblBluePoint.Text = "" + storage.BluePoint;
-                        blueCount = 0;                      
+                        blueCount = 0;
                     }
                 }
 
@@ -340,13 +327,15 @@ namespace Letterpress
 
         private void FinishGame(int count)
         {
-            foreach(Button b in button)
+            foreach (Button b in button)
             {
                 if (b.BackColor != Color.Gainsboro)
                     count--;
                 if (count == 0)
                 {
+                    storage.HasChanged = false;
                     GameOver go = new GameOver();
+                    Owner = go;
                     go.Blue = storage.BluePoint;
                     go.Red = storage.RedPoint;
                     go.WordsListUsed = storage.wordsListUsed;
@@ -393,10 +382,45 @@ namespace Letterpress
             }
         }
 
-        private void mnuFileSave_Click(object sender, EventArgs e)
+        private void mnuFileLoadGame_Click(object sender, EventArgs e)
         {
             storage.HasChanged = false;
+            storage.BluePoint = Settings.Default.bluePoint;
+            lblBluePoint.Text = "" + storage.BluePoint;
+            storage.RedPoint = Settings.Default.redPoint;
+            lblRedPoint.Text = "" + storage.RedPoint;
 
+            pbxBlueIndex.Visible = Settings.Default.blueIndex;
+            pbxRedIndex.Visible = Settings.Default.redIndex;
+            storage.RedTurn = pbxRedIndex.Visible;
+
+            storage.wordsListUsed = Settings.Default.wordsListUsed;
+        }
+
+        private void mnuFileSave_Click(object sender, EventArgs e)
+        {
+            Save();
+        }
+
+        private void Save()
+        {
+            storage.HasChanged = false;
+            Settings.Default.bluePoint = storage.BluePoint;
+            Settings.Default.redPoint = storage.RedPoint;
+
+            if (storage.RedTurn == false)
+            {
+                Settings.Default.blueIndex = true;
+                Settings.Default.redIndex = false;
+            }
+            else
+            {
+                Settings.Default.blueIndex = false;
+                Settings.Default.redIndex = true;
+            }
+
+            Settings.Default.wordsListUsed = storage.wordsListUsed;
+            Settings.Default.Save();
         }
 
         private void mnuOptionPlayedWords_Click(object sender, EventArgs e)
@@ -408,15 +432,25 @@ namespace Letterpress
 
         private void mnuOptionResignGame_Click(object sender, EventArgs e)
         {
-
+            DialogResult result = MessageBox.Show("Are you sure you want to resign the game?",
+                                                  "", MessageBoxButtons.YesNo,
+                                                  MessageBoxIcon.Question);
+            if (result == DialogResult.Yes)
+            {
+                GameBoard gb = new GameBoard();
+                Owner = gb;
+                Hide();
+                gb.Show();
+            }
         }
 
         private void mnuOptionStats_Click(object sender, EventArgs e)
         {
-
+            Stats sts = new Stats();
+            sts.Show();
         }
 
-        private void Main_FormClosing(object sender, FormClosingEventArgs e)
+        private void GameBoard_FormClosing(object sender, FormClosingEventArgs e)
         {
             if (storage.HasChanged)
             {
@@ -424,14 +458,9 @@ namespace Letterpress
                                                   MessageBoxButtons.YesNoCancel,
                                                   MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
-                {
-
-                    Close();
-                }
-                else if (result == DialogResult.No)
-                {
-                    Close();
-                }
+                    Save();
+                else if (result == DialogResult.Cancel)
+                    e.Cancel = true;
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace Letterpress
 {
-    partial class Main
+    partial class GameBoard
     {
         /// <summary>
         /// Required designer variable.
@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Main));
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(GameBoard));
             this.btn40 = new System.Windows.Forms.Button();
             this.btn41 = new System.Windows.Forms.Button();
             this.btn42 = new System.Windows.Forms.Button();
@@ -72,9 +72,8 @@
             this.btnPass = new System.Windows.Forms.Button();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuFileLoadGame = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuFileSave = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOptionPlayedWords = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOptionResignGame = new System.Windows.Forms.ToolStripMenuItem();
@@ -533,34 +532,27 @@
             // mnuFile
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFileSave,
-            this.toolStripSeparator2,
-            this.mnuFileExit});
+            this.mnuFileLoadGame,
+            this.mnuFileSave});
             this.mnuFile.Name = "mnuFile";
             this.mnuFile.Size = new System.Drawing.Size(37, 20);
             this.mnuFile.Text = "&File";
+            // 
+            // mnuFileLoadGame
+            // 
+            this.mnuFileLoadGame.Name = "mnuFileLoadGame";
+            this.mnuFileLoadGame.Size = new System.Drawing.Size(152, 22);
+            this.mnuFileLoadGame.Text = "Load Game";
+            this.mnuFileLoadGame.Click += new System.EventHandler(this.mnuFileLoadGame_Click);
             // 
             // mnuFileSave
             // 
             this.mnuFileSave.Image = ((System.Drawing.Image)(resources.GetObject("mnuFileSave.Image")));
             this.mnuFileSave.Name = "mnuFileSave";
             this.mnuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.mnuFileSave.Size = new System.Drawing.Size(138, 22);
+            this.mnuFileSave.Size = new System.Drawing.Size(152, 22);
             this.mnuFileSave.Text = "Save";
             this.mnuFileSave.Click += new System.EventHandler(this.mnuFileSave_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(135, 6);
-            // 
-            // mnuFileExit
-            // 
-            this.mnuFileExit.Image = ((System.Drawing.Image)(resources.GetObject("mnuFileExit.Image")));
-            this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mnuFileExit.Size = new System.Drawing.Size(138, 22);
-            this.mnuFileExit.Text = "Exit";
             // 
             // mnuOption
             // 
@@ -576,30 +568,30 @@
             // mnuOptionPlayedWords
             // 
             this.mnuOptionPlayedWords.Name = "mnuOptionPlayedWords";
-            this.mnuOptionPlayedWords.Size = new System.Drawing.Size(152, 22);
+            this.mnuOptionPlayedWords.Size = new System.Drawing.Size(146, 22);
             this.mnuOptionPlayedWords.Text = "Played Words";
             this.mnuOptionPlayedWords.Click += new System.EventHandler(this.mnuOptionPlayedWords_Click);
             // 
             // mnuOptionResignGame
             // 
             this.mnuOptionResignGame.Name = "mnuOptionResignGame";
-            this.mnuOptionResignGame.Size = new System.Drawing.Size(152, 22);
+            this.mnuOptionResignGame.Size = new System.Drawing.Size(146, 22);
             this.mnuOptionResignGame.Text = "Resign Game";
             this.mnuOptionResignGame.Click += new System.EventHandler(this.mnuOptionResignGame_Click);
             // 
             // toolStripSeparator1
             // 
             this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(149, 6);
+            this.toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
             // 
             // mnuOptionStats
             // 
             this.mnuOptionStats.Name = "mnuOptionStats";
-            this.mnuOptionStats.Size = new System.Drawing.Size(152, 22);
+            this.mnuOptionStats.Size = new System.Drawing.Size(146, 22);
             this.mnuOptionStats.Text = "Stats";
             this.mnuOptionStats.Click += new System.EventHandler(this.mnuOptionStats_Click);
             // 
-            // Main
+            // GameBoard
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -648,10 +640,10 @@
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(306, 580);
             this.MinimumSize = new System.Drawing.Size(306, 580);
-            this.Name = "Main";
+            this.Name = "GameBoard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Letterpress";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Main_FormClosing);
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameBoard_FormClosing);
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRedIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIndex)).EndInit();
@@ -717,8 +709,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
         private System.Windows.Forms.ToolStripMenuItem mnuOptionStats;
         private System.Windows.Forms.ToolStripMenuItem mnuFileSave;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripMenuItem mnuFileExit;
+        private System.Windows.Forms.ToolStripMenuItem mnuFileLoadGame;
     }
 }
 

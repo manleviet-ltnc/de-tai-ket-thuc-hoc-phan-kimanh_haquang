@@ -30,7 +30,6 @@ E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\L
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\bin\Debug\LetterpressControl.pdb
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\bin\Debug\LetterpressControl.exe.config
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\obj\Debug\Letterpress.csprojResolveAssemblyReference.cache
-E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\obj\Debug\Letterpress.Main.resources
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\obj\Debug\Letterpress.NewGame.resources
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\obj\Debug\Letterpress.Properties.Resources.resources
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\obj\Debug\Letterpress.csproj.GenerateResource.Cache
@@ -39,3 +38,5 @@ E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\L
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\obj\Debug\Letterpress.pdb
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\bin\Debug\LetterpressManager.dll
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\bin\Debug\LetterpressManager.pdb
+E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\obj\Debug\Letterpress.GameBoard.resources
+E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\obj\Debug\Letterpress.GameOver.resources

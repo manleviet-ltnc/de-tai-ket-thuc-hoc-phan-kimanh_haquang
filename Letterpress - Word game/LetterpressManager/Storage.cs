@@ -8,7 +8,7 @@ namespace LetterpressManager
 {
     public class Storage
     {
-        private bool hasChanged = false;
+        private bool hasChanged = true;
         public bool HasChanged
         {
             get { return hasChanged; }
