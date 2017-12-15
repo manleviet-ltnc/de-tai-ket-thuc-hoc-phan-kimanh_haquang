@@ -22,12 +22,17 @@ namespace Letterpress
 
         Button[,] button = new Button[5, 5];
         Button btn;
-        int index = -1;
+        int index = -1;   // Chỉ số vị trí của button được chọn
         int[] row = new int[25];   // Mảng các chỉ số dòng button được chọn
         int[] column = new int[25];   // Mảng các chỉ số cột button được chọn
-        int blueCount = 0;   // Điểm bị trừ của người chơi xanh
-        int redCount = 0;   // Điểm bị trừ của người chơi đỏ
-        int count = 0;
+        int blueCount = 0;   // Điểm bị trừ / nhớ tạm của người chơi xanh
+        int redCount = 0;   // Điểm bị trừ / nhớ tạm của người chơi đỏ
+        bool gameOver = false;
+
+        public GameBoard()
+        {
+            InitializeComponent();
+        }
 
         private void Center()
         {
@@ -62,6 +67,8 @@ namespace Letterpress
             button[4, 2] = btn42;
             button[4, 3] = btn43;
             button[4, 4] = btn44;
+
+            ReadLiteral();
         }
 
         private void ReadLiteral()
@@ -77,22 +84,82 @@ namespace Letterpress
                 }
         }
 
-        public GameBoard()
-        {
-            InitializeComponent();
-
-            SelectLiteral();
-            pbxRedIndex.Hide();
-            buttonList();
-            ReadLiteral();
-        }
-
         private void SelectLiteral()
         {
             btnClear.Hide();
             btnDelete.Hide();
             btnOK.Hide();
             btnPass.Show();
+        }
+
+        private void GameBoard_Load(object sender, EventArgs e)
+        {
+            SelectLiteral();
+            pbxRedIndex.Hide();
+            buttonList();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
+            {
+                case Keys.Up:
+                    for (int i = 0; i < 5; i++)
+                        for (int j = 0; j < 5; j++)
+                            if (button[i, j].Focused && i > 0)
+                            {
+                                button[i - 1, j + 1].Focus();
+                                i = 4;
+                                break;
+                            }
+
+                    if (btnPass.Focus() || btnBack.Focus() ||
+                        btnOK.Focus() || btnDelete.Focus() || btnClear.Focus())
+                        return true;
+
+                    break;
+                case Keys.Down:
+                    for (int i = 0; i < 5; i++)
+                        for (int j = 0; j < 5; j++)
+                        {
+                            if (button[i, 0].Focused && j == 0 && i < 4)
+                            {
+                                button[i + 1, j].Focus();
+                                return true;
+                            }
+                            else if (button[i, j].Focused && i < 4)
+                            {
+                                button[i + 1, j - 1].Focus();
+                                i = 4;
+                                return true;
+                            }
+                            else if (i == 4)
+                                return true;
+                        }
+
+                    if (btnPass.Focus() || btnOK.Focus())
+                    {
+                        button[0, 4].Focus();
+                        return true;
+                    }
+                    else if (btnBack.Focus() || btnClear.Focus())
+                    {
+                        button[0, 0].Focus();
+                        return true;
+                    }
+
+                    break;
+                case Keys.Right:
+                    if (btnPass.Focus() || btnOK.Focus())
+                        return true;
+                    break;
+                case Keys.Left:
+                    if (btnBack.Focus() || btnClear.Focus())
+                        return true;
+                    break;
+            }
+
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void btnBack_Click(object sender, EventArgs e)
@@ -110,6 +177,9 @@ namespace Letterpress
 
         private void btnWord_Click(object sender, EventArgs e)
         {
+            if (gameOver)
+                return;
+
             storage.HasChanged = true;
             btn = (Button)sender;
             txtWords.Text += btn.Text;
@@ -321,12 +391,13 @@ namespace Letterpress
             index = -1;
             j = 0;
 
-            count = 25;
-            FinishGame(count);
+            if (storage.BluePoint + storage.RedPoint == 25)
+                FinishGame(25);
         }
 
         private void FinishGame(int count)
         {
+            storage.HasChanged = false;
             foreach (Button b in button)
             {
                 if (b.BackColor != Color.Gainsboro)
@@ -340,6 +411,8 @@ namespace Letterpress
                     go.Red = storage.RedPoint;
                     go.WordsListUsed = storage.wordsListUsed;
                     go.Show();
+
+                    gameOver = true;
                 }
             }
         }
@@ -363,6 +436,9 @@ namespace Letterpress
 
         private void btnPass_Click(object sender, EventArgs e)
         {
+            if (gameOver)
+                return;
+
             DialogResult result = MessageBox.Show("Are you sure you want to pass your turn?",
                                                   "", MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Question);
@@ -382,7 +458,7 @@ namespace Letterpress
             }
         }
 
-        private void mnuFileLoadGame_Click(object sender, EventArgs e)
+        private void mnuGameLoadGame_Click(object sender, EventArgs e)
         {
             storage.HasChanged = false;
             storage.BluePoint = Settings.Default.bluePoint;
@@ -394,16 +470,71 @@ namespace Letterpress
             pbxRedIndex.Visible = Settings.Default.redIndex;
             storage.RedTurn = pbxRedIndex.Visible;
 
+            button[0, 0].Text = Settings.Default.text00;
+            button[0, 1].Text = Settings.Default.text01;
+            button[0, 2].Text = Settings.Default.text02;
+            button[0, 3].Text = Settings.Default.text03;
+            button[0, 4].Text = Settings.Default.text04;
+            button[1, 0].Text = Settings.Default.text10;
+            button[1, 1].Text = Settings.Default.text11;
+            button[1, 2].Text = Settings.Default.text12;
+            button[1, 3].Text = Settings.Default.text13;
+            button[1, 4].Text = Settings.Default.text14;
+            button[2, 0].Text = Settings.Default.text20;
+            button[2, 1].Text = Settings.Default.text21;
+            button[2, 2].Text = Settings.Default.text22;
+            button[2, 3].Text = Settings.Default.text23;
+            button[2, 4].Text = Settings.Default.text24;
+            button[3, 0].Text = Settings.Default.text30;
+            button[3, 1].Text = Settings.Default.text31;
+            button[3, 2].Text = Settings.Default.text32;
+            button[3, 3].Text = Settings.Default.text33;
+            button[3, 4].Text = Settings.Default.text34;
+            button[4, 0].Text = Settings.Default.text40;
+            button[4, 1].Text = Settings.Default.text41;
+            button[4, 2].Text = Settings.Default.text42;
+            button[4, 3].Text = Settings.Default.text43;
+            button[4, 4].Text = Settings.Default.text44;
+
+            button[0, 0].BackColor = Settings.Default.color00;
+            button[0, 1].BackColor = Settings.Default.color01;
+            button[0, 2].BackColor = Settings.Default.color02;
+            button[0, 3].BackColor = Settings.Default.color03;
+            button[0, 4].BackColor = Settings.Default.color04;
+            button[1, 0].BackColor = Settings.Default.color10;
+            button[1, 1].BackColor = Settings.Default.color11;
+            button[1, 2].BackColor = Settings.Default.color12;
+            button[1, 3].BackColor = Settings.Default.color13;
+            button[1, 4].BackColor = Settings.Default.color14;
+            button[2, 0].BackColor = Settings.Default.color20;
+            button[2, 1].BackColor = Settings.Default.color21;
+            button[2, 2].BackColor = Settings.Default.color22;
+            button[2, 3].BackColor = Settings.Default.color23;
+            button[2, 4].BackColor = Settings.Default.color24;
+            button[3, 0].BackColor = Settings.Default.color30;
+            button[3, 1].BackColor = Settings.Default.color31;
+            button[3, 2].BackColor = Settings.Default.color32;
+            button[3, 3].BackColor = Settings.Default.color33;
+            button[3, 4].BackColor = Settings.Default.color34;
+            button[4, 0].BackColor = Settings.Default.color40;
+            button[4, 1].BackColor = Settings.Default.color41;
+            button[4, 2].BackColor = Settings.Default.color42;
+            button[4, 3].BackColor = Settings.Default.color43;
+            button[4, 4].BackColor = Settings.Default.color44;
+
             storage.wordsListUsed = Settings.Default.wordsListUsed;
         }
 
-        private void mnuFileSave_Click(object sender, EventArgs e)
+        private void mnuGameSave_Click(object sender, EventArgs e)
         {
             Save();
         }
 
         private void Save()
         {
+            if (gameOver)
+                return;
+
             storage.HasChanged = false;
             Settings.Default.bluePoint = storage.BluePoint;
             Settings.Default.redPoint = storage.RedPoint;
@@ -419,15 +550,69 @@ namespace Letterpress
                 Settings.Default.redIndex = true;
             }
 
+            Settings.Default.text00 = button[0, 0].Text;
+            Settings.Default.text01 = button[0, 1].Text;
+            Settings.Default.text02 = button[0, 2].Text;
+            Settings.Default.text03 = button[0, 3].Text;
+            Settings.Default.text04 = button[0, 4].Text;
+            Settings.Default.text10 = button[1, 0].Text;
+            Settings.Default.text11 = button[1, 1].Text;
+            Settings.Default.text12 = button[1, 2].Text;
+            Settings.Default.text13 = button[1, 3].Text;
+            Settings.Default.text14 = button[1, 4].Text;
+            Settings.Default.text20 = button[2, 0].Text;
+            Settings.Default.text21 = button[2, 1].Text;
+            Settings.Default.text22 = button[2, 2].Text;
+            Settings.Default.text23 = button[2, 3].Text;
+            Settings.Default.text24 = button[2, 4].Text;
+            Settings.Default.text30 = button[3, 0].Text;
+            Settings.Default.text31 = button[3, 1].Text;
+            Settings.Default.text32 = button[3, 2].Text;
+            Settings.Default.text33 = button[3, 3].Text;
+            Settings.Default.text34 = button[3, 4].Text;
+            Settings.Default.text40 = button[4, 0].Text;
+            Settings.Default.text41 = button[4, 1].Text;
+            Settings.Default.text42 = button[4, 2].Text;
+            Settings.Default.text43 = button[4, 3].Text;
+            Settings.Default.text44 = button[4, 4].Text;
+
+            Settings.Default.color00 = button[0, 0].BackColor;
+            Settings.Default.color01 = button[0, 1].BackColor;
+            Settings.Default.color02 = button[0, 2].BackColor;
+            Settings.Default.color03 = button[0, 3].BackColor;
+            Settings.Default.color04 = button[0, 4].BackColor;
+            Settings.Default.color10 = button[1, 0].BackColor;
+            Settings.Default.color11 = button[1, 1].BackColor;
+            Settings.Default.color12 = button[1, 2].BackColor;
+            Settings.Default.color13 = button[1, 3].BackColor;
+            Settings.Default.color14 = button[1, 4].BackColor;
+            Settings.Default.color20 = button[2, 0].BackColor;
+            Settings.Default.color21 = button[2, 1].BackColor;
+            Settings.Default.color22 = button[2, 2].BackColor;
+            Settings.Default.color23 = button[2, 3].BackColor;
+            Settings.Default.color24 = button[2, 4].BackColor;
+            Settings.Default.color30 = button[3, 0].BackColor;
+            Settings.Default.color31 = button[3, 1].BackColor;
+            Settings.Default.color32 = button[3, 2].BackColor;
+            Settings.Default.color33 = button[3, 3].BackColor;
+            Settings.Default.color34 = button[3, 4].BackColor;
+            Settings.Default.color40 = button[4, 0].BackColor;
+            Settings.Default.color41 = button[4, 1].BackColor;
+            Settings.Default.color42 = button[4, 2].BackColor;
+            Settings.Default.color43 = button[4, 3].BackColor;
+            Settings.Default.color44 = button[4, 4].BackColor;
+
             Settings.Default.wordsListUsed = storage.wordsListUsed;
             Settings.Default.Save();
         }
 
         private void mnuOptionPlayedWords_Click(object sender, EventArgs e)
         {
-            PlayedWords pw = new PlayedWords();
-            pw.WordsListUsed = storage.wordsListUsed;
-            pw.Show();
+            using (PlayedWords pw = new PlayedWords())
+            {
+                if (pw.ShowDialog() == DialogResult.OK)
+                    pw.Show();
+            }
         }
 
         private void mnuOptionResignGame_Click(object sender, EventArgs e)
@@ -446,8 +631,11 @@ namespace Letterpress
 
         private void mnuOptionStats_Click(object sender, EventArgs e)
         {
-            Stats sts = new Stats();
-            sts.Show();
+            using (Stats sts = new Stats())
+            {
+                if (sts.ShowDialog() == DialogResult.OK)
+                    sts.Show();
+            }
         }
 
         private void GameBoard_FormClosing(object sender, FormClosingEventArgs e)

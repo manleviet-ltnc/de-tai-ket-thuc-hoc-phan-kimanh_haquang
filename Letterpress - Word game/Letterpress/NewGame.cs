@@ -7,12 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 using LetterpressControl;
 
 namespace Letterpress
 {
     public partial class NewGame : Form
     {
+        Thread thread;
+
         public NewGame()
         {
             InitializeComponent();
@@ -20,18 +23,15 @@ namespace Letterpress
         
         private void btnNewGame_Click(object sender, EventArgs e)
         {
-            GameBoard gb = new GameBoard();
-            Owner = gb;
-            Hide();
-            gb.Show();
+            Close();
+            thread = new Thread(OpenGameBoard);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
         }
 
-        private void btnContinue_Click(object sender, EventArgs e)
+        private void OpenGameBoard(object o)
         {
-            GameBoard gb = new GameBoard();
-            Owner = gb;
-            Hide();
-            gb.Show();
+            Application.Run(new GameBoard());
         }
 
         private void mnuFileExit_Click(object sender, EventArgs e)
@@ -41,8 +41,11 @@ namespace Letterpress
 
         private void mnuOptionStats_Click(object sender, EventArgs e)
         {
-            Stats sts = new Stats();
-            sts.Show();
+            using (Stats sts = new Stats())
+            {
+                if (sts.ShowDialog() == DialogResult.OK)
+                    sts.Show();
+            }
         }
 
         private void timer_Tick(object sender, EventArgs e)

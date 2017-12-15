@@ -70,14 +70,14 @@
             this.pnlBluePoint = new System.Windows.Forms.Panel();
             this.pnlRedPoint = new System.Windows.Forms.Panel();
             this.btnPass = new System.Windows.Forms.Button();
-            this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileLoadGame = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileSave = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGameLoad = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGameSave = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOptionPlayedWords = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOptionResignGame = new System.Windows.Forms.ToolStripMenuItem();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuOptionStats = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRedIcon)).BeginInit();
@@ -85,7 +85,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.pbxRedIndex)).BeginInit();
             this.pnlBluePoint.SuspendLayout();
             this.pnlRedPoint.SuspendLayout();
-            this.menuStrip1.SuspendLayout();
+            this.menuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // btn40
@@ -95,7 +95,7 @@
             this.btn40.Location = new System.Drawing.Point(-1, 482);
             this.btn40.Name = "btn40";
             this.btn40.Size = new System.Drawing.Size(60, 60);
-            this.btn40.TabIndex = 20;
+            this.btn40.TabIndex = 21;
             this.btn40.UseVisualStyleBackColor = false;
             this.btn40.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -106,7 +106,7 @@
             this.btn41.Location = new System.Drawing.Point(57, 482);
             this.btn41.Name = "btn41";
             this.btn41.Size = new System.Drawing.Size(60, 60);
-            this.btn41.TabIndex = 21;
+            this.btn41.TabIndex = 22;
             this.btn41.UseVisualStyleBackColor = false;
             this.btn41.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -117,7 +117,7 @@
             this.btn42.Location = new System.Drawing.Point(115, 482);
             this.btn42.Name = "btn42";
             this.btn42.Size = new System.Drawing.Size(60, 60);
-            this.btn42.TabIndex = 22;
+            this.btn42.TabIndex = 23;
             this.btn42.UseVisualStyleBackColor = false;
             this.btn42.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -128,7 +128,7 @@
             this.btn43.Location = new System.Drawing.Point(173, 482);
             this.btn43.Name = "btn43";
             this.btn43.Size = new System.Drawing.Size(60, 60);
-            this.btn43.TabIndex = 23;
+            this.btn43.TabIndex = 24;
             this.btn43.UseVisualStyleBackColor = false;
             this.btn43.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -139,7 +139,7 @@
             this.btn44.Location = new System.Drawing.Point(231, 482);
             this.btn44.Name = "btn44";
             this.btn44.Size = new System.Drawing.Size(60, 60);
-            this.btn44.TabIndex = 24;
+            this.btn44.TabIndex = 25;
             this.btn44.UseVisualStyleBackColor = false;
             this.btn44.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -150,7 +150,7 @@
             this.btn34.Location = new System.Drawing.Point(231, 424);
             this.btn34.Name = "btn34";
             this.btn34.Size = new System.Drawing.Size(60, 60);
-            this.btn34.TabIndex = 19;
+            this.btn34.TabIndex = 20;
             this.btn34.UseVisualStyleBackColor = false;
             this.btn34.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -161,7 +161,7 @@
             this.btn33.Location = new System.Drawing.Point(173, 424);
             this.btn33.Name = "btn33";
             this.btn33.Size = new System.Drawing.Size(60, 60);
-            this.btn33.TabIndex = 18;
+            this.btn33.TabIndex = 19;
             this.btn33.UseVisualStyleBackColor = false;
             this.btn33.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -172,7 +172,7 @@
             this.btn32.Location = new System.Drawing.Point(115, 424);
             this.btn32.Name = "btn32";
             this.btn32.Size = new System.Drawing.Size(60, 60);
-            this.btn32.TabIndex = 17;
+            this.btn32.TabIndex = 18;
             this.btn32.UseVisualStyleBackColor = false;
             this.btn32.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -183,7 +183,7 @@
             this.btn31.Location = new System.Drawing.Point(57, 424);
             this.btn31.Name = "btn31";
             this.btn31.Size = new System.Drawing.Size(60, 60);
-            this.btn31.TabIndex = 16;
+            this.btn31.TabIndex = 17;
             this.btn31.UseVisualStyleBackColor = false;
             this.btn31.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -194,7 +194,7 @@
             this.btn30.Location = new System.Drawing.Point(-1, 424);
             this.btn30.Name = "btn30";
             this.btn30.Size = new System.Drawing.Size(60, 60);
-            this.btn30.TabIndex = 15;
+            this.btn30.TabIndex = 16;
             this.btn30.UseVisualStyleBackColor = false;
             this.btn30.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -205,7 +205,7 @@
             this.btn24.Location = new System.Drawing.Point(231, 366);
             this.btn24.Name = "btn24";
             this.btn24.Size = new System.Drawing.Size(60, 60);
-            this.btn24.TabIndex = 14;
+            this.btn24.TabIndex = 15;
             this.btn24.UseVisualStyleBackColor = false;
             this.btn24.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -216,7 +216,7 @@
             this.btn23.Location = new System.Drawing.Point(173, 366);
             this.btn23.Name = "btn23";
             this.btn23.Size = new System.Drawing.Size(60, 60);
-            this.btn23.TabIndex = 13;
+            this.btn23.TabIndex = 14;
             this.btn23.UseVisualStyleBackColor = false;
             this.btn23.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -227,7 +227,7 @@
             this.btn22.Location = new System.Drawing.Point(115, 366);
             this.btn22.Name = "btn22";
             this.btn22.Size = new System.Drawing.Size(60, 60);
-            this.btn22.TabIndex = 12;
+            this.btn22.TabIndex = 13;
             this.btn22.UseVisualStyleBackColor = false;
             this.btn22.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -238,7 +238,7 @@
             this.btn21.Location = new System.Drawing.Point(57, 366);
             this.btn21.Name = "btn21";
             this.btn21.Size = new System.Drawing.Size(60, 60);
-            this.btn21.TabIndex = 11;
+            this.btn21.TabIndex = 12;
             this.btn21.UseVisualStyleBackColor = false;
             this.btn21.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -249,7 +249,7 @@
             this.btn20.Location = new System.Drawing.Point(-1, 366);
             this.btn20.Name = "btn20";
             this.btn20.Size = new System.Drawing.Size(60, 60);
-            this.btn20.TabIndex = 10;
+            this.btn20.TabIndex = 11;
             this.btn20.UseVisualStyleBackColor = false;
             this.btn20.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -260,7 +260,7 @@
             this.btn14.Location = new System.Drawing.Point(231, 308);
             this.btn14.Name = "btn14";
             this.btn14.Size = new System.Drawing.Size(60, 60);
-            this.btn14.TabIndex = 9;
+            this.btn14.TabIndex = 10;
             this.btn14.UseVisualStyleBackColor = false;
             this.btn14.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -271,7 +271,7 @@
             this.btn13.Location = new System.Drawing.Point(173, 308);
             this.btn13.Name = "btn13";
             this.btn13.Size = new System.Drawing.Size(60, 60);
-            this.btn13.TabIndex = 8;
+            this.btn13.TabIndex = 9;
             this.btn13.UseVisualStyleBackColor = false;
             this.btn13.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -282,7 +282,7 @@
             this.btn12.Location = new System.Drawing.Point(115, 308);
             this.btn12.Name = "btn12";
             this.btn12.Size = new System.Drawing.Size(60, 60);
-            this.btn12.TabIndex = 7;
+            this.btn12.TabIndex = 8;
             this.btn12.UseVisualStyleBackColor = false;
             this.btn12.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -293,7 +293,7 @@
             this.btn11.Location = new System.Drawing.Point(57, 308);
             this.btn11.Name = "btn11";
             this.btn11.Size = new System.Drawing.Size(60, 60);
-            this.btn11.TabIndex = 6;
+            this.btn11.TabIndex = 7;
             this.btn11.UseVisualStyleBackColor = false;
             this.btn11.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -304,7 +304,7 @@
             this.btn10.Location = new System.Drawing.Point(-1, 308);
             this.btn10.Name = "btn10";
             this.btn10.Size = new System.Drawing.Size(60, 60);
-            this.btn10.TabIndex = 5;
+            this.btn10.TabIndex = 6;
             this.btn10.UseVisualStyleBackColor = false;
             this.btn10.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -315,7 +315,7 @@
             this.btn04.Location = new System.Drawing.Point(231, 250);
             this.btn04.Name = "btn04";
             this.btn04.Size = new System.Drawing.Size(60, 60);
-            this.btn04.TabIndex = 4;
+            this.btn04.TabIndex = 5;
             this.btn04.UseVisualStyleBackColor = false;
             this.btn04.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -326,7 +326,7 @@
             this.btn03.Location = new System.Drawing.Point(173, 250);
             this.btn03.Name = "btn03";
             this.btn03.Size = new System.Drawing.Size(60, 60);
-            this.btn03.TabIndex = 3;
+            this.btn03.TabIndex = 4;
             this.btn03.UseVisualStyleBackColor = false;
             this.btn03.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -337,7 +337,7 @@
             this.btn02.Location = new System.Drawing.Point(115, 250);
             this.btn02.Name = "btn02";
             this.btn02.Size = new System.Drawing.Size(60, 60);
-            this.btn02.TabIndex = 2;
+            this.btn02.TabIndex = 3;
             this.btn02.UseVisualStyleBackColor = false;
             this.btn02.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -348,7 +348,7 @@
             this.btn01.Location = new System.Drawing.Point(57, 250);
             this.btn01.Name = "btn01";
             this.btn01.Size = new System.Drawing.Size(60, 60);
-            this.btn01.TabIndex = 1;
+            this.btn01.TabIndex = 2;
             this.btn01.UseVisualStyleBackColor = false;
             this.btn01.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -359,7 +359,7 @@
             this.btn00.Location = new System.Drawing.Point(-1, 250);
             this.btn00.Name = "btn00";
             this.btn00.Size = new System.Drawing.Size(60, 60);
-            this.btn00.TabIndex = 0;
+            this.btn00.TabIndex = 1;
             this.btn00.UseVisualStyleBackColor = false;
             this.btn00.Click += new System.EventHandler(this.btnWord_Click);
             // 
@@ -390,7 +390,7 @@
             this.btnBack.Location = new System.Drawing.Point(-1, 29);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(29, 25);
-            this.btnBack.TabIndex = 25;
+            this.btnBack.TabIndex = 30;
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
@@ -428,7 +428,7 @@
             this.btnOK.Location = new System.Drawing.Point(231, 29);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(60, 25);
-            this.btnOK.TabIndex = 31;
+            this.btnOK.TabIndex = 26;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -439,7 +439,7 @@
             this.btnClear.Location = new System.Drawing.Point(-1, 29);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(60, 25);
-            this.btnClear.TabIndex = 32;
+            this.btnClear.TabIndex = 28;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -448,6 +448,8 @@
             // 
             this.txtWords.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.txtWords.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.txtWords.Cursor = System.Windows.Forms.Cursors.Arrow;
+            this.txtWords.Enabled = false;
             this.txtWords.Font = new System.Drawing.Font("Microsoft Sans Serif", 30F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtWords.Location = new System.Drawing.Point(0, 177);
             this.txtWords.Multiline = true;
@@ -464,7 +466,7 @@
             this.lblBluePoint.Location = new System.Drawing.Point(21, 2);
             this.lblBluePoint.Name = "lblBluePoint";
             this.lblBluePoint.Size = new System.Drawing.Size(18, 20);
-            this.lblBluePoint.TabIndex = 34;
+            this.lblBluePoint.TabIndex = 0;
             this.lblBluePoint.Text = "0";
             this.lblBluePoint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -475,7 +477,7 @@
             this.lblRedPoint.Location = new System.Drawing.Point(22, 2);
             this.lblRedPoint.Name = "lblRedPoint";
             this.lblRedPoint.Size = new System.Drawing.Size(18, 20);
-            this.lblRedPoint.TabIndex = 35;
+            this.lblRedPoint.TabIndex = 0;
             this.lblRedPoint.Text = "0";
             this.lblRedPoint.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
@@ -485,7 +487,7 @@
             this.btnDelete.Location = new System.Drawing.Point(115, 29);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(60, 25);
-            this.btnDelete.TabIndex = 36;
+            this.btnDelete.TabIndex = 27;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnBackspace_Click);
@@ -496,7 +498,7 @@
             this.pnlBluePoint.Location = new System.Drawing.Point(66, 118);
             this.pnlBluePoint.Name = "pnlBluePoint";
             this.pnlBluePoint.Size = new System.Drawing.Size(60, 24);
-            this.pnlBluePoint.TabIndex = 37;
+            this.pnlBluePoint.TabIndex = 31;
             // 
             // pnlRedPoint
             // 
@@ -504,7 +506,7 @@
             this.pnlRedPoint.Location = new System.Drawing.Point(164, 118);
             this.pnlRedPoint.Name = "pnlRedPoint";
             this.pnlRedPoint.Size = new System.Drawing.Size(60, 24);
-            this.pnlRedPoint.TabIndex = 38;
+            this.pnlRedPoint.TabIndex = 32;
             // 
             // btnPass
             // 
@@ -512,54 +514,52 @@
             this.btnPass.Location = new System.Drawing.Point(231, 29);
             this.btnPass.Name = "btnPass";
             this.btnPass.Size = new System.Drawing.Size(60, 25);
-            this.btnPass.TabIndex = 39;
+            this.btnPass.TabIndex = 29;
             this.btnPass.Text = "Pass";
             this.btnPass.UseVisualStyleBackColor = true;
             this.btnPass.Click += new System.EventHandler(this.btnPass_Click);
             // 
-            // menuStrip1
+            // menuStrip
             // 
-            this.menuStrip1.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.menuStrip.BackColor = System.Drawing.Color.White;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuFile,
             this.mnuOption});
-            this.menuStrip1.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(290, 24);
-            this.menuStrip1.TabIndex = 40;
-            this.menuStrip1.Text = "menuStrip";
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(290, 24);
+            this.menuStrip.TabIndex = 34;
+            this.menuStrip.Text = "menuStrip";
             // 
             // mnuFile
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFileLoadGame,
-            this.mnuFileSave});
+            this.mnuGameLoad,
+            this.mnuGameSave});
             this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(37, 20);
-            this.mnuFile.Text = "&File";
+            this.mnuFile.Size = new System.Drawing.Size(50, 20);
+            this.mnuFile.Text = "&Game";
             // 
-            // mnuFileLoadGame
+            // mnuGameLoad
             // 
-            this.mnuFileLoadGame.Name = "mnuFileLoadGame";
-            this.mnuFileLoadGame.Size = new System.Drawing.Size(152, 22);
-            this.mnuFileLoadGame.Text = "Load Game";
-            this.mnuFileLoadGame.Click += new System.EventHandler(this.mnuFileLoadGame_Click);
+            this.mnuGameLoad.Name = "mnuGameLoad";
+            this.mnuGameLoad.Size = new System.Drawing.Size(152, 22);
+            this.mnuGameLoad.Text = "Load Game";
+            this.mnuGameLoad.Click += new System.EventHandler(this.mnuGameLoadGame_Click);
             // 
-            // mnuFileSave
+            // mnuGameSave
             // 
-            this.mnuFileSave.Image = ((System.Drawing.Image)(resources.GetObject("mnuFileSave.Image")));
-            this.mnuFileSave.Name = "mnuFileSave";
-            this.mnuFileSave.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
-            this.mnuFileSave.Size = new System.Drawing.Size(152, 22);
-            this.mnuFileSave.Text = "Save";
-            this.mnuFileSave.Click += new System.EventHandler(this.mnuFileSave_Click);
+            this.mnuGameSave.Name = "mnuGameSave";
+            this.mnuGameSave.Size = new System.Drawing.Size(152, 22);
+            this.mnuGameSave.Text = "Save";
+            this.mnuGameSave.Click += new System.EventHandler(this.mnuGameSave_Click);
             // 
             // mnuOption
             // 
             this.mnuOption.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.mnuOptionPlayedWords,
             this.mnuOptionResignGame,
-            this.toolStripSeparator1,
+            this.toolStripSeparator2,
             this.mnuOptionStats});
             this.mnuOption.Name = "mnuOption";
             this.mnuOption.Size = new System.Drawing.Size(56, 20);
@@ -579,10 +579,10 @@
             this.mnuOptionResignGame.Text = "Resign Game";
             this.mnuOptionResignGame.Click += new System.EventHandler(this.mnuOptionResignGame_Click);
             // 
-            // toolStripSeparator1
+            // toolStripSeparator2
             // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(143, 6);
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(143, 6);
             // 
             // mnuOptionStats
             // 
@@ -634,9 +634,9 @@
             this.Controls.Add(this.btn42);
             this.Controls.Add(this.btn41);
             this.Controls.Add(this.btn40);
-            this.Controls.Add(this.menuStrip1);
+            this.Controls.Add(this.menuStrip);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MainMenuStrip = this.menuStrip1;
+            this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(306, 580);
             this.MinimumSize = new System.Drawing.Size(306, 580);
@@ -644,6 +644,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Letterpress";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameBoard_FormClosing);
+            this.Load += new System.EventHandler(this.GameBoard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRedIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIndex)).EndInit();
@@ -652,8 +653,8 @@
             this.pnlBluePoint.PerformLayout();
             this.pnlRedPoint.ResumeLayout(false);
             this.pnlRedPoint.PerformLayout();
-            this.menuStrip1.ResumeLayout(false);
-            this.menuStrip1.PerformLayout();
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -701,15 +702,15 @@
         private System.Windows.Forms.Panel pnlBluePoint;
         private System.Windows.Forms.Panel pnlRedPoint;
         private System.Windows.Forms.Button btnPass;
-        private System.Windows.Forms.MenuStrip menuStrip1;
+        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
+        private System.Windows.Forms.ToolStripMenuItem mnuGameLoad;
+        private System.Windows.Forms.ToolStripMenuItem mnuGameSave;
         private System.Windows.Forms.ToolStripMenuItem mnuOption;
         private System.Windows.Forms.ToolStripMenuItem mnuOptionPlayedWords;
         private System.Windows.Forms.ToolStripMenuItem mnuOptionResignGame;
-        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem mnuOptionStats;
-        private System.Windows.Forms.ToolStripMenuItem mnuFileSave;
-        private System.Windows.Forms.ToolStripMenuItem mnuFileLoadGame;
     }
 }
 

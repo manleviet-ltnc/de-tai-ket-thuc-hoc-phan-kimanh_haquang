@@ -25,6 +25,7 @@ namespace Letterpress.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int bluePoint {
             get {
                 return ((int)(this["bluePoint"]));
@@ -36,6 +37,7 @@ namespace Letterpress.Properties {
         
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("0")]
         public int redPoint {
             get {
                 return ((int)(this["redPoint"]));
@@ -75,6 +77,581 @@ namespace Letterpress.Properties {
             }
             set {
                 this["wordsListUsed"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text00 {
+            get {
+                return ((string)(this["text00"]));
+            }
+            set {
+                this["text00"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text01 {
+            get {
+                return ((string)(this["text01"]));
+            }
+            set {
+                this["text01"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text02 {
+            get {
+                return ((string)(this["text02"]));
+            }
+            set {
+                this["text02"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text03 {
+            get {
+                return ((string)(this["text03"]));
+            }
+            set {
+                this["text03"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text04 {
+            get {
+                return ((string)(this["text04"]));
+            }
+            set {
+                this["text04"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text10 {
+            get {
+                return ((string)(this["text10"]));
+            }
+            set {
+                this["text10"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text11 {
+            get {
+                return ((string)(this["text11"]));
+            }
+            set {
+                this["text11"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text12 {
+            get {
+                return ((string)(this["text12"]));
+            }
+            set {
+                this["text12"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text13 {
+            get {
+                return ((string)(this["text13"]));
+            }
+            set {
+                this["text13"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text14 {
+            get {
+                return ((string)(this["text14"]));
+            }
+            set {
+                this["text14"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text20 {
+            get {
+                return ((string)(this["text20"]));
+            }
+            set {
+                this["text20"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text21 {
+            get {
+                return ((string)(this["text21"]));
+            }
+            set {
+                this["text21"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text22 {
+            get {
+                return ((string)(this["text22"]));
+            }
+            set {
+                this["text22"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text23 {
+            get {
+                return ((string)(this["text23"]));
+            }
+            set {
+                this["text23"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text24 {
+            get {
+                return ((string)(this["text24"]));
+            }
+            set {
+                this["text24"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text30 {
+            get {
+                return ((string)(this["text30"]));
+            }
+            set {
+                this["text30"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text31 {
+            get {
+                return ((string)(this["text31"]));
+            }
+            set {
+                this["text31"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text32 {
+            get {
+                return ((string)(this["text32"]));
+            }
+            set {
+                this["text32"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text33 {
+            get {
+                return ((string)(this["text33"]));
+            }
+            set {
+                this["text33"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text34 {
+            get {
+                return ((string)(this["text34"]));
+            }
+            set {
+                this["text34"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text40 {
+            get {
+                return ((string)(this["text40"]));
+            }
+            set {
+                this["text40"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text41 {
+            get {
+                return ((string)(this["text41"]));
+            }
+            set {
+                this["text41"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text42 {
+            get {
+                return ((string)(this["text42"]));
+            }
+            set {
+                this["text42"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text43 {
+            get {
+                return ((string)(this["text43"]));
+            }
+            set {
+                this["text43"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string text44 {
+            get {
+                return ((string)(this["text44"]));
+            }
+            set {
+                this["text44"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color00 {
+            get {
+                return ((global::System.Drawing.Color)(this["color00"]));
+            }
+            set {
+                this["color00"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color01 {
+            get {
+                return ((global::System.Drawing.Color)(this["color01"]));
+            }
+            set {
+                this["color01"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color02 {
+            get {
+                return ((global::System.Drawing.Color)(this["color02"]));
+            }
+            set {
+                this["color02"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color03 {
+            get {
+                return ((global::System.Drawing.Color)(this["color03"]));
+            }
+            set {
+                this["color03"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color04 {
+            get {
+                return ((global::System.Drawing.Color)(this["color04"]));
+            }
+            set {
+                this["color04"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color10 {
+            get {
+                return ((global::System.Drawing.Color)(this["color10"]));
+            }
+            set {
+                this["color10"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color11 {
+            get {
+                return ((global::System.Drawing.Color)(this["color11"]));
+            }
+            set {
+                this["color11"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color12 {
+            get {
+                return ((global::System.Drawing.Color)(this["color12"]));
+            }
+            set {
+                this["color12"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color13 {
+            get {
+                return ((global::System.Drawing.Color)(this["color13"]));
+            }
+            set {
+                this["color13"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color14 {
+            get {
+                return ((global::System.Drawing.Color)(this["color14"]));
+            }
+            set {
+                this["color14"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color20 {
+            get {
+                return ((global::System.Drawing.Color)(this["color20"]));
+            }
+            set {
+                this["color20"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color21 {
+            get {
+                return ((global::System.Drawing.Color)(this["color21"]));
+            }
+            set {
+                this["color21"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color22 {
+            get {
+                return ((global::System.Drawing.Color)(this["color22"]));
+            }
+            set {
+                this["color22"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color23 {
+            get {
+                return ((global::System.Drawing.Color)(this["color23"]));
+            }
+            set {
+                this["color23"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color24 {
+            get {
+                return ((global::System.Drawing.Color)(this["color24"]));
+            }
+            set {
+                this["color24"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color30 {
+            get {
+                return ((global::System.Drawing.Color)(this["color30"]));
+            }
+            set {
+                this["color30"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color31 {
+            get {
+                return ((global::System.Drawing.Color)(this["color31"]));
+            }
+            set {
+                this["color31"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color32 {
+            get {
+                return ((global::System.Drawing.Color)(this["color32"]));
+            }
+            set {
+                this["color32"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color33 {
+            get {
+                return ((global::System.Drawing.Color)(this["color33"]));
+            }
+            set {
+                this["color33"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color34 {
+            get {
+                return ((global::System.Drawing.Color)(this["color34"]));
+            }
+            set {
+                this["color34"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color40 {
+            get {
+                return ((global::System.Drawing.Color)(this["color40"]));
+            }
+            set {
+                this["color40"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color41 {
+            get {
+                return ((global::System.Drawing.Color)(this["color41"]));
+            }
+            set {
+                this["color41"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color42 {
+            get {
+                return ((global::System.Drawing.Color)(this["color42"]));
+            }
+            set {
+                this["color42"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color43 {
+            get {
+                return ((global::System.Drawing.Color)(this["color43"]));
+            }
+            set {
+                this["color43"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        public global::System.Drawing.Color color44 {
+            get {
+                return ((global::System.Drawing.Color)(this["color44"]));
+            }
+            set {
+                this["color44"] = value;
             }
         }
     }
