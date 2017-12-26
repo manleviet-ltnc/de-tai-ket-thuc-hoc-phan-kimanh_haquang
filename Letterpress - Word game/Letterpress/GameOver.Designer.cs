@@ -41,7 +41,7 @@
             this.btnClose.Location = new System.Drawing.Point(7, 201);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(240, 36);
-            this.btnClose.TabIndex = 24;
+            this.btnClose.TabIndex = 4;
             this.btnClose.Text = "Close";
             this.btnClose.UseVisualStyleBackColor = true;
             this.btnClose.Click += new System.EventHandler(this.btnClose_Click);
@@ -52,7 +52,7 @@
             this.btnPlayedWords.Location = new System.Drawing.Point(7, 94);
             this.btnPlayedWords.Name = "btnPlayedWords";
             this.btnPlayedWords.Size = new System.Drawing.Size(240, 36);
-            this.btnPlayedWords.TabIndex = 21;
+            this.btnPlayedWords.TabIndex = 2;
             this.btnPlayedWords.Text = "Played Words";
             this.btnPlayedWords.UseVisualStyleBackColor = true;
             this.btnPlayedWords.Click += new System.EventHandler(this.btnPlayedWords_Click);
@@ -64,18 +64,18 @@
             this.label1.Location = new System.Drawing.Point(73, 3);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(108, 25);
-            this.label1.TabIndex = 20;
+            this.label1.TabIndex = 0;
             this.label1.Text = "Game over";
             // 
             // lblScored
             // 
-            this.lblScored.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
+            this.lblScored.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.lblScored.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScored.Location = new System.Drawing.Point(12, 41);
             this.lblScored.Name = "lblScored";
             this.lblScored.Size = new System.Drawing.Size(230, 30);
-            this.lblScored.TabIndex = 25;
+            this.lblScored.TabIndex = 1;
             this.lblScored.Text = "Player  wins ";
             this.lblScored.TextAlign = System.Drawing.ContentAlignment.TopCenter;
             // 
@@ -85,7 +85,7 @@
             this.btnRematch.Location = new System.Drawing.Point(7, 147);
             this.btnRematch.Name = "btnRematch";
             this.btnRematch.Size = new System.Drawing.Size(240, 36);
-            this.btnRematch.TabIndex = 22;
+            this.btnRematch.TabIndex = 3;
             this.btnRematch.Text = "Rematch";
             this.btnRematch.UseVisualStyleBackColor = true;
             this.btnRematch.Click += new System.EventHandler(this.btnRematch_Click);
@@ -102,6 +102,8 @@
             this.Controls.Add(this.btnRematch);
             this.Controls.Add(this.btnPlayedWords);
             this.Controls.Add(this.label1);
+            this.MaximumSize = new System.Drawing.Size(271, 262);
+            this.MinimumSize = new System.Drawing.Size(271, 262);
             this.Name = "GameOver";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.GameOver_Load);

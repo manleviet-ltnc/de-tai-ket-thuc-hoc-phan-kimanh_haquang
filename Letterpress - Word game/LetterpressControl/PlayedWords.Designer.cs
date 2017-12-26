@@ -82,6 +82,8 @@
             this.Controls.Add(this.btnOkay);
             this.Controls.Add(this.lblTotalPlayedWords);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
+            this.MaximumSize = new System.Drawing.Size(270, 277);
+            this.MinimumSize = new System.Drawing.Size(270, 277);
             this.Name = "PlayedWords";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.PlayedWords_Load);

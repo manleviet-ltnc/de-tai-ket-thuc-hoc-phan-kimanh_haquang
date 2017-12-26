@@ -8,21 +8,7 @@ namespace LetterpressManager
 {
     public class Storage
     {
-        private bool hasChanged = true;
-        public bool HasChanged
-        {
-            get { return hasChanged; }
-            set { hasChanged = value; }
-        }
-
         public List<string> wordsListUsed = new List<string>();
-
-        private bool redTurn = false;
-        public bool RedTurn
-        {
-            get { return redTurn; }
-            set { redTurn = value; }
-        }
 
         private int bluePoint;
         public int BluePoint
@@ -36,6 +22,13 @@ namespace LetterpressManager
         {
             get { return redPoint; }
             set { redPoint = value; }
+        }
+
+        private bool rematch;
+        public bool Rematch
+        {
+            get { return rematch; }
+            set { rematch = value; }
         }
     }
 }

@@ -87,5 +87,11 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\LetterpressManager\LetterpressManager.csproj">
+      <Project>{b278798b-ef7e-4e5d-b511-1706e39d3ab2}</Project>
+      <Name>LetterpressManager</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

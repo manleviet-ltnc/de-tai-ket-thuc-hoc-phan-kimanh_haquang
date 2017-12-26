@@ -22,12 +22,14 @@ namespace Letterpress
 
         Button[,] button = new Button[5, 5];
         Button btn;
+        bool hasChanged = true;   // Kiểm tra game có sự thay đổi so với lúc lưu không
+        bool redTurn = false;   // Kiểm tra xem có phải đang là lượt của người chơi đỏ không
         int index = -1;   // Chỉ số vị trí của button được chọn
         int[] row = new int[25];   // Mảng các chỉ số dòng button được chọn
         int[] column = new int[25];   // Mảng các chỉ số cột button được chọn
         int blueCount = 0;   // Điểm bị trừ / nhớ tạm của người chơi xanh
         int redCount = 0;   // Điểm bị trừ / nhớ tạm của người chơi đỏ
-        bool gameOver = false;
+        bool gameOver = false;   // Kiểm tra game đã kết thúc chưa
 
         public GameBoard()
         {
@@ -108,13 +110,35 @@ namespace Letterpress
                         for (int j = 0; j < 5; j++)
                             if (button[i, j].Focused && i > 0)
                             {
-                                button[i - 1, j + 1].Focus();
-                                i = 4;
-                                break;
+                                button[i - 1, j].Focus();
+                                return true;
+                            }
+                            else if (button[0, 0].Focused)
+                            {
+                                if (txtWords.Text.Length > 0)
+                                    btnClear.Focus();
+                                else
+                                    btnBack.Focus();
+                            }
+                            else if (button[0, 4].Focused)
+                            {
+                                if (txtWords.Text.Length > 0)
+                                    btnOK.Focus();
+                                else
+                                    btnPass.Focus();
+                            }
+                            else if (button[0, 1].Focused || button[0, 3].Focused)
+                                return true;
+                            else if (button[0, 2].Focused)
+                            {
+                                if (txtWords.Text.Length > 0)
+                                    btn.Focus();
+                                else
+                                    return true;
                             }
 
-                    if (btnPass.Focus() || btnBack.Focus() ||
-                        btnOK.Focus() || btnDelete.Focus() || btnClear.Focus())
+                    if (btnPass.Focused || btnBack.Focused ||
+                        btnOK.Focused || btnDelete.Focused || btnClear.Focused)
                         return true;
 
                     break;
@@ -122,27 +146,19 @@ namespace Letterpress
                     for (int i = 0; i < 5; i++)
                         for (int j = 0; j < 5; j++)
                         {
-                            if (button[i, 0].Focused && j == 0 && i < 4)
+                            if (button[i, j].Focused && i < 4)
                             {
                                 button[i + 1, j].Focus();
                                 return true;
                             }
-                            else if (button[i, j].Focused && i < 4)
-                            {
-                                button[i + 1, j - 1].Focus();
-                                i = 4;
-                                return true;
-                            }
-                            else if (i == 4)
-                                return true;
                         }
 
-                    if (btnPass.Focus() || btnOK.Focus())
+                    if (btnPass.Focused || btnOK.Focused)
                     {
                         button[0, 4].Focus();
                         return true;
                     }
-                    else if (btnBack.Focus() || btnClear.Focus())
+                    else if (btnBack.Focused || btnClear.Focused)
                     {
                         button[0, 0].Focus();
                         return true;
@@ -150,12 +166,62 @@ namespace Letterpress
 
                     break;
                 case Keys.Right:
-                    if (btnPass.Focus() || btnOK.Focus())
+                    for (int i = 0; i < 5; i++)
+                        for (int j = 0; j < 5; j++)
+                            if (button[i, j].Focused)
+                            {
+                                if (j < 4)
+                                    button[i, j + 1].Focus();
+                                return true;
+                            }
+
+                    if (btnPass.Focused || btnOK.Focused)
                         return true;
+                    else if (btnBack.Focused)
+                    {
+                        btnPass.Focus();
+                        return true;
+                    }
+                    else if (btnClear.Focused)
+                    {
+                        btnDelete.Focus();
+                        return true;
+                    }
+                    else if (btnDelete.Focused)
+                    {
+                        btnOK.Focus();
+                        return true;
+                    }
+
                     break;
                 case Keys.Left:
-                    if (btnBack.Focus() || btnClear.Focus())
+                    for (int i = 0; i < 5; i++)
+                        for (int j = 0; j < 5; j++)
+                            if (button[i, j].Focused)
+                            {
+                                if (j > 0)
+                                    button[i, j - 1].Focus();
+                                return true;
+                            }
+
+                    if (btnBack.Focused || btnClear.Focused)
                         return true;
+                    else if (btnPass.Focused)
+                    {
+                        btnBack.Focus();
+                        return true;
+                    }
+                    else if (btnOK.Focused)
+                    {
+                        btnDelete.Focus();
+                        return true;
+                    }
+                    else if (btnDelete.Focused)
+                    {
+                        btnClear.Focus();
+                        return true;
+                    }
+
                     break;
             }
 
@@ -180,7 +246,7 @@ namespace Letterpress
             if (gameOver)
                 return;
 
-            storage.HasChanged = true;
+            hasChanged = true;
             btn = (Button)sender;
             txtWords.Text += btn.Text;
 
@@ -206,7 +272,7 @@ namespace Letterpress
 
         private void AddPoint(Button btn)
         {
-            if (storage.RedTurn == false)
+            if (redTurn == false)
             {
                 if (btn.BackColor == Color.LightSkyBlue)
                     blueCount++;
@@ -246,7 +312,7 @@ namespace Letterpress
 
         private void SubtractPoint(Button[,] btn)
         {
-            if (storage.RedTurn == false)
+            if (redTurn == false)
             {
                 if (btn[row[index], column[index]].BackColor != Color.LightSkyBlue)
                 {
@@ -280,7 +346,7 @@ namespace Letterpress
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            storage.HasChanged = true;
+            hasChanged = true;
             SelectLiteral();
             txtWords.Clear();
             ShowButton();
@@ -291,7 +357,7 @@ namespace Letterpress
                 index--;
             }
 
-            if (storage.RedTurn == false)
+            if (redTurn == false)
             {
                 if (btn.BackColor != Color.LightSkyBlue)
                 {
@@ -331,15 +397,15 @@ namespace Letterpress
 
         private void ChangeTurn(Storage storage)
         {
-            if (storage.RedTurn == false)
+            if (redTurn == false)
             {
-                storage.RedTurn = true;
+                redTurn = true;
                 pbxBlueIndex.Hide();
                 pbxRedIndex.Show();
             }
             else
             {
-                storage.RedTurn = false;
+                redTurn = false;
                 pbxRedIndex.Hide();
                 pbxBlueIndex.Show();
             }
@@ -347,23 +413,18 @@ namespace Letterpress
 
         private void btnOK_Click(object sender, EventArgs e)
         {
-            int j = 0;
             for (int i = 0; i < pf.words.Length; i++)
                 if (txtWords.Text == pf.words[i])
                 {
-                    if (j != 0)
-                    {
-                        foreach (string str in storage.wordsListUsed)
-                            if (pf.words[i] == str)
-                            {
-                                MessageBox.Show(pf.words[i].ToUpper() + " has already been played",
-                                                "Already Used");
-                                return;
-                            }
-                    }
+                    foreach (string str in storage.wordsListUsed)
+                        if (txtWords.Text == str)
+                        {
+                            MessageBox.Show(str.ToUpper() + " has already been played",
+                                            "Already Used");
+                            return;
+                        }
 
                     storage.wordsListUsed.Add(pf.words[i]);
-                    j++;
                     break;
                 }
                 else if (pf.words[i] == pf.words[pf.words.Length - 1])
@@ -374,7 +435,7 @@ namespace Letterpress
 
             for (int i = 0; i <= index; i++)
             {
-                if (storage.RedTurn == false)
+                if (redTurn == false)
                     button[row[i], column[i]].BackColor = Color.LightSkyBlue;
                 else
                     button[row[i], column[i]].BackColor = Color.Red;
@@ -389,37 +450,22 @@ namespace Letterpress
             blueCount = 0;
             redCount = 0;
             index = -1;
-            j = 0;
 
             if (storage.BluePoint + storage.RedPoint == 25)
-                FinishGame(25);
-        }
-
-        private void FinishGame(int count)
-        {
-            storage.HasChanged = false;
-            foreach (Button b in button)
             {
-                if (b.BackColor != Color.Gainsboro)
-                    count--;
-                if (count == 0)
-                {
-                    storage.HasChanged = false;
-                    GameOver go = new GameOver();
-                    Owner = go;
-                    go.Blue = storage.BluePoint;
-                    go.Red = storage.RedPoint;
-                    go.WordsListUsed = storage.wordsListUsed;
-                    go.Show();
+                hasChanged = false;
+                GameOver go = new GameOver(storage);
+                go.ShowDialog();
 
-                    gameOver = true;
-                }
+                gameOver = true;
+                if (storage.Rematch)
+                    Close();
             }
         }
 
         private void btnBackspace_Click(object sender, EventArgs e)
         {
-            storage.HasChanged = true;
+            hasChanged = true;
             if (txtWords.Text != "")
             {
                 txtWords.Text = txtWords.Text.Remove(txtWords.Text.Length - 1);
@@ -444,8 +490,8 @@ namespace Letterpress
                                                   MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
-                storage.RedTurn = !storage.RedTurn;
-                if (storage.RedTurn)
+                redTurn = !redTurn;
+                if (redTurn)
                 {
                     pbxBlueIndex.Hide();
                     pbxRedIndex.Show();
@@ -460,7 +506,7 @@ namespace Letterpress
 
         private void mnuGameLoadGame_Click(object sender, EventArgs e)
         {
-            storage.HasChanged = false;
+            hasChanged = false;
             storage.BluePoint = Settings.Default.bluePoint;
             lblBluePoint.Text = "" + storage.BluePoint;
             storage.RedPoint = Settings.Default.redPoint;
@@ -468,7 +514,7 @@ namespace Letterpress
 
             pbxBlueIndex.Visible = Settings.Default.blueIndex;
             pbxRedIndex.Visible = Settings.Default.redIndex;
-            storage.RedTurn = pbxRedIndex.Visible;
+            redTurn = pbxRedIndex.Visible;
 
             button[0, 0].Text = Settings.Default.text00;
             button[0, 1].Text = Settings.Default.text01;
@@ -525,7 +571,7 @@ namespace Letterpress
             storage.wordsListUsed = Settings.Default.wordsListUsed;
         }
 
-        private void mnuGameSave_Click(object sender, EventArgs e)
+        private void mnuGameSaveGame_Click(object sender, EventArgs e)
         {
             Save();
         }
@@ -535,11 +581,11 @@ namespace Letterpress
             if (gameOver)
                 return;
 
-            storage.HasChanged = false;
+            hasChanged = false;
             Settings.Default.bluePoint = storage.BluePoint;
             Settings.Default.redPoint = storage.RedPoint;
 
-            if (storage.RedTurn == false)
+            if (redTurn == false)
             {
                 Settings.Default.blueIndex = true;
                 Settings.Default.redIndex = false;
@@ -608,11 +654,9 @@ namespace Letterpress
 
         private void mnuOptionPlayedWords_Click(object sender, EventArgs e)
         {
-            using (PlayedWords pw = new PlayedWords())
-            {
-                if (pw.ShowDialog() == DialogResult.OK)
-                    pw.Show();
-            }
+            PlayedWords pw = new PlayedWords();
+            pw.wordsListUsed = storage.wordsListUsed;
+            pw.ShowDialog();
         }
 
         private void mnuOptionResignGame_Click(object sender, EventArgs e)
@@ -631,16 +675,14 @@ namespace Letterpress
 
         private void mnuOptionStats_Click(object sender, EventArgs e)
         {
-            using (Stats sts = new Stats())
-            {
-                if (sts.ShowDialog() == DialogResult.OK)
-                    sts.Show();
-            }
+            Stats sts = new Stats();
+
+            sts.ShowDialog();
         }
 
-        private void GameBoard_FormClosing(object sender, FormClosingEventArgs e)
+        protected override void OnFormClosing(FormClosingEventArgs e)
         {
-            if (storage.HasChanged)
+            if (hasChanged)
             {
                 DialogResult result = MessageBox.Show("Are you want to save this game?", "",
                                                   MessageBoxButtons.YesNoCancel,

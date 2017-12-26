@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using LetterpressManager;
 
 namespace LetterpressControl
 {
@@ -17,9 +18,11 @@ namespace LetterpressControl
             InitializeComponent();
         }
 
-        private void btnBack_Click(object sender, EventArgs e)
+        Storage storage = new Storage();
+
+        private void Stats_Load(object sender, EventArgs e)
         {
-            Close();
+            
         }
 
         private void btnOkay_Click(object sender, EventArgs e)

@@ -7,43 +7,33 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Threading;
 using LetterpressControl;
+using LetterpressManager;
 
 namespace Letterpress
 {
     public partial class GameOver : Form
     {
-        public GameOver()
+        Thread thread;
+        public Storage storage = new Storage();
+
+        public GameOver(Storage storage)
         {
             InitializeComponent();
+            this.storage = storage;
         }
-
-        int blue;
-        public int Blue
-        {
-            get { return blue; }
-            set { blue = value; }
-        }
-
-        int red;
-        public int Red
-        {
-            get { return red; }
-            set { red = value; }
-        }
-
-        public List<string> WordsListUsed = new List<string>();
 
         private void GameOver_Load(object sender, EventArgs e)
         {
             lblScored.Left = (ClientSize.Width - lblScored.Width) / 2;
 
-            if (Blue > Red)
+            if (storage.BluePoint > storage.RedPoint)
                 lblScored.Text = String.Format("Player Blue wins {0}-{1}",
-                                                    Blue, Red);
+                                                storage.BluePoint, storage.RedPoint);
             else
                 lblScored.Text = String.Format("Player Red wins {0}-{1}",
-                                                    Red, Blue);
+                                                storage.RedPoint, storage.BluePoint);
         }
 
         private void btnClose_Click(object sender, EventArgs e)
@@ -54,15 +44,23 @@ namespace Letterpress
         private void btnPlayedWords_Click(object sender, EventArgs e)
         {
             PlayedWords pw = new PlayedWords();
-            pw.WordsListUsed = WordsListUsed;
+            pw.wordsListUsed = storage.wordsListUsed;
             pw.Show();
         }
 
         private void btnRematch_Click(object sender, EventArgs e)
         {
-            GameBoard gb = new GameBoard();
-            Hide();
-            gb.Show();
+            storage.Rematch = true;
+
+            Close();
+            thread = new Thread(OpenNewGameBoard);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenNewGameBoard(object o)
+        {
+            Application.Run(new GameBoard());
         }
     }
 }

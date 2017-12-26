@@ -70,7 +70,6 @@
             this.pnlBluePoint = new System.Windows.Forms.Panel();
             this.pnlRedPoint = new System.Windows.Forms.Panel();
             this.btnPass = new System.Windows.Forms.Button();
-            this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGameLoad = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuGameSave = new System.Windows.Forms.ToolStripMenuItem();
@@ -79,6 +78,16 @@
             this.mnuOptionResignGame = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.mnuOptionStats = new System.Windows.Forms.ToolStripMenuItem();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.mnuGame = new System.Windows.Forms.ToolStripMenuItem();
+            this.loadGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.mnuGameExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.optionToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.playedWordsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.resignGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.statsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRedIcon)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIndex)).BeginInit();
@@ -454,7 +463,6 @@
             this.txtWords.Location = new System.Drawing.Point(0, 177);
             this.txtWords.Multiline = true;
             this.txtWords.Name = "txtWords";
-            this.txtWords.ReadOnly = true;
             this.txtWords.Size = new System.Drawing.Size(290, 60);
             this.txtWords.TabIndex = 33;
             this.txtWords.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
@@ -519,18 +527,6 @@
             this.btnPass.UseVisualStyleBackColor = true;
             this.btnPass.Click += new System.EventHandler(this.btnPass_Click);
             // 
-            // menuStrip
-            // 
-            this.menuStrip.BackColor = System.Drawing.Color.White;
-            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFile,
-            this.mnuOption});
-            this.menuStrip.Location = new System.Drawing.Point(0, 0);
-            this.menuStrip.Name = "menuStrip";
-            this.menuStrip.Size = new System.Drawing.Size(290, 24);
-            this.menuStrip.TabIndex = 34;
-            this.menuStrip.Text = "menuStrip";
-            // 
             // mnuFile
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -543,16 +539,16 @@
             // mnuGameLoad
             // 
             this.mnuGameLoad.Name = "mnuGameLoad";
-            this.mnuGameLoad.Size = new System.Drawing.Size(152, 22);
+            this.mnuGameLoad.Size = new System.Drawing.Size(134, 22);
             this.mnuGameLoad.Text = "Load Game";
             this.mnuGameLoad.Click += new System.EventHandler(this.mnuGameLoadGame_Click);
             // 
             // mnuGameSave
             // 
             this.mnuGameSave.Name = "mnuGameSave";
-            this.mnuGameSave.Size = new System.Drawing.Size(152, 22);
+            this.mnuGameSave.Size = new System.Drawing.Size(134, 22);
             this.mnuGameSave.Text = "Save";
-            this.mnuGameSave.Click += new System.EventHandler(this.mnuGameSave_Click);
+            this.mnuGameSave.Click += new System.EventHandler(this.mnuGameSaveGame_Click);
             // 
             // mnuOption
             // 
@@ -590,6 +586,92 @@
             this.mnuOptionStats.Size = new System.Drawing.Size(146, 22);
             this.mnuOptionStats.Text = "Stats";
             this.mnuOptionStats.Click += new System.EventHandler(this.mnuOptionStats_Click);
+            // 
+            // menuStrip
+            // 
+            this.menuStrip.BackColor = System.Drawing.Color.White;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mnuGame,
+            this.optionToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(290, 24);
+            this.menuStrip.TabIndex = 34;
+            this.menuStrip.Text = "menuStrip";
+            // 
+            // mnuGame
+            // 
+            this.mnuGame.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.loadGameToolStripMenuItem,
+            this.saveToolStripMenuItem,
+            this.toolStripSeparator1,
+            this.mnuGameExit});
+            this.mnuGame.Name = "mnuGame";
+            this.mnuGame.Size = new System.Drawing.Size(50, 20);
+            this.mnuGame.Text = "&Game";
+            // 
+            // loadGameToolStripMenuItem
+            // 
+            this.loadGameToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("loadGameToolStripMenuItem.Image")));
+            this.loadGameToolStripMenuItem.Name = "loadGameToolStripMenuItem";
+            this.loadGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.O)));
+            this.loadGameToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.loadGameToolStripMenuItem.Text = "&Load Game";
+            this.loadGameToolStripMenuItem.Click += new System.EventHandler(this.mnuGameLoadGame_Click);
+            // 
+            // saveToolStripMenuItem
+            // 
+            this.saveToolStripMenuItem.Image = ((System.Drawing.Image)(resources.GetObject("saveToolStripMenuItem.Image")));
+            this.saveToolStripMenuItem.Name = "saveToolStripMenuItem";
+            this.saveToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.S)));
+            this.saveToolStripMenuItem.Size = new System.Drawing.Size(177, 22);
+            this.saveToolStripMenuItem.Text = "&Save Game";
+            this.saveToolStripMenuItem.Click += new System.EventHandler(this.mnuGameSaveGame_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(174, 6);
+            // 
+            // mnuGameExit
+            // 
+            this.mnuGameExit.Image = ((System.Drawing.Image)(resources.GetObject("mnuGameExit.Image")));
+            this.mnuGameExit.Name = "mnuGameExit";
+            this.mnuGameExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuGameExit.Size = new System.Drawing.Size(177, 22);
+            this.mnuGameExit.Text = "&Exit";
+            // 
+            // optionToolStripMenuItem
+            // 
+            this.optionToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.playedWordsToolStripMenuItem,
+            this.resignGameToolStripMenuItem,
+            this.statsToolStripMenuItem});
+            this.optionToolStripMenuItem.Name = "optionToolStripMenuItem";
+            this.optionToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
+            this.optionToolStripMenuItem.Text = "&Option";
+            // 
+            // playedWordsToolStripMenuItem
+            // 
+            this.playedWordsToolStripMenuItem.Name = "playedWordsToolStripMenuItem";
+            this.playedWordsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.playedWordsToolStripMenuItem.Text = "&Played Words";
+            this.playedWordsToolStripMenuItem.Click += new System.EventHandler(this.mnuOptionPlayedWords_Click);
+            // 
+            // resignGameToolStripMenuItem
+            // 
+            this.resignGameToolStripMenuItem.Name = "resignGameToolStripMenuItem";
+            this.resignGameToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.N)));
+            this.resignGameToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.resignGameToolStripMenuItem.Text = "&Resign Game";
+            this.resignGameToolStripMenuItem.Click += new System.EventHandler(this.mnuOptionResignGame_Click);
+            // 
+            // statsToolStripMenuItem
+            // 
+            this.statsToolStripMenuItem.Name = "statsToolStripMenuItem";
+            this.statsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
+            this.statsToolStripMenuItem.Text = "&Stats";
+            this.statsToolStripMenuItem.Click += new System.EventHandler(this.mnuOptionStats_Click);
             // 
             // GameBoard
             // 
@@ -643,7 +725,6 @@
             this.Name = "GameBoard";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Letterpress";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.GameBoard_FormClosing);
             this.Load += new System.EventHandler(this.GameBoard_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbxBlueIcon)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pbxRedIcon)).EndInit();
@@ -702,7 +783,6 @@
         private System.Windows.Forms.Panel pnlBluePoint;
         private System.Windows.Forms.Panel pnlRedPoint;
         private System.Windows.Forms.Button btnPass;
-        private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
         private System.Windows.Forms.ToolStripMenuItem mnuGameLoad;
         private System.Windows.Forms.ToolStripMenuItem mnuGameSave;
@@ -711,6 +791,16 @@
         private System.Windows.Forms.ToolStripMenuItem mnuOptionResignGame;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripMenuItem mnuOptionStats;
+        private System.Windows.Forms.MenuStrip menuStrip;
+        private System.Windows.Forms.ToolStripMenuItem mnuGame;
+        private System.Windows.Forms.ToolStripMenuItem loadGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem optionToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem playedWordsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem resignGameToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem statsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
+        private System.Windows.Forms.ToolStripMenuItem mnuGameExit;
     }
 }
 

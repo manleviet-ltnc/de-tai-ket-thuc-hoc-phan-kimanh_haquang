@@ -34,7 +34,7 @@
             this.btnGameStart = new System.Windows.Forms.Button();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.mnuFile = new System.Windows.Forms.ToolStripMenuItem();
-            this.mnuFileExit = new System.Windows.Forms.ToolStripMenuItem();
+            this.mnuGameExit = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOption = new System.Windows.Forms.ToolStripMenuItem();
             this.mnuOptionStats = new System.Windows.Forms.ToolStripMenuItem();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -76,19 +76,19 @@
             // mnuFile
             // 
             this.mnuFile.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.mnuFileExit});
+            this.mnuGameExit});
             this.mnuFile.Name = "mnuFile";
-            this.mnuFile.Size = new System.Drawing.Size(37, 20);
-            this.mnuFile.Text = "&File";
+            this.mnuFile.Size = new System.Drawing.Size(50, 20);
+            this.mnuFile.Text = "&Game";
             // 
-            // mnuFileExit
+            // mnuGameExit
             // 
-            this.mnuFileExit.Image = ((System.Drawing.Image)(resources.GetObject("mnuFileExit.Image")));
-            this.mnuFileExit.Name = "mnuFileExit";
-            this.mnuFileExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
-            this.mnuFileExit.Size = new System.Drawing.Size(134, 22);
-            this.mnuFileExit.Text = "Exit";
-            this.mnuFileExit.Click += new System.EventHandler(this.mnuFileExit_Click);
+            this.mnuGameExit.Image = ((System.Drawing.Image)(resources.GetObject("mnuGameExit.Image")));
+            this.mnuGameExit.Name = "mnuGameExit";
+            this.mnuGameExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
+            this.mnuGameExit.Size = new System.Drawing.Size(134, 22);
+            this.mnuGameExit.Text = "Exit";
+            this.mnuGameExit.Click += new System.EventHandler(this.mnuGameExit_Click);
             // 
             // mnuOption
             // 
@@ -133,6 +133,7 @@
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.MaximumSize = new System.Drawing.Size(306, 580);
+            this.MinimumSize = new System.Drawing.Size(281, 519);
             this.Name = "NewGame";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Letterpress";
@@ -149,7 +150,7 @@
         private System.Windows.Forms.Button btnGameStart;
         private System.Windows.Forms.MenuStrip menuStrip;
         private System.Windows.Forms.ToolStripMenuItem mnuFile;
-        private System.Windows.Forms.ToolStripMenuItem mnuFileExit;
+        private System.Windows.Forms.ToolStripMenuItem mnuGameExit;
         private System.Windows.Forms.ToolStripMenuItem mnuOption;
         private System.Windows.Forms.ToolStripMenuItem mnuOptionStats;
         private System.Windows.Forms.PictureBox pictureBox1;

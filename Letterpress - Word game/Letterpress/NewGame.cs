@@ -34,7 +34,7 @@ namespace Letterpress
             Application.Run(new GameBoard());
         }
 
-        private void mnuFileExit_Click(object sender, EventArgs e)
+        private void mnuGameExit_Click(object sender, EventArgs e)
         {
             Close();
         }
