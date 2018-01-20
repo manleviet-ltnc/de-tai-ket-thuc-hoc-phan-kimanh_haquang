@@ -29,9 +29,14 @@ namespace Letterpress
             thread.Start();
         }
 
-        private void OpenGameBoard(object o)
+        private void OpenGameBoard()
         {
             Application.Run(new GameBoard());
+        }
+
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            Close();
         }
 
         private void mnuGameExit_Click(object sender, EventArgs e)
@@ -41,22 +46,44 @@ namespace Letterpress
 
         private void mnuOptionStats_Click(object sender, EventArgs e)
         {
-            using (Stats sts = new Stats())
+            Stats sts = new Stats();
+            sts.ShowDialog();
+        }
+
+        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
+        {
+            switch (keyData)
             {
-                if (sts.ShowDialog() == DialogResult.OK)
-                    sts.Show();
+                case Keys.Up:
+                    if (btnNewGame.Focused)
+                        return true;
+
+                    if (btnExit.Focused)
+                    {
+                        btnNewGame.Focus();
+                        return true;
+                    }
+
+                    break;
+                case Keys.Down:
+                    if (btnNewGame.Focused)
+                    {
+                        btnExit.Focus();
+                        return true;
+                    }
+
+                    if (btnExit.Focused)
+                        return true;
+                    break;
             }
+            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void timer_Tick(object sender, EventArgs e)
         {
             Random rnd = new Random();
-            int one = rnd.Next(0, 255);
-            int two = rnd.Next(0, 255);
-            int three = rnd.Next(0, 255);
-            int four = rnd.Next(0, 255);
-
-            btnGameStart.ForeColor = Color.FromArgb(one, two, three, four);
+            btnNewGame.ForeColor = Color.FromArgb(rnd.Next(0, 255), rnd.Next(0, 255),
+                                                  rnd.Next(0, 255), rnd.Next(0, 255));
         }
     }
 }

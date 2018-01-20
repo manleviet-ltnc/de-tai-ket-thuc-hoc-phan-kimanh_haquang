@@ -236,7 +236,7 @@ namespace Letterpress
             thread.Start();
         }
 
-        private void OpenNewGame(object o)
+        private void OpenNewGame()
         {
             Application.Run(new NewGame());
         }
@@ -346,7 +346,6 @@ namespace Letterpress
 
         private void btnClear_Click(object sender, EventArgs e)
         {
-            hasChanged = true;
             SelectLiteral();
             txtWords.Clear();
             ShowButton();
@@ -465,7 +464,6 @@ namespace Letterpress
 
         private void btnBackspace_Click(object sender, EventArgs e)
         {
-            hasChanged = true;
             if (txtWords.Text != "")
             {
                 txtWords.Text = txtWords.Text.Remove(txtWords.Text.Length - 1);
@@ -490,6 +488,8 @@ namespace Letterpress
                                                   MessageBoxIcon.Question);
             if (result == DialogResult.Yes)
             {
+                hasChanged = true;
+
                 redTurn = !redTurn;
                 if (redTurn)
                 {
@@ -661,22 +661,38 @@ namespace Letterpress
 
         private void mnuOptionResignGame_Click(object sender, EventArgs e)
         {
-            DialogResult result = MessageBox.Show("Are you sure you want to resign the game?",
-                                                  "", MessageBoxButtons.YesNo,
-                                                  MessageBoxIcon.Question);
-            if (result == DialogResult.Yes)
+            if (gameOver)
+                PlayNewBoard();
+            else
             {
-                GameBoard gb = new GameBoard();
-                Owner = gb;
-                Hide();
-                gb.Show();
+                DialogResult result = MessageBox.Show("Are you sure you want to resign the game?",
+                                                      "", MessageBoxButtons.YesNo,
+                                                      MessageBoxIcon.Question);
+                if (result == DialogResult.Yes)
+                    PlayNewBoard();
             }
+        }
+
+        private void PlayNewBoard()
+        {
+            Close();
+            thread = new Thread(OpenNewGameBoard);
+            thread.SetApartmentState(ApartmentState.STA);
+            thread.Start();
+        }
+
+        private void OpenNewGameBoard()
+        {
+            Application.Run(new GameBoard());
         }
 
         private void mnuOptionStats_Click(object sender, EventArgs e)
         {
-            Stats sts = new Stats();
-
+            Stats sts = null;
+            if (gameOver)
+                sts = new Stats(storage);
+            else
+                sts = new Stats();
             sts.ShowDialog();
         }
 

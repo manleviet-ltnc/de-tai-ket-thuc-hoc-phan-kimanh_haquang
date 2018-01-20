@@ -16,7 +16,7 @@ namespace Letterpress
     public partial class GameOver : Form
     {
         Thread thread;
-        public Storage storage = new Storage();
+        Storage storage = new Storage();
 
         public GameOver(Storage storage)
         {
@@ -58,7 +58,7 @@ namespace Letterpress
             thread.Start();
         }
 
-        private void OpenNewGameBoard(object o)
+        private void OpenNewGameBoard()
         {
             Application.Run(new GameBoard());
         }

@@ -12,12 +12,12 @@ namespace LetterpressControl
 {
     public partial class PlayedWords : Form
     {
+        public List<string> wordsListUsed = new List<string>();
+
         public PlayedWords()
         {
             InitializeComponent();
         }
-
-        public List<string> wordsListUsed = new List<string>();
 
         private void PlayedWords_Load(object sender, EventArgs e)
         {
