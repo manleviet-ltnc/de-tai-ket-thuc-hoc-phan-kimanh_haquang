@@ -95,7 +95,7 @@
             // btnOkay
             // 
             this.btnOkay.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnOkay.Location = new System.Drawing.Point(90, 418);
+            this.btnOkay.Location = new System.Drawing.Point(90, 417);
             this.btnOkay.Name = "btnOkay";
             this.btnOkay.Size = new System.Drawing.Size(75, 28);
             this.btnOkay.TabIndex = 32;

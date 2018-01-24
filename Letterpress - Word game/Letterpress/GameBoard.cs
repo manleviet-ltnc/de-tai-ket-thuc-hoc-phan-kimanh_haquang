@@ -28,6 +28,9 @@ namespace Letterpress
         int blueCount = 0;   // Điểm bị trừ / nhớ tạm của người chơi xanh
         int redCount = 0;   // Điểm bị trừ / nhớ tạm của người chơi đỏ
         bool gameOver = false;   // Kiểm tra game đã kết thúc chưa
+        bool cancel = false;   // Kiểm tra có đóng game hay không
+        bool hasResigned = false;   // Kiểm tra có mở bàn chơi mới không
+        bool hasClosed = false;   // Kiểm tra đã đóng game chưa
         List<string> gameSaved = new List<string>();   // Danh sách các game đã lưu
         bool hasLoaded = false;
 
@@ -283,9 +286,12 @@ namespace Letterpress
         private void btnBack_Click(object sender, EventArgs e)
         {
             Close();
-            thread = new Thread(OpenNewGame);
-            thread.SetApartmentState(ApartmentState.STA);
-            thread.Start();
+            if (cancel == false)
+            {
+                thread = new Thread(OpenNewGame);
+                thread.SetApartmentState(ApartmentState.STA);
+                thread.Start();
+            }
         }
 
         private void OpenNewGame()
@@ -615,8 +621,6 @@ namespace Letterpress
 
         private void mnuGameLoadGame_Click(object sender, EventArgs e)
         {
-            hasChanged = false;
-
             // Mở game đã lưu
             LoadGame lg = new LoadGame(storage);
             lg.ShowDialog();
@@ -627,6 +631,7 @@ namespace Letterpress
                 return;
 
             LoadGame();
+            hasChanged = false;
         }
 
         private void LoadGame()
@@ -707,11 +712,13 @@ namespace Letterpress
                 {
                     if (line == "True")
                     {
+                        storage.RedTurn = true;
                         pbxRedIndex.Show();
                         pbxBlueIndex.Hide();
                     }
                     else
                     {
+                        storage.RedTurn = false;
                         pbxBlueIndex.Show();
                         pbxRedIndex.Hide();
                     }
@@ -784,9 +791,12 @@ namespace Letterpress
                         }
 
                         if (i == 4 && j == 4 && red == 0)
+                        {
+                            red--;
                             sw.Write("red");
+                        }
                     }
-                if (red == 0)
+                if (red == -1)
                     sw.WriteLine();
 
                 // Dòng 4 ghi điểm của người chơi xanh và đỏ
@@ -822,6 +832,11 @@ namespace Letterpress
             }
         }
 
+        private void mnuGameExit_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
         private void mnuOptionPlayedWords_Click(object sender, EventArgs e)
         {
             PlayedWords pw = new PlayedWords();
@@ -839,7 +854,13 @@ namespace Letterpress
                                                       "", MessageBoxButtons.YesNo,
                                                       MessageBoxIcon.Question);
                 if (result == DialogResult.Yes)
+                {
+                    hasResigned = true;
+                    hasClosed = true;
+                    if (hasChanged)
+                        hasResigned = false;
                     PlayNewBoard();
+                }
             }
         }
 
@@ -864,15 +885,34 @@ namespace Letterpress
 
         protected override void OnFormClosing(FormClosingEventArgs e)
         {
+            if (hasResigned)
+                return;
+
             if (hasChanged)
             {
-                DialogResult result = MessageBox.Show("Are you want to save this game?", "",
-                                                  MessageBoxButtons.YesNoCancel,
-                                                  MessageBoxIcon.Question);
-                if (result == DialogResult.Yes)
-                    Save();
-                else if (result == DialogResult.Cancel)
-                    e.Cancel = true;
+                if (hasClosed)
+                {
+                    DialogResult result = MessageBox.Show("Are you want to save this game?", "",
+                                                      MessageBoxButtons.YesNo,
+                                                      MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                        Save();
+                }
+                else
+                {
+                    DialogResult result = MessageBox.Show("Are you want to save this game?", "",
+                                                      MessageBoxButtons.YesNoCancel,
+                                                      MessageBoxIcon.Question);
+                    if (result == DialogResult.Yes)
+                        Save();
+                    else if (result == DialogResult.Cancel)
+                    {
+                        cancel = true;
+                        e.Cancel = true;
+                    }
+                    else
+                        cancel = false;
+                }
             }
         }
     }

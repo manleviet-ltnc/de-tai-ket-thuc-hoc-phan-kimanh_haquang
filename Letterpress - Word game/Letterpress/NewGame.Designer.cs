@@ -132,7 +132,9 @@
             // mnuOptionStats
             // 
             this.mnuOptionStats.Name = "mnuOptionStats";
-            this.mnuOptionStats.Size = new System.Drawing.Size(152, 22);
+            this.mnuOptionStats.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.E)));
+            this.mnuOptionStats.Size = new System.Drawing.Size(171, 22);
             this.mnuOptionStats.Text = "Stats";
             this.mnuOptionStats.Click += new System.EventHandler(this.mnuOptionStats_Click);
             // 

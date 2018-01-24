@@ -375,6 +375,7 @@
             this.mnuGameExit.ShortcutKeys = ((System.Windows.Forms.Keys)((System.Windows.Forms.Keys.Alt | System.Windows.Forms.Keys.F4)));
             this.mnuGameExit.Size = new System.Drawing.Size(177, 22);
             this.mnuGameExit.Text = "&Exit";
+            this.mnuGameExit.Click += new System.EventHandler(this.mnuGameExit_Click);
             // 
             // optionToolStripMenuItem
             // 
@@ -389,6 +390,7 @@
             // playedWordsToolStripMenuItem
             // 
             this.playedWordsToolStripMenuItem.Name = "playedWordsToolStripMenuItem";
+            this.playedWordsToolStripMenuItem.ShortcutKeys = System.Windows.Forms.Keys.F4;
             this.playedWordsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.playedWordsToolStripMenuItem.Text = "&Played Words";
             this.playedWordsToolStripMenuItem.Click += new System.EventHandler(this.mnuOptionPlayedWords_Click);
@@ -404,6 +406,8 @@
             // statsToolStripMenuItem
             // 
             this.statsToolStripMenuItem.Name = "statsToolStripMenuItem";
+            this.statsToolStripMenuItem.ShortcutKeys = ((System.Windows.Forms.Keys)(((System.Windows.Forms.Keys.Control | System.Windows.Forms.Keys.Shift) 
+            | System.Windows.Forms.Keys.E)));
             this.statsToolStripMenuItem.Size = new System.Drawing.Size(186, 22);
             this.statsToolStripMenuItem.Text = "&Stats";
             this.statsToolStripMenuItem.Click += new System.EventHandler(this.mnuOptionStats_Click);
