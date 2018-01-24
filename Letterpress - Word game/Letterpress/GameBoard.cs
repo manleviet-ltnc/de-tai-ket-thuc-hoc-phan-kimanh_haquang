@@ -32,7 +32,7 @@ namespace Letterpress
         bool hasResigned = false;   // Kiểm tra có mở bàn chơi mới không
         bool hasClosed = false;   // Kiểm tra đã đóng game chưa
         List<string> gameSaved = new List<string>();   // Danh sách các game đã lưu
-        bool hasLoaded = false;
+        bool hasLoaded = false;   // Kiểm tra game đã load chưa, có load không
 
         public GameBoard()
         {
@@ -130,6 +130,7 @@ namespace Letterpress
 
         private void LoadGameList()
         {
+            // Đọc vào danh sách các game đã lưu
             StreamReader sr = new StreamReader("game saved.txt");
             string line;
             while ((line = sr.ReadLine()) != null)
