@@ -33,12 +33,13 @@
             this.label1 = new System.Windows.Forms.Label();
             this.lblScored = new System.Windows.Forms.Label();
             this.btnRematch = new System.Windows.Forms.Button();
+            this.btnStats = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnClose
             // 
             this.btnClose.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(7, 201);
+            this.btnClose.Location = new System.Drawing.Point(7, 250);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(240, 36);
             this.btnClose.TabIndex = 4;
@@ -82,7 +83,7 @@
             // btnRematch
             // 
             this.btnRematch.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRematch.Location = new System.Drawing.Point(7, 147);
+            this.btnRematch.Location = new System.Drawing.Point(7, 146);
             this.btnRematch.Name = "btnRematch";
             this.btnRematch.Size = new System.Drawing.Size(240, 36);
             this.btnRematch.TabIndex = 3;
@@ -90,20 +91,32 @@
             this.btnRematch.UseVisualStyleBackColor = true;
             this.btnRematch.Click += new System.EventHandler(this.btnRematch_Click);
             // 
+            // btnStats
+            // 
+            this.btnStats.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStats.Location = new System.Drawing.Point(7, 198);
+            this.btnStats.Name = "btnStats";
+            this.btnStats.Size = new System.Drawing.Size(240, 36);
+            this.btnStats.TabIndex = 5;
+            this.btnStats.Text = "Stats";
+            this.btnStats.UseVisualStyleBackColor = true;
+            this.btnStats.Click += new System.EventHandler(this.btnStats_Click);
+            // 
             // GameOver
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.ClientSize = new System.Drawing.Size(255, 246);
+            this.ClientSize = new System.Drawing.Size(255, 296);
             this.ControlBox = false;
+            this.Controls.Add(this.btnStats);
             this.Controls.Add(this.lblScored);
             this.Controls.Add(this.btnClose);
             this.Controls.Add(this.btnRematch);
             this.Controls.Add(this.btnPlayedWords);
             this.Controls.Add(this.label1);
-            this.MaximumSize = new System.Drawing.Size(271, 262);
-            this.MinimumSize = new System.Drawing.Size(271, 262);
+            this.MaximumSize = new System.Drawing.Size(271, 312);
+            this.MinimumSize = new System.Drawing.Size(271, 312);
             this.Name = "GameOver";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Load += new System.EventHandler(this.GameOver_Load);
@@ -119,5 +132,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label lblScored;
         private System.Windows.Forms.Button btnRematch;
+        private System.Windows.Forms.Button btnStats;
     }
 }

@@ -15,9 +15,9 @@ namespace LetterpressControl
     public partial class Stats : Form
     {
         Storage storage;
-        List<int> blueScored = new List<int>();
+        List<string> blueScored = new List<string>();
         Label[] blueTop = new Label[10];
-        List<int> redScored = new List<int>();
+        List<string> redScored = new List<string>();
         Label[] redTop = new Label[10];
 
         public Stats()
@@ -31,7 +31,7 @@ namespace LetterpressControl
             storage = _storage;
         }
 
-        private void LoadTop(ref Label[] blueTop, ref Label[] redTop)
+        private void LoadTop()
         {
             blueTop[0] = lblBlueTop0;
             blueTop[1] = lblBlueTop1;
@@ -54,77 +54,85 @@ namespace LetterpressControl
             redTop[7] = lblRedTop7;
             redTop[8] = lblRedTop8;
             redTop[9] = lblRedTop9;
+
+            LoadScored();
         }
 
-        private void LoadScored(ref Label[] blueTop, ref Label[] redTop)
+        private void LoadScored()
         {
-            StreamReader sr = null;
-
-            sr = new StreamReader("blue scored.txt");
+            // Đọc vào các kết quả của người chơi xanh
+            StreamReader sr = new StreamReader("blue scored.txt");
             string blueInput;
-
             int i = 0;
             while ((blueInput = sr.ReadLine()) != null)
             {
                 blueTop[i].Text = blueInput;
-                blueScored[i] = int.Parse(blueTop[i].Text);
                 i++;
             }
-            
             sr.Close();
 
+            // Đọc vào các kết quả của người chơi đỏ
             sr = new StreamReader("red scored.txt");
             string redInput;
-
             i = 0;
             while((redInput = sr.ReadLine()) != null)
             {
                 redTop[i].Text = redInput;
-                redScored[i] = int.Parse(redTop[i].Text);
                 i++;
             }
-
             sr.Close();
         }
 
         private void Stats_Load(object sender, EventArgs e)
         {
-            for (int i = 0; i < 10; i++)
-            {
-                blueScored.Add(0);
-                redScored.Add(0);
-            }
+            LoadTop();
 
-            LoadTop(ref blueTop, ref redTop);
-            LoadScored(ref blueTop, ref redTop);
-
+            // Nếu có kết quả mới
             if (storage != null)
             {
+                blueScored.AddRange(new List<string>
+                {
+                    lblBlueTop0.Text, lblBlueTop1.Text,
+                    lblBlueTop2.Text, lblBlueTop3.Text,
+                    lblBlueTop4.Text, lblBlueTop5.Text,
+                    lblBlueTop6.Text, lblBlueTop7.Text,
+                    lblBlueTop8.Text, lblBlueTop9.Text
+                });
+
+                redScored.AddRange(new List<string>
+                {
+                    lblRedTop0.Text, lblRedTop1.Text,
+                    lblRedTop2.Text, lblRedTop3.Text,
+                    lblRedTop4.Text, lblRedTop5.Text,
+                    lblRedTop6.Text, lblRedTop7.Text,
+                    lblRedTop8.Text, lblRedTop9.Text
+                });
+
                 StreamWriter sw = null;
                 if (storage.BluePoint > storage.RedPoint)
                 {
-                    blueScored.Add(storage.BluePoint);
+                    // Thêm kết quả mới vào blueScored
+                    blueScored.Add(storage.BluePoint + "");
+
+                    // Sắp xếp các giá trị phần tử của blueScored theo thứ tự tăng dần
                     blueScored.Sort();
+
+                    // Đảo ngược lại vị trí các giá trị phần tử của blueScored
                     blueScored.Reverse();
-                    blueScored.RemoveAt(10);
+
                     if (blueScored.Count < 10)
                     {
-                        for (int i = 0; i < 10; i++)
-                            if (blueScored[i] == 0)
-                            {
-                                if (i == 0)
-                                    sw = new StreamWriter("blue scored.txt");
-                                else
-                                    sw = File.AppendText("blue scored.txt");
-
-                                blueTop[i].Text = blueScored[i] + "";
-                                sw.WriteLine(blueTop[i].Text);
-                                sw.Close();
-                                break;
-                            }
+                        // Ghi tiếp vào file kết quả mới
+                        sw = File.AppendText("blue scored.txt");
+                        sw.WriteLine(blueScored[blueScored.Count - 1]);
+                        sw.Close();
                     }
                     else
                     {
+                        // Bỏ đi kết quả thấp nhất
+                        blueScored.RemoveAt(10);
+
+                        // Ghi lại các kết quả vào file blue scored.txt
                         for (int i = 0; i < 10; i++)
                         {
                             if (i == 0)
@@ -132,36 +140,38 @@ namespace LetterpressControl
                             else
                                 sw = File.AppendText("blue scored.txt");
 
-                            blueTop[i].Text = blueScored[i] + "";
-                            sw.WriteLine(blueTop[i].Text);
+                            sw.WriteLine(blueScored[i]);
+
+                            // Gán lại các giá trị đã sắp xếp cho redTop để hiện ra trên form
+                            blueTop[i].Text = blueScored[i];
                             sw.Close();
                         }
                     }
                 }
                 else
                 {
-                    redScored.Add(storage.RedPoint);
+                    // Thêm kết quả mới vào redScored
+                    redScored.Add(storage.RedPoint + "");
+
+                    // Sắp xếp các giá trị phần tử của redScored theo thứ tự tăng dần
                     redScored.Sort();
+
+                    // Đảo ngược lại vị trí các giá trị phần tử của redScored
                     redScored.Reverse();
-                    redScored.RemoveAt(10);
+
                     if (redScored.Count < 10)
                     {
-                        for (int i = 0; i < 10; i++)
-                            if (redScored[i] == 0)
-                            {
-                                if (i == 0)
-                                    sw = new StreamWriter("red scored.txt");
-                                else
-                                    sw = File.AppendText("red scored.txt");
-
-                                redTop[i].Text = redScored[i] + "";
-                                sw.WriteLine(redTop[i].Text);
-                                sw.Close();
-                                break;
-                            }
+                        // Ghi tiếp vào file kết quả mới
+                        sw = File.AppendText("red scored.txt");
+                        sw.WriteLine(redScored[redScored.Count - 1]);
+                        sw.Close();
                     }
                     else
                     {
+                        // Bỏ đi kết quả thấp nhất
+                        redScored.RemoveAt(10);
+
+                        // Ghi lại các kết quả vào file red scored.txt
                         for (int i = 0; i < 10; i++)
                         {
                             if (i == 0)
@@ -169,8 +179,10 @@ namespace LetterpressControl
                             else
                                 sw = File.AppendText("red scored.txt");
 
-                            redTop[i].Text = redScored[i] + "";
-                            sw.WriteLine(redTop[i].Text);
+                            sw.WriteLine(redScored[i]);
+
+                            // Gán lại các giá trị đã sắp xếp cho redTop để hiện ra trên form
+                            redTop[i].Text = redScored[i];
                             sw.Close();
                         }
                     }

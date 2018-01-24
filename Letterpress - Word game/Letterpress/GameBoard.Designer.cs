@@ -127,7 +127,7 @@
             this.btnBack.Location = new System.Drawing.Point(-1, 29);
             this.btnBack.Name = "btnBack";
             this.btnBack.Size = new System.Drawing.Size(29, 25);
-            this.btnBack.TabIndex = 30;
+            this.btnBack.TabIndex = 1;
             this.btnBack.UseVisualStyleBackColor = true;
             this.btnBack.Click += new System.EventHandler(this.btnBack_Click);
             // 
@@ -165,7 +165,7 @@
             this.btnOK.Location = new System.Drawing.Point(241, 29);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(60, 25);
-            this.btnOK.TabIndex = 26;
+            this.btnOK.TabIndex = 5;
             this.btnOK.Text = "OK";
             this.btnOK.UseVisualStyleBackColor = true;
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
@@ -176,7 +176,7 @@
             this.btnClear.Location = new System.Drawing.Point(-1, 29);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(60, 25);
-            this.btnClear.TabIndex = 28;
+            this.btnClear.TabIndex = 3;
             this.btnClear.Text = "Clear";
             this.btnClear.UseVisualStyleBackColor = true;
             this.btnClear.Click += new System.EventHandler(this.btnClear_Click);
@@ -194,7 +194,7 @@
             this.txtWords.Multiline = true;
             this.txtWords.Name = "txtWords";
             this.txtWords.Size = new System.Drawing.Size(299, 60);
-            this.txtWords.TabIndex = 33;
+            this.txtWords.TabIndex = 7;
             this.txtWords.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // lblBluePoint
@@ -228,7 +228,7 @@
             this.btnDelete.Location = new System.Drawing.Point(120, 29);
             this.btnDelete.Name = "btnDelete";
             this.btnDelete.Size = new System.Drawing.Size(60, 25);
-            this.btnDelete.TabIndex = 27;
+            this.btnDelete.TabIndex = 4;
             this.btnDelete.Text = "Delete";
             this.btnDelete.UseVisualStyleBackColor = true;
             this.btnDelete.Click += new System.EventHandler(this.btnBackspace_Click);
@@ -257,7 +257,7 @@
             this.btnPass.Location = new System.Drawing.Point(241, 29);
             this.btnPass.Name = "btnPass";
             this.btnPass.Size = new System.Drawing.Size(60, 25);
-            this.btnPass.TabIndex = 29;
+            this.btnPass.TabIndex = 2;
             this.btnPass.Text = "Pass";
             this.btnPass.UseVisualStyleBackColor = true;
             this.btnPass.Click += new System.EventHandler(this.btnPass_Click);
@@ -331,7 +331,7 @@
             this.menuStrip.Location = new System.Drawing.Point(0, 0);
             this.menuStrip.Name = "menuStrip";
             this.menuStrip.Size = new System.Drawing.Size(300, 24);
-            this.menuStrip.TabIndex = 34;
+            this.menuStrip.TabIndex = 6;
             this.menuStrip.Text = "menuStrip";
             // 
             // mnuGame
@@ -453,7 +453,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 20F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(300, 300);
-            this.tableLayoutPanel1.TabIndex = 35;
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // btn44
             // 

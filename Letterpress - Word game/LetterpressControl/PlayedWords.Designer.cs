@@ -85,7 +85,7 @@
             this.MaximumSize = new System.Drawing.Size(270, 277);
             this.MinimumSize = new System.Drawing.Size(270, 277);
             this.Name = "PlayedWords";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Load += new System.EventHandler(this.PlayedWords_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

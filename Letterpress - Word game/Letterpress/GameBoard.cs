@@ -8,9 +8,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Threading;
+using System.IO;
 using LetterpressControl;
 using LetterpressManager;
-using Letterpress.Properties;
 
 namespace Letterpress
 {
@@ -19,21 +19,33 @@ namespace Letterpress
         Thread thread;
         ProcessFile pf = new ProcessFile();
         Storage storage = new Storage();
-
         Button[,] button = new Button[5, 5];
         Button btn;
         bool hasChanged = true;   // Kiểm tra game có sự thay đổi so với lúc lưu không
-        bool redTurn = false;   // Kiểm tra xem có phải đang là lượt của người chơi đỏ không
         int index = -1;   // Chỉ số vị trí của button được chọn
         int[] row = new int[25];   // Mảng các chỉ số dòng button được chọn
         int[] column = new int[25];   // Mảng các chỉ số cột button được chọn
         int blueCount = 0;   // Điểm bị trừ / nhớ tạm của người chơi xanh
         int redCount = 0;   // Điểm bị trừ / nhớ tạm của người chơi đỏ
         bool gameOver = false;   // Kiểm tra game đã kết thúc chưa
+        List<string> gameSaved = new List<string>();   // Danh sách các game đã lưu
+        bool hasLoaded = false;
 
         public GameBoard()
         {
             InitializeComponent();
+        }
+
+        public GameBoard(Storage _storage)
+        {
+            InitializeComponent();
+            storage = _storage;
+
+            SelectLiteral();
+            buttonList();
+            LoadGame();
+            hasLoaded = true;
+            hasChanged = false;
         }
 
         private void Center()
@@ -75,12 +87,17 @@ namespace Letterpress
 
         private void ReadLiteral()
         {
+            // Đọc vào các từ
             pf.ReadData();
+
+            // Tách các ký tự trong mỗi từ
             pf.RandomLiteral();
+
             int index = pf.wordsList.Length - 1;
             for (int i = 0; i < 5; i++)
                 for (int j = 0; j < 5; j++)
                 {
+                    // Gán các kí tự được chọn ngẫu nhiên vào các button
                     button[i, j].Text = pf.wordsList[index];
                     index--;
                 }
@@ -96,9 +113,25 @@ namespace Letterpress
 
         private void GameBoard_Load(object sender, EventArgs e)
         {
-            SelectLiteral();
-            pbxRedIndex.Hide();
-            buttonList();
+            if (hasLoaded == false)
+            {
+                SelectLiteral();
+                pbxRedIndex.Hide();
+                buttonList();
+
+                LoadGameList();
+            }
+            else
+                LoadGameList();
+        }
+
+        private void LoadGameList()
+        {
+            StreamReader sr = new StreamReader("game saved.txt");
+            string line;
+            while ((line = sr.ReadLine()) != null)
+                gameSaved.Add(line);
+            sr.Close();
         }
 
         protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
@@ -113,29 +146,34 @@ namespace Letterpress
                                 button[i - 1, j].Focus();
                                 return true;
                             }
-                            else if (button[0, 0].Focused)
-                            {
-                                if (txtWords.Text.Length > 0)
-                                    btnClear.Focus();
-                                else
-                                    btnBack.Focus();
-                            }
-                            else if (button[0, 4].Focused)
-                            {
-                                if (txtWords.Text.Length > 0)
-                                    btnOK.Focus();
-                                else
-                                    btnPass.Focus();
-                            }
-                            else if (button[0, 1].Focused || button[0, 3].Focused)
-                                return true;
-                            else if (button[0, 2].Focused)
-                            {
-                                if (txtWords.Text.Length > 0)
-                                    btn.Focus();
-                                else
-                                    return true;
-                            }
+
+                    if (button[0, 0].Focused)
+                    {
+                        if (txtWords.Text.Length > 0)
+                            btnClear.Focus();
+                        else
+                            btnBack.Focus();
+                        return true;
+                    }
+
+                    if (button[0, 4].Focused)
+                    {
+                        if (txtWords.Text.Length > 0)
+                            btnOK.Focus();
+                        else
+                            btnPass.Focus();
+                        return true;
+                    }
+
+                    if (button[0, 1].Focused || button[0, 3].Focused)
+                        return true;
+
+                    if (button[0, 2].Focused)
+                    {
+                        if (txtWords.Text.Length > 0)
+                            btnDelete.Focus();
+                        return true;
+                    }
 
                     if (btnPass.Focused || btnBack.Focused ||
                         btnOK.Focused || btnDelete.Focused || btnClear.Focused)
@@ -146,9 +184,10 @@ namespace Letterpress
                     for (int i = 0; i < 5; i++)
                         for (int j = 0; j < 5; j++)
                         {
-                            if (button[i, j].Focused && i < 4)
+                            if (button[i, j].Focused && i <= 4)
                             {
-                                button[i + 1, j].Focus();
+                                if (i != 4)
+                                    button[i + 1, j].Focus();
                                 return true;
                             }
                         }
@@ -158,9 +197,16 @@ namespace Letterpress
                         button[0, 4].Focus();
                         return true;
                     }
-                    else if (btnBack.Focused || btnClear.Focused)
+
+                    if (btnBack.Focused || btnClear.Focused)
                     {
                         button[0, 0].Focus();
+                        return true;
+                    }
+
+                    if (btnDelete.Focused)
+                    {
+                        button[0, 2].Focus();
                         return true;
                     }
 
@@ -177,17 +223,20 @@ namespace Letterpress
 
                     if (btnPass.Focused || btnOK.Focused)
                         return true;
-                    else if (btnBack.Focused)
+
+                    if (btnBack.Focused)
                     {
                         btnPass.Focus();
                         return true;
                     }
-                    else if (btnClear.Focused)
+
+                    if (btnClear.Focused)
                     {
                         btnDelete.Focus();
                         return true;
                     }
-                    else if (btnDelete.Focused)
+
+                    if (btnDelete.Focused)
                     {
                         btnOK.Focus();
                         return true;
@@ -206,17 +255,20 @@ namespace Letterpress
 
                     if (btnBack.Focused || btnClear.Focused)
                         return true;
-                    else if (btnPass.Focused)
+
+                    if (btnPass.Focused)
                     {
                         btnBack.Focus();
                         return true;
                     }
-                    else if (btnOK.Focused)
+
+                    if (btnOK.Focused)
                     {
                         btnDelete.Focus();
                         return true;
                     }
-                    else if (btnDelete.Focused)
+
+                    if (btnDelete.Focused)
                     {
                         btnClear.Focus();
                         return true;
@@ -261,85 +313,110 @@ namespace Letterpress
                     if (btn == button[i, j])
                     {
                         index++;
+
+                        // Vị trí kí tự ở dòng được chọn
                         row[index] = i;
+
+                        // Vị trí kí tự ở cột được chọn
                         column[index] = j;
 
-                        AddPoint(btn);
+                        // Cộng thêm điểm
+                        AddPoint();
+
+                        // Căn giữa vị trí của lblBluePoint / lblRedPoint
                         Center();
                         return;
                     }
         }
 
-        private void AddPoint(Button btn)
+        private void AddPoint()
         {
-            if (redTurn == false)
+            if (storage.RedTurn == false)
             {
                 if (btn.BackColor == Color.LightSkyBlue)
-                    blueCount++;
+                    blueCount++;   // Nhớ tạm 1 điểm của người chơi xanh
                 else
                 {
                     if (btn.BackColor == Color.Red)
                     {
+                        // Trừ đi 1 điểm của người chơi đỏ
                         redCount++;
+
+                        // Cập nhật điểm của người chơi đỏ
                         lblRedPoint.Text = "" + (storage.RedPoint - redCount);
                     }
 
                     if (lblBluePoint.Text == "")
                         lblBluePoint.Text = "1";
                     else
+                        // Cập nhật điểm của người chơi xanh
                         lblBluePoint.Text = "" + (storage.BluePoint - blueCount + txtWords.Text.Length);
                 }
             }
             else
             {
                 if (btn.BackColor == Color.Red)
-                    redCount++;
+                    redCount++;   // Nhớ tạm 1 điểm của người chơi đỏ
                 else
                 {
                     if (btn.BackColor == Color.LightSkyBlue)
                     {
+                        // Trừ đi 1 điểm của người chơi xanh
                         blueCount++;
+
+                        // Cập nhật điểm của người chơi xanh
                         lblBluePoint.Text = "" + (storage.BluePoint - blueCount);
                     }
 
                     if (lblRedPoint.Text == "")
                         lblRedPoint.Text = "1";
                     else
+                        // Cập nhật điểm của người chơi đỏ
                         lblRedPoint.Text = "" + (storage.RedPoint - redCount + txtWords.Text.Length);
                 }
             }
         }
 
-        private void SubtractPoint(Button[,] btn)
+        private void SubtractPoint()
         {
-            if (redTurn == false)
+            if (storage.RedTurn == false)
             {
-                if (btn[row[index], column[index]].BackColor != Color.LightSkyBlue)
+                if (button[row[index], column[index]].BackColor != Color.LightSkyBlue)
                 {
-                    if (btn[row[index], column[index]].BackColor == Color.Red)
+                    if (button[row[index], column[index]].BackColor == Color.Red)
                     {
+                        // Giảm điểm bị trừ của người chơi đỏ
                         redCount--;
+
+                        // Cập nhật điểm của người chơi đỏ
                         lblRedPoint.Text = "" + (storage.RedPoint - redCount);
                     }
 
+                    // Cập nhật điểm của người chơi xanh
                     lblBluePoint.Text = "" + (storage.BluePoint - blueCount + txtWords.Text.Length);
                 }
                 else
+                    // Giảm điểm bị trừ của người chơi xanh
                     blueCount--;
             }
             else
             {
-                if (btn[row[index], column[index]].BackColor != Color.Red)
+                if (button[row[index], column[index]].BackColor != Color.Red)
                 {
-                    if (btn[row[index], column[index]].BackColor == Color.LightSkyBlue)
+                    if (button[row[index], column[index]].BackColor == Color.LightSkyBlue)
                     {
+                        // Giảm điểm của người chơi xanh
                         blueCount--;
+
+                        // Cập nhật điểm của người chơi xanh
                         lblBluePoint.Text = "" + (storage.BluePoint - blueCount);
                     }
 
+                    // Cập nhật điểm của người chơi đỏ
                     lblRedPoint.Text = "" + (storage.RedPoint - redCount + txtWords.Text.Length);
                 }
                 else
+                    // Giảm điểm bị trừ của người chơi đỏ
                     redCount--;
             }
         }
@@ -350,61 +427,47 @@ namespace Letterpress
             txtWords.Clear();
             ShowButton();
 
+            // Hiện tất cả các kí tự vừa được chọn
             while (index >= 0)
             {
                 button[row[index], column[index]].Show();
                 index--;
             }
 
-            if (redTurn == false)
-            {
-                if (btn.BackColor != Color.LightSkyBlue)
-                {
-                    if (redCount > 0)
-                    {
-                        lblRedPoint.Text = "" + storage.RedPoint;
-                        redCount = 0;
-                    }
-                }
+            // Cập nhật lại điểm lúc chưa chọn từ của người chơi xanh
+            lblBluePoint.Text = "" + storage.BluePoint;
+            
+            // Xoá điểm bị trừ / nhớ tạm của người chơi xanh
+            blueCount = 0;
 
-                lblBluePoint.Text = "" + storage.BluePoint;
-                blueCount = 0;
-            }
-            else
-            {
-                if (btn.BackColor != Color.Red)
-                {
-                    if (blueCount > 0)
-                    {
-                        lblBluePoint.Text = "" + storage.BluePoint;
-                        blueCount = 0;
-                    }
-                }
+            // Cập nhật lại điểm lúc chưa chọn từ của người chơi đỏ
+            lblRedPoint.Text = "" + storage.RedPoint;
 
-                lblRedPoint.Text = "" + storage.RedPoint;
-                redCount = 0;
-            }
+            // Xoá điểm bị trừ / nhớ tạm của người chơi đỏ
+            redCount = 0;
 
             Center();
         }
 
         private void ShowButton()
         {
+            // Hiện tất cả các kí tự đã được chọn
             for (int i = 0; i < index + 1; i++)
                 button[row[i], column[i]].Show();
         }
 
         private void ChangeTurn(Storage storage)
         {
-            if (redTurn == false)
+            // Thay đổi lượt chơi
+            if (storage.RedTurn == false)
             {
-                redTurn = true;
+                storage.RedTurn = true;
                 pbxBlueIndex.Hide();
                 pbxRedIndex.Show();
             }
             else
             {
-                redTurn = false;
+                storage.RedTurn = false;
                 pbxRedIndex.Hide();
                 pbxBlueIndex.Show();
             }
@@ -412,9 +475,11 @@ namespace Letterpress
 
         private void btnOK_Click(object sender, EventArgs e)
         {
+            // Duyệt qua tất cả các từ trong file lưu trữ
             for (int i = 0; i < pf.words.Length; i++)
                 if (txtWords.Text == pf.words[i])
                 {
+                    // Kiểm tra từ đó đã được chơi chưa
                     foreach (string str in storage.wordsListUsed)
                         if (txtWords.Text == str)
                         {
@@ -423,6 +488,7 @@ namespace Letterpress
                             return;
                         }
 
+                    // Thêm từ vừa được chọn vào danh sách những từ đã được chơi
                     storage.wordsListUsed.Add(pf.words[i]);
                     break;
                 }
@@ -432,27 +498,64 @@ namespace Letterpress
             SelectLiteral();
             ShowButton();
 
+            // Đánh dấu màu những kí tự được chọn
             for (int i = 0; i <= index; i++)
             {
-                if (redTurn == false)
+                if (storage.RedTurn == false)
                     button[row[i], column[i]].BackColor = Color.LightSkyBlue;
                 else
                     button[row[i], column[i]].BackColor = Color.Red;
             }
 
+            // Chuyển lượt chơi
             ChangeTurn(storage);
 
+            // Cập nhật điểm của người chơi xanh
             storage.BluePoint = int.Parse(lblBluePoint.Text);
+
+            // Cập nhật điểm của người chơi đỏ
             storage.RedPoint = int.Parse(lblRedPoint.Text);
 
             txtWords.Clear();
+
+            // Xoá điểm bị trừ / nhớ tạm của người chơi xanh
             blueCount = 0;
+
+            // Xoá điểm bị trừ / nhớ tạm của người chơi đỏ
             redCount = 0;
+
             index = -1;
 
             if (storage.BluePoint + storage.RedPoint == 25)
             {
                 hasChanged = false;
+                if (hasLoaded)
+                {
+                    // Xoá game đã load sau khi chơi xong
+                    gameSaved.RemoveAt(storage.GameLoad);
+                    File.Delete(storage.FileName + ".txt");
+                }
+
+                StreamWriter sw = null;
+                for (int i = 0; i < gameSaved.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        sw = new StreamWriter("game saved.txt");
+                        sw.WriteLine(gameSaved[i]);
+                    }
+                    else
+                    {
+                        sw = File.AppendText("game saved.txt");
+                        sw.WriteLine(gameSaved[i]);
+                    }
+
+                    sw.Close();
+                }
+
+                Stats sts = new Stats(storage);
+                sts.ShowDialog();
+
                 GameOver go = new GameOver(storage);
                 go.ShowDialog();
 
@@ -466,9 +569,14 @@ namespace Letterpress
         {
             if (txtWords.Text != "")
             {
+                // Xoá đi kí tự sau cùng
                 txtWords.Text = txtWords.Text.Remove(txtWords.Text.Length - 1);
+
+                // Hiện kí tự được chọn sau cùng
                 button[row[index], column[index]].Show();
-                SubtractPoint(button);
+
+                // Cập nhật lại điểm của người chơi
+                SubtractPoint();
                 index--;
             }
 
@@ -483,6 +591,7 @@ namespace Letterpress
             if (gameOver)
                 return;
 
+            // Nhường lượt chơi cho đối phương
             DialogResult result = MessageBox.Show("Are you sure you want to pass your turn?",
                                                   "", MessageBoxButtons.YesNo,
                                                   MessageBoxIcon.Question);
@@ -490,8 +599,8 @@ namespace Letterpress
             {
                 hasChanged = true;
 
-                redTurn = !redTurn;
-                if (redTurn)
+                storage.RedTurn = !storage.RedTurn;
+                if (storage.RedTurn)
                 {
                     pbxBlueIndex.Hide();
                     pbxRedIndex.Show();
@@ -507,68 +616,115 @@ namespace Letterpress
         private void mnuGameLoadGame_Click(object sender, EventArgs e)
         {
             hasChanged = false;
-            storage.BluePoint = Settings.Default.bluePoint;
-            lblBluePoint.Text = "" + storage.BluePoint;
-            storage.RedPoint = Settings.Default.redPoint;
-            lblRedPoint.Text = "" + storage.RedPoint;
 
-            pbxBlueIndex.Visible = Settings.Default.blueIndex;
-            pbxRedIndex.Visible = Settings.Default.redIndex;
-            redTurn = pbxRedIndex.Visible;
+            // Mở game đã lưu
+            LoadGame lg = new LoadGame(storage);
+            lg.ShowDialog();
+            gameSaved = lg.gameSaved;
 
-            button[0, 0].Text = Settings.Default.text00;
-            button[0, 1].Text = Settings.Default.text01;
-            button[0, 2].Text = Settings.Default.text02;
-            button[0, 3].Text = Settings.Default.text03;
-            button[0, 4].Text = Settings.Default.text04;
-            button[1, 0].Text = Settings.Default.text10;
-            button[1, 1].Text = Settings.Default.text11;
-            button[1, 2].Text = Settings.Default.text12;
-            button[1, 3].Text = Settings.Default.text13;
-            button[1, 4].Text = Settings.Default.text14;
-            button[2, 0].Text = Settings.Default.text20;
-            button[2, 1].Text = Settings.Default.text21;
-            button[2, 2].Text = Settings.Default.text22;
-            button[2, 3].Text = Settings.Default.text23;
-            button[2, 4].Text = Settings.Default.text24;
-            button[3, 0].Text = Settings.Default.text30;
-            button[3, 1].Text = Settings.Default.text31;
-            button[3, 2].Text = Settings.Default.text32;
-            button[3, 3].Text = Settings.Default.text33;
-            button[3, 4].Text = Settings.Default.text34;
-            button[4, 0].Text = Settings.Default.text40;
-            button[4, 1].Text = Settings.Default.text41;
-            button[4, 2].Text = Settings.Default.text42;
-            button[4, 3].Text = Settings.Default.text43;
-            button[4, 4].Text = Settings.Default.text44;
+            // Nếu không load game
+            if (storage.FileName == "")
+                return;
 
-            button[0, 0].BackColor = Settings.Default.color00;
-            button[0, 1].BackColor = Settings.Default.color01;
-            button[0, 2].BackColor = Settings.Default.color02;
-            button[0, 3].BackColor = Settings.Default.color03;
-            button[0, 4].BackColor = Settings.Default.color04;
-            button[1, 0].BackColor = Settings.Default.color10;
-            button[1, 1].BackColor = Settings.Default.color11;
-            button[1, 2].BackColor = Settings.Default.color12;
-            button[1, 3].BackColor = Settings.Default.color13;
-            button[1, 4].BackColor = Settings.Default.color14;
-            button[2, 0].BackColor = Settings.Default.color20;
-            button[2, 1].BackColor = Settings.Default.color21;
-            button[2, 2].BackColor = Settings.Default.color22;
-            button[2, 3].BackColor = Settings.Default.color23;
-            button[2, 4].BackColor = Settings.Default.color24;
-            button[3, 0].BackColor = Settings.Default.color30;
-            button[3, 1].BackColor = Settings.Default.color31;
-            button[3, 2].BackColor = Settings.Default.color32;
-            button[3, 3].BackColor = Settings.Default.color33;
-            button[3, 4].BackColor = Settings.Default.color34;
-            button[4, 0].BackColor = Settings.Default.color40;
-            button[4, 1].BackColor = Settings.Default.color41;
-            button[4, 2].BackColor = Settings.Default.color42;
-            button[4, 3].BackColor = Settings.Default.color43;
-            button[4, 4].BackColor = Settings.Default.color44;
+            LoadGame();
+        }
 
-            storage.wordsListUsed = Settings.Default.wordsListUsed;
+        private void LoadGame()
+        {
+            StreamReader sr = new StreamReader(String.Format(storage.FileName + ".txt"));
+
+            // Số dòng đang đọc
+            int count = 1;
+            string line;
+            while ((line = sr.ReadLine()) != null)
+            {
+                // Các thành phần được phân tách bở dấu |
+                string[] inputs = line.Split('|');
+                if (count == 1)   // Dòng 1 đọc các kí tự chữ cái
+                {
+                    int k = 0;
+                    for (int i = 0; i < 5; i++)
+                        for (int j = 0; j < 5; j++)
+                        {
+                            button[i, j].Text = inputs[k];
+                            k++;
+                        }
+                }
+                else if (count == 2)   // Dòng 2 đọc vị trí các kí tự được đánh dấu màu xanh
+                {
+                    // Nếu chỉ có 1 thành phần (blue) tức không có vị trí được đánh dấu màu xanh
+                    if (inputs.Length == 1)
+                    {
+                        count++;
+                        continue;
+                    }
+
+                    // Mảng chứa các vị trí ở dòng được đánh dấu màu xanh
+                    int[] r = new int[inputs.Length - 1];
+
+                    // Mảng chứa các vị trí ở cột được đánh dấu màu xanh
+                    int[] c = new int[inputs.Length - 1];
+
+                    for (int i = 0; i < inputs.Length - 1; i++)
+                    {
+                        string[] t = inputs[i].Split(',');
+                        r[i] = int.Parse(t[0]);
+                        c[i] = int.Parse(t[1]);
+                        button[r[i], c[i]].BackColor = Color.LightSkyBlue;
+                    }
+                }
+                else if (count == 3)   // Dòng 3 đọc vị trí các kí tự được đánh dấu màu đỏ
+                {
+                    // Nếu chỉ có 1 thành phần (red) tức không có vị trí được đánh dấu màu đỏ
+                    if (inputs.Length == 1)
+                    {
+                        count++;
+                        continue;
+                    }
+
+                    // Mảng chứa các vị trí ở dòng được đánh dấu màu đỏ
+                    int[] r = new int[inputs.Length - 1];
+
+                    // Mảng chứa các vị trí ở cột được đánh dấu màu đỏ
+                    int[] c = new int[inputs.Length - 1];
+
+                    for (int i = 0; i < inputs.Length - 1; i++)
+                    {
+                        string[] t = inputs[i].Split(',');
+                        r[i] = int.Parse(t[0]);
+                        c[i] = int.Parse(t[1]);
+                        button[r[i], c[i]].BackColor = Color.Red;
+                    }
+                }
+                else if (count == 4)   // Dòng 4 đọc điểm của 2 người chơi
+                {
+                    lblBluePoint.Text = inputs[0];
+                    storage.BluePoint = int.Parse(lblBluePoint.Text);
+                    lblRedPoint.Text = inputs[1];
+                    storage.RedPoint = int.Parse(lblRedPoint.Text);
+                }
+                else if (count == 5)   // Dòng 5 đọc lượt chơi sau cùng
+                {
+                    if (line == "True")
+                    {
+                        pbxRedIndex.Show();
+                        pbxBlueIndex.Hide();
+                    }
+                    else
+                    {
+                        pbxBlueIndex.Show();
+                        pbxRedIndex.Hide();
+                    }
+                }
+                else   // Dòng 6 đọc những từ đã được chơi
+                {
+                    for (int i = 0; i < inputs.Length - 1; i++)
+                        storage.wordsListUsed.Add(inputs[i]);
+                    break;
+                }
+
+                count++;
+            }
         }
 
         private void mnuGameSaveGame_Click(object sender, EventArgs e)
@@ -581,75 +737,89 @@ namespace Letterpress
             if (gameOver)
                 return;
 
-            hasChanged = false;
-            Settings.Default.bluePoint = storage.BluePoint;
-            Settings.Default.redPoint = storage.RedPoint;
-
-            if (redTurn == false)
+            // Lưu game
+            if (txtWords.Text == "")
             {
-                Settings.Default.blueIndex = true;
-                Settings.Default.redIndex = false;
+                hasChanged = false;
+
+                // Định tên file theo kiểu ngày tháng năm giờ
+                storage.FileName = DateTime.Now.ToString("dd-MM-yyyy   HH mm ss");
+                StreamWriter sw = new StreamWriter(String.Format(storage.FileName + ".txt"));
+                
+                // Dòng 1 ghi các kí tự
+                for (int i = 0; i < 5; i++)
+                    for (int j = 0; j < 5; j++)
+                        sw.Write(button[i, j].Text + "|");
+                sw.WriteLine();
+
+                // Dòng 2 ghi các vị trí được đánh dấu màu xanh
+                int blue = 0;
+                for (int i = 0; i < 5; i++)
+                    for (int j = 0; j < 5; j++)
+                    {
+                        if (button[i, j].BackColor == Color.LightSkyBlue)
+                        {
+                            blue++;
+                            sw.Write(i + "," + j + "|");
+                        }
+
+                        if (i == 4 && j == 4 && blue == 0)
+                        {
+                            blue--;
+                            sw.Write("blue");
+                        }
+                    }
+                if (blue > 0 || blue == -1)
+                    sw.WriteLine();
+
+                // Dòng 3 ghi các vị trí được đánh dấu màu đỏ
+                int red = 0;
+                for (int i = 0; i < 5; i++)
+                    for (int j = 0; j < 5; j++)
+                    {
+                        if (button[i, j].BackColor == Color.Red)
+                        {
+                            red++;
+                            sw.Write(i + "," + j + "|");
+                        }
+
+                        if (i == 4 && j == 4 && red == 0)
+                            sw.Write("red");
+                    }
+                if (red == 0)
+                    sw.WriteLine();
+
+                // Dòng 4 ghi điểm của người chơi xanh và đỏ
+                sw.WriteLine(storage.BluePoint + "|" + storage.RedPoint);
+
+                // Dòng 5 ghi lượt chơi sau cùng
+                sw.WriteLine(storage.RedTurn);
+
+                // Dòng 6 ghi các từ đã được chơi
+                foreach (string words in storage.wordsListUsed)
+                    sw.Write(words + "|");
+                sw.WriteLine();
+                sw.Close();
+
+                // Thêm tên file game đã lưu
+                gameSaved.Add(storage.FileName);
+                for (int i = 0; i < gameSaved.Count; i++)
+                {
+                    if (i == 0)
+                    {
+                        sw = new StreamWriter("game saved.txt");
+                        sw.WriteLine(gameSaved[i]);
+                    }
+                    else
+                    {
+                        sw = File.AppendText("game saved.txt");
+                        sw.WriteLine(gameSaved[i]);
+                    }
+
+                    sw.Close();
+                }
+                storage.GameLoad = gameSaved.Count - 1;
             }
-            else
-            {
-                Settings.Default.blueIndex = false;
-                Settings.Default.redIndex = true;
-            }
-
-            Settings.Default.text00 = button[0, 0].Text;
-            Settings.Default.text01 = button[0, 1].Text;
-            Settings.Default.text02 = button[0, 2].Text;
-            Settings.Default.text03 = button[0, 3].Text;
-            Settings.Default.text04 = button[0, 4].Text;
-            Settings.Default.text10 = button[1, 0].Text;
-            Settings.Default.text11 = button[1, 1].Text;
-            Settings.Default.text12 = button[1, 2].Text;
-            Settings.Default.text13 = button[1, 3].Text;
-            Settings.Default.text14 = button[1, 4].Text;
-            Settings.Default.text20 = button[2, 0].Text;
-            Settings.Default.text21 = button[2, 1].Text;
-            Settings.Default.text22 = button[2, 2].Text;
-            Settings.Default.text23 = button[2, 3].Text;
-            Settings.Default.text24 = button[2, 4].Text;
-            Settings.Default.text30 = button[3, 0].Text;
-            Settings.Default.text31 = button[3, 1].Text;
-            Settings.Default.text32 = button[3, 2].Text;
-            Settings.Default.text33 = button[3, 3].Text;
-            Settings.Default.text34 = button[3, 4].Text;
-            Settings.Default.text40 = button[4, 0].Text;
-            Settings.Default.text41 = button[4, 1].Text;
-            Settings.Default.text42 = button[4, 2].Text;
-            Settings.Default.text43 = button[4, 3].Text;
-            Settings.Default.text44 = button[4, 4].Text;
-
-            Settings.Default.color00 = button[0, 0].BackColor;
-            Settings.Default.color01 = button[0, 1].BackColor;
-            Settings.Default.color02 = button[0, 2].BackColor;
-            Settings.Default.color03 = button[0, 3].BackColor;
-            Settings.Default.color04 = button[0, 4].BackColor;
-            Settings.Default.color10 = button[1, 0].BackColor;
-            Settings.Default.color11 = button[1, 1].BackColor;
-            Settings.Default.color12 = button[1, 2].BackColor;
-            Settings.Default.color13 = button[1, 3].BackColor;
-            Settings.Default.color14 = button[1, 4].BackColor;
-            Settings.Default.color20 = button[2, 0].BackColor;
-            Settings.Default.color21 = button[2, 1].BackColor;
-            Settings.Default.color22 = button[2, 2].BackColor;
-            Settings.Default.color23 = button[2, 3].BackColor;
-            Settings.Default.color24 = button[2, 4].BackColor;
-            Settings.Default.color30 = button[3, 0].BackColor;
-            Settings.Default.color31 = button[3, 1].BackColor;
-            Settings.Default.color32 = button[3, 2].BackColor;
-            Settings.Default.color33 = button[3, 3].BackColor;
-            Settings.Default.color34 = button[3, 4].BackColor;
-            Settings.Default.color40 = button[4, 0].BackColor;
-            Settings.Default.color41 = button[4, 1].BackColor;
-            Settings.Default.color42 = button[4, 2].BackColor;
-            Settings.Default.color43 = button[4, 3].BackColor;
-            Settings.Default.color44 = button[4, 4].BackColor;
-
-            Settings.Default.wordsListUsed = storage.wordsListUsed;
-            Settings.Default.Save();
         }
 
         private void mnuOptionPlayedWords_Click(object sender, EventArgs e)
@@ -688,11 +858,7 @@ namespace Letterpress
 
         private void mnuOptionStats_Click(object sender, EventArgs e)
         {
-            Stats sts = null;
-            if (gameOver)
-                sts = new Stats(storage);
-            else
-                sts = new Stats();
+            Stats sts = new Stats();
             sts.ShowDialog();
         }
 

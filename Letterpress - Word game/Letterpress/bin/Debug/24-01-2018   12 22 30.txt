@@ -1,0 +1,6 @@
+a|o|c|s|n|e|s|i|m|a|s|s|y|a|w|a|e|d|i|h|a|m|r|o|f|
+0,4|1,0|1,1|1,2|2,0|2,1|4,3|
+0,3|1,4|2,4|
+7|3
+False
+session|saw|

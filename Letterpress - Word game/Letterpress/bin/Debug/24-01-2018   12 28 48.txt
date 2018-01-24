@@ -1,0 +1,6 @@
+g|n|i|z|z|a|j|s|i|s|p|o|y|r|a|c|d|e|n|e|t|s|a|h|c|
+0,3|0,4|1,1|4,2|
+red
+4|0
+True
+jazz|

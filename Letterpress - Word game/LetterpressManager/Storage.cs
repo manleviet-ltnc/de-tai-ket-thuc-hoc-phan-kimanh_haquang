@@ -10,25 +10,41 @@ namespace LetterpressManager
     {
         public List<string> wordsListUsed = new List<string>();
 
-        private int bluePoint;
+        int bluePoint;
         public int BluePoint
         {
             get { return bluePoint; }
             set { bluePoint = value; }
         }
 
-        private int redPoint;
+        int redPoint;
         public int RedPoint
         {
             get { return redPoint; }
             set { redPoint = value; }
         }
 
-        private bool rematch;
+        public bool RedTurn = false;
+
+        bool rematch;
         public bool Rematch
         {
             get { return rematch; }
             set { rematch = value; }
+        }
+
+        string fileName;
+        public string FileName
+        {
+            get { return fileName; }
+            set { fileName = value; }
+        }
+
+        int gameLoad;
+        public int GameLoad
+        {
+            get { return gameLoad; }
+            set { gameLoad = value; }
         }
     }
 }

@@ -16,12 +16,12 @@ namespace Letterpress
     public partial class GameOver : Form
     {
         Thread thread;
-        Storage storage = new Storage();
+        Storage storage;
 
-        public GameOver(Storage storage)
+        public GameOver(Storage _storage)
         {
             InitializeComponent();
-            this.storage = storage;
+            storage = _storage;
         }
 
         private void GameOver_Load(object sender, EventArgs e)
@@ -34,6 +34,12 @@ namespace Letterpress
             else
                 lblScored.Text = String.Format("Player Red wins {0}-{1}",
                                                 storage.RedPoint, storage.BluePoint);
+        }
+
+        private void btnStats_Click(object sender, EventArgs e)
+        {
+            Stats sts = new Stats();
+            sts.ShowDialog();
         }
 
         private void btnClose_Click(object sender, EventArgs e)

@@ -40,3 +40,4 @@ E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\L
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\bin\Debug\LetterpressManager.pdb
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\obj\Debug\Letterpress.GameBoard.resources
 E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\obj\Debug\Letterpress.GameOver.resources
+E:\Documents\Projects in Visual Studio\de-tai-ket-thuc-hoc-phan-kimanh_haquang\Letterpress - Word game\Letterpress\obj\Debug\Letterpress.LoadGame.resources

@@ -1,0 +1,6 @@
+s|p|a|d|e|l|a|e|h|n|u|e|h|c|i|f|r|e|v|o|c|p|i|l|s|
+0,1|0,2|0,3|
+red
+3|0
+True
+pad|

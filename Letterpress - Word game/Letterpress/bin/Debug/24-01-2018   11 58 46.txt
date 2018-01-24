@@ -1,0 +1,6 @@
+i|s|t|u|o|s|e|s|o|n|s|s|e|l|d|e|e|h|g|o|l|k|c|a|b|
+0,2|1,0|1,1|
+red
+3|0
+True
+set|

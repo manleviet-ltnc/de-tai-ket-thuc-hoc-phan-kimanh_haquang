@@ -1,0 +1,6 @@
+i|r|s|y|b|d|n|a|t|s|l|a|i|r|e|t|a|m|m|i|d|e|l|i|r|
+2,0|2,1|
+1,0|1,1|1,2|1,4|
+2|4
+False
+land|sand|

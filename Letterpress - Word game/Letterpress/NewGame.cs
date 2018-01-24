@@ -34,9 +34,27 @@ namespace Letterpress
             Application.Run(new GameBoard());
         }
 
+        private void btnLoadGame_Click(object sender, EventArgs e)
+        {
+            LoadGame lg = new LoadGame();
+            lg.ShowDialog();
+            if (lg.storage.FileName != "")
+                Close();
+        }
+
         private void btnExit_Click(object sender, EventArgs e)
         {
             Close();
+        }
+
+        private void mnuGameNew_Click(object sender, EventArgs e)
+        {
+            btnNewGame_Click(sender, e);
+        }
+
+        private void mnuGameLoad_Click(object sender, EventArgs e)
+        {
+            btnLoadGame_Click(sender, e);
         }
 
         private void mnuGameExit_Click(object sender, EventArgs e)
@@ -48,35 +66,6 @@ namespace Letterpress
         {
             Stats sts = new Stats();
             sts.ShowDialog();
-        }
-
-        protected override bool ProcessCmdKey(ref Message msg, Keys keyData)
-        {
-            switch (keyData)
-            {
-                case Keys.Up:
-                    if (btnNewGame.Focused)
-                        return true;
-
-                    if (btnExit.Focused)
-                    {
-                        btnNewGame.Focus();
-                        return true;
-                    }
-
-                    break;
-                case Keys.Down:
-                    if (btnNewGame.Focused)
-                    {
-                        btnExit.Focus();
-                        return true;
-                    }
-
-                    if (btnExit.Focused)
-                        return true;
-                    break;
-            }
-            return base.ProcessCmdKey(ref msg, keyData);
         }
 
         private void timer_Tick(object sender, EventArgs e)

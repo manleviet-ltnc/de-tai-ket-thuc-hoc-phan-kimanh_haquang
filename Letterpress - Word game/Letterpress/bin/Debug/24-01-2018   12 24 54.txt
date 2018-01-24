@@ -1,0 +1,6 @@
+s|k|r|a|b|m|e|s|o|n|a|r|p|o|s|e|t|a|i|l|i|c|n|o|c|
+0,2|1,3|2,3|3,1|
+red
+4|0
+True
+root|

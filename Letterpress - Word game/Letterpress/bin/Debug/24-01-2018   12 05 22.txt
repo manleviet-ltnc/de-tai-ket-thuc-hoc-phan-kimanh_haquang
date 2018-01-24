@@ -1,0 +1,5 @@
+s|r|e|l|o|o|c|s|r|a|i|r|b|n|e|m|s|e|d|a|r|t|l|e|b|
+blue
+red
+0|0
+False
